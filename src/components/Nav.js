@@ -3,32 +3,33 @@ import { Link, NavLink } from 'react-router-dom'
 import Logo from '../assets/images/logo/logo.png'
 
 function Nav() {
+   
     return (
         <div>
-            <header class="header">
-            <nav class="navbar navbar-expand-lg header-nav">
-                <div class="navbar-header">
+            <header className="header">
+            <nav className="navbar navbar-expand-lg header-nav">
+                <div className="navbar-header">
                     <a id="mobile_btn" href="javascript:void(0);">
-                        <span class="bar-icon">
+                        <span className="bar-icon">
 							<span></span>
                         <span></span>
                         <span></span>
                         </span>
                     </a>
-                    <a href="/" class="navbar-brand logo">
-                        <img src={Logo} class="img-fluid" alt="Logo"/>
+                    <a href="/" className="navbar-brand logo">
+                        <img src={Logo} className="img-fluid" alt="Logo"/>
                     </a>
                 </div>
-                <div class="main-menu-wrapper">
-                    <div class="menu-header">
+                <div className="main-menu-wrapper">
+                    <div className="menu-header">
                         <Link to='/' className="menu-logo" >
-                        <img src={Logo} class="img-fluid" alt="Logo"/>
+                        <img src={Logo} className="img-fluid" alt="Logo"/>
                         </Link>
-                        <a id="menu_close" class="menu-close" href="javascript:void(0);">
-                            <i class="fas fa-times"></i>
+                        <a id="menu_close" className="menu-close" href="javascript:void(0);">
+                            <i className="fas fa-times"></i>
                         </a>
                     </div>
-                    <ul class="main-nav">
+                    <ul className="main-nav">
                         <li>
                             <NavLink exact activeClassName='active' to='/'>Home</NavLink>
                         </li>
@@ -39,7 +40,7 @@ function Nav() {
                             <NavLink activeClassName='active' to='/topCompanies'>Top Companies</NavLink>
                         </li>
                         <li>
-                            <NavLink activeClassName='active' to='/blog'>Blog</NavLink>
+                            <NavLink activeClassName='active' to='/blog'>Blogs</NavLink>
                         </li>
                         <li>
                             <NavLink activeClassName='active' to='/about'>About</NavLink>
@@ -47,17 +48,17 @@ function Nav() {
 
                     </ul>
                 </div>
-                <ul class="nav header-navbar-rht">
-                    <li class="nav-item contact-item">
-                        <div class="header-contact-img">
-                            <i class="fas fa-building"></i>
+                <ul className="nav header-navbar-rht">
+                    <li className="nav-item contact-item">
+                        <div className="header-contact-img">
+                            <i className="fas fa-building"></i>
                         </div>
-                        <div class="header-contact-detail">
-                            <p class="contact-header">Contact</p>
-                            <p class="contact-info-header"> +1 123 456 7890</p>
+                        <div className="header-contact-detail">
+                            <p className="contact-header">Contact</p>
+                            <p className="contact-info-header"> +1 123 456 7890</p>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <li className="nav-item">
                         <NavLink activeClassName='active' className="nav-link header-login" to='/login'>Login/Sign up</NavLink>
                     </li>
                 </ul>
