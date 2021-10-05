@@ -30,20 +30,20 @@ function Nav() {
                         </a>
                     </div>
                     <ul className="main-nav">
-                        <li>
-                            <NavLink exact activeClassName='active' to='/'>Home</NavLink>
+                        <li className="">
+                            <NavLink exact activeStyle={{ color:'#09dca4'}} to='/'> <span className="active" >Home</span> </NavLink>
                         </li>
                         <li>
-                            <NavLink activeClassName='active' to='/jobs'>Jobs</NavLink>
+                            <NavLink activeStyle={{ color:'#09dca4'}} to='/jobs'>Jobs</NavLink>
                         </li>
                         <li>
-                            <NavLink activeClassName='active' to='/topCompanies'>Top Companies</NavLink>
+                            <NavLink activeStyle={{ color:'#09dca4'}} to='/topCompanies'>Top Companies</NavLink>
                         </li>
                         <li>
-                            <NavLink activeClassName='active' to='/blog'>Blogs</NavLink>
+                            <NavLink activeStyle={{ color:'#09dca4'}} to='/blog'>Blogs</NavLink>
                         </li>
                         <li>
-                            <NavLink activeClassName='active' to='/about'>About</NavLink>
+                            <NavLink activeStyle={{ color:'#09dca4'}} to='/about'>About</NavLink>
                         </li>
 
                     </ul>
