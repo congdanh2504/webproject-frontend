@@ -3,8 +3,8 @@ import './assets/css/style.css'
 import './App.css';
 import Nav from './components/Nav';
 import { BrowserRouter, NavLink, Route } from 'react-router-dom';
-import Login from './components/Login';
-import Register from './components/Register';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import Footer from './components/Footer';
 import EmployerRegister from './components/Employer-Register';
 
@@ -17,9 +17,9 @@ function App() {
         </div>
         <div className="content">
           <Route exact path='/'/>
-          <Route exact path='/employer-register'component={EmployerRegister}/>
-          <Route exact path='/login' component={Login}/>
-          <Route exact path='/register' component={Register}/>
+          <Route path='/employer-register'component={EmployerRegister}/>
+          <Route path='/login' component={Login}/>
+          <Route path='/register' component={Register}/>
         </div>
         <div className="footer">
           <Footer/>
