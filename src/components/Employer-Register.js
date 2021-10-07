@@ -1,8 +1,8 @@
 import React from 'react'
 import LoginBanner from "../assets/images/illustration/login-banner.svg"
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
-function Register() {
+function EmployerRegister() {
     return (
         <div className="content">
             <div className="container-fluid">
@@ -17,9 +17,9 @@ function Register() {
                                 </div>
                                 <div className="col-md-12 col-lg-6 login-right">
                                     <div className="login-header">
-                                        <h3>Employee Register
-                                        <Link to='/employer-register' className="menu-logo" >
-                                            Are you employer?
+                                        <h3>Employer Register
+                                        <Link to='/register' className="menu-logo" >
+                                            Are you employee?
                                         </Link>
                                          </h3>
                                     </div>
@@ -59,4 +59,4 @@ function Register() {
     )
 }
 
-export default Register
+export default EmployerRegister

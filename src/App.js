@@ -6,6 +6,7 @@ import { BrowserRouter, NavLink, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
 import Footer from './components/Footer';
+import EmployerRegister from './components/Employer-Register';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         </div>
         <div className="content">
           <Route exact path='/'/>
+          <Route exact path='/employer-register'component={EmployerRegister}/>
           <Route exact path='/login' component={Login}/>
           <Route exact path='/register' component={Register}/>
         </div>
