@@ -64,9 +64,7 @@ function Home() {
             <div className="banner-header text-center">
               <h1>What do you want to do?</h1>
               <p>
-                One of our jobs has some kind of flexibility option - such as
-                telecommutinga part-time schedule or a flexible or flextime
-                schedule.
+                jsadjsdsdjasjdasfj
               </p>
             </div>
 
@@ -112,7 +110,7 @@ function Home() {
                 <div class="speicality-item text-center">
                   <div class="speicality-img mx-auto">
                     <img
-                      src="assets/img/specialities/specialities-01.png"
+                      src="assets/img/categories/categories-01.png"
                       class="img-fluid"
                       alt="Speciality"
                     />
@@ -120,12 +118,12 @@ function Home() {
                       <i class="fa fa-circle" aria-hidden="true"></i>
                     </span>
                   </div>
-                  <p>Urology</p>
+                  <p>Programmer</p>
                 </div>
                 <div class="speicality-item text-center">
                   <div class="speicality-img mx-auto">
                     <img
-                      src="assets/img/specialities/specialities-02.png"
+                      src="assets/img/categories/categories-02.png"
                       class="img-fluid"
                       alt="Speciality"
                     />
@@ -133,12 +131,12 @@ function Home() {
                       <i class="fa fa-circle" aria-hidden="true"></i>
                     </span>
                   </div>
-                  <p>Neurology</p>
+                  <p>Doctor</p>
                 </div>
                 <div class="speicality-item text-center">
                   <div class="speicality-img mx-auto">
                     <img
-                      src="assets/img/specialities/specialities-03.png"
+                      src="assets/img/categories/categories-03.png"
                       class="img-fluid"
                       alt="Speciality"
                     />
@@ -146,7 +144,7 @@ function Home() {
                       <i class="fa fa-circle" aria-hidden="true"></i>
                     </span>
                   </div>
-                  <p>Orthopedic</p>
+                  <p>Salesman</p>
                 </div>
                 <div class="speicality-item text-center">
                   <div class="speicality-img mx-auto">
@@ -520,14 +518,14 @@ function Home() {
           <div class="row">
             <div class="col-md-5 features-img">
               <img
-                src="assets/img/features/feature.png"
+                src="assets/img/partners/feature.png"
                 class="img-fluid"
                 alt="Feature"
               />
             </div>
             <div class="col-md-7">
               <div class="section-header">
-                <h2 class="mt-2">Oủ Partners</h2>
+                <h2 class="mt-2">Our Partners</h2>
                 <p>
                   Tincidunt augue interdum velit euismod. Dictumst quisque
                   sagittis purus sit amet volutpat. Adipiscing commodo elit at
@@ -537,47 +535,47 @@ function Home() {
               <Slider {...settings_clinic_specialities}>
                 <div class="feature-item text-center">
                   <img
-                    src="assets/img/features/feature-01.jpg"
-                    class="img-fluid mx-auto"
+                    src="assets/img/partners/partners-01.png"
+                    class="img-fluid mx-auto img-fix"
                     alt="Feature"
                   />
-                  <p>Patient Ward</p>
+                  <p>Google</p>
                 </div>
 
                 <div class="feature-item text-center">
                   <img
-                    src="assets/img/features/feature-02.jpg"
+                    src="assets/img/partners/partners-02.png"
                     class="img-fluid mx-auto"
                     alt="Feature"
                   />
-                  <p>Test Room</p>
+                  <p>Microsoft</p>
                 </div>
 
                 <div class="feature-item text-center">
                   <img
-                    src="assets/img/features/feature-03.jpg"
+                    src="assets/img/partners/partners-03.png"
                     class="img-fluid mx-auto"
                     alt="Feature"
                   />
-                  <p>ICU</p>
+                  <p>VinGroup</p>
                 </div>
 
                 <div class="feature-item text-center">
                   <img
-                    src="assets/img/features/feature-04.jpg"
-                    class="img-fluid mx-auto"
+                    src="assets/img/partners/partners-04.png"
+                    class="img-fluid mx-auto img-fix"
                     alt="Feature"
                   />
-                  <p>Laboratory</p>
+                  <p>VKU</p>
                 </div>
 
                 <div class="feature-item text-center">
                   <img
-                    src="assets/img/features/feature-05.jpg"
-                    class="img-fluid mx-auto"
+                    src="assets/img/partners/partners-05.png"
+                    class="img-fluid mx-auto img-fix"
                     alt="Feature"
                   />
-                  <p>Operation</p>
+                  <p>Apple</p>
                 </div>
               </Slider>
             </div>
