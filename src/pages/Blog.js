@@ -13,6 +13,7 @@ const Blog = () => {
                         <BlogCard/>
                         <BlogCard/>
                         <BlogCard/>
+                        <BlogCard/>
                     </div>
                 </section>
             </div>
