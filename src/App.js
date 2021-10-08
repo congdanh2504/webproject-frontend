@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import Footer from "./components/Footer";
 import EmployerRegister from "./components/Employer-Register";
 import Home from "./pages/Home";
+import Blog from "./pages/Blog";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/employer-register" component={EmployerRegister} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/blog" component={Blog} />
       </Switch>
       <Footer />
     </Router>
