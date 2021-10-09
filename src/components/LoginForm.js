@@ -22,13 +22,11 @@ function LoginForm() {
             <div className="login-header">
                 <h3>Login <span>Jobhub</span></h3>
             </div>
-            <div className="form-group form-focus">
-                <input type="email" className="form-control floating" onChange={updateEmail}/>
-                <label className="focus-label">Email</label>
+            <div className="form-group">
+                <input type="email" className="form-control" id="email" placeholder="Email" onChange={updateEmail}/>
             </div>
-            <div className="form-group form-focus">
-                <input type="password" className="form-control floating"  onChange={updatePassword}/>
-                <label className="focus-label">Password</label>
+            <div className="form-group">
+                <input type="password" className="form-control" placeholder="Password"  onChange={updatePassword}/>
             </div>
             <div className="text-right">
                 <a className="forgot-link" href="forgot-password.html">Forgot Password ?</a>

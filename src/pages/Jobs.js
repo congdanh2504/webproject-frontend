@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import JobCard_Horizontal from "../components/JobCard_Horizontal";
-import JobCard from "../components/JobCard_Vertical";
+import JobCard_Vertical from "../components/JobCard_Vertical";
 
 function Jobs() {
   return (
@@ -13,7 +14,7 @@ function Jobs() {
               <nav aria-label="breadcrumb" class="page-breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item">
-                    <a href="index-2.html">Home</a>
+                    <Link to="/">Home</Link>
                   </li>
                   <li class="breadcrumb-item active" aria-current="page">
                     Search

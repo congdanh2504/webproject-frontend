@@ -13,17 +13,14 @@ function RegisterForm() {
                     </h3>
             </div>
             <form action="#">
-            <div className="form-group form-focus">
-                    <input type="text" className="form-control floating" />
-                    <label className="focus-label">Email</label>
+            <div className="form-group">
+                    <input type="text" className="form-control" placeholder="Email"/>
                 </div>
-                <div className="form-group form-focus">
-                    <input type="password" className="form-control floating" />
-                    <label className="focus-label">Create Password</label>
+                <div className="form-group">
+                    <input type="password" className="form-control" placeholder="Create a Password" />
                 </div>
-                <div className="form-group form-focus">
-                    <input type="password" className="form-control floating" />
-                    <label className="focus-label">Confirm Password</label>
+                <div className="form-group">
+                    <input type="password" className="form-control" placeholder="Confirm your Password" />
                 </div>
                 <button className="btn btn-primary btn-block btn-lg login-btn" type="submit">Signup</button>
                 <div className="login-or">
