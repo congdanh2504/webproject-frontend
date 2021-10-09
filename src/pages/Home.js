@@ -1,5 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import CategoryCard from "../components/CategoryCard";
+import JobCard_Vertical from "../components/JobCard_Vertical";
 
 function Home() {
   const settings_clinic_specialities = {
@@ -63,9 +66,6 @@ function Home() {
           <div className="banner-wrapper">
             <div className="banner-header text-center">
               <h1>What do you want to do?</h1>
-              <p>
-                jsadjsdsdjasjdasfj
-              </p>
             </div>
 
             <div className="search-box">
@@ -107,71 +107,12 @@ function Home() {
           <div class="row justify-content-center">
             <div class="col-md-9">
               <Slider {...settings_clinic_specialities}>
-                <div class="speicality-item text-center">
-                  <div class="speicality-img mx-auto">
-                    <img
-                      src="assets/img/categories/categories-01.png"
-                      class="img-fluid"
-                      alt="Speciality"
-                    />
-                    <span>
-                      <i class="fa fa-circle" aria-hidden="true"></i>
-                    </span>
-                  </div>
-                  <p>Programmer</p>
-                </div>
-                <div class="speicality-item text-center">
-                  <div class="speicality-img mx-auto">
-                    <img
-                      src="assets/img/categories/categories-02.png"
-                      class="img-fluid"
-                      alt="Speciality"
-                    />
-                    <span>
-                      <i class="fa fa-circle" aria-hidden="true"></i>
-                    </span>
-                  </div>
-                  <p>Doctor</p>
-                </div>
-                <div class="speicality-item text-center">
-                  <div class="speicality-img mx-auto">
-                    <img
-                      src="assets/img/categories/categories-03.png"
-                      class="img-fluid"
-                      alt="Speciality"
-                    />
-                    <span>
-                      <i class="fa fa-circle" aria-hidden="true"></i>
-                    </span>
-                  </div>
-                  <p>Salesman</p>
-                </div>
-                <div class="speicality-item text-center">
-                  <div class="speicality-img mx-auto">
-                    <img
-                      src="assets/img/specialities/specialities-04.png"
-                      class="img-fluid"
-                      alt="Speciality"
-                    />
-                    <span>
-                      <i class="fa fa-circle" aria-hidden="true"></i>
-                    </span>
-                  </div>
-                  <p>Cardiologist</p>
-                </div>
-                <div class="speicality-item text-center">
-                  <div class="speicality-img mx-auto">
-                    <img
-                      src="assets/img/specialities/specialities-05.png"
-                      class="img-fluid"
-                      alt="Speciality"
-                    />
-                    <span>
-                      <i class="fa fa-circle" aria-hidden="true"></i>
-                    </span>
-                  </div>
-                  <p>Dentist</p>
-                </div>
+                <CategoryCard />
+                <CategoryCard />
+                <CategoryCard />
+                <CategoryCard />
+                <CategoryCard />
+                <CategoryCard />
               </Slider>
             </div>
           </div>
@@ -203,307 +144,17 @@ function Home() {
                   sollicitudin aliquam ultrices sagittis. Consectetur adipiscing
                   elit ut aliquam purus.
                 </p>
-                <a href="javascript:;">View More..</a>
+                <Link to="/jobs">View More</Link>
               </div>
             </div>
             <div className="col-lg-8">
               <div className="doctor-slider slider">
                 <Slider {...settings_popular}>
-                  <div class="profile-widget">
-                    <div class="doc-img">
-                      <a href="doctor-profile.html">
-                        <img
-                          class="img-fluid"
-                          alt="User Image"
-                          src="assets/img/doctors/doctor-01.jpg"
-                        />
-                      </a>
-                      <a href="javascript:void(0)" class="fav-btn">
-                        <i class="far fa-bookmark"></i>
-                      </a>
-                    </div>
-                    <div class="pro-content">
-                      <h3 class="title">
-                        <a href="doctor-profile.html">Ruby Perrin</a>
-                        <i class="fas fa-check-circle verified"></i>
-                      </h3>
-                      <p class="speciality">
-                        MDS - Periodontology and Oral Implantology, BDS
-                      </p>
-                      <div class="rating">
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <span class="d-inline-block average-rating">(17)</span>
-                      </div>
-                      <ul class="available-info">
-                        <li>
-                          <i class="fas fa-map-marker-alt"></i> Florida, USA
-                        </li>
-                        <li>
-                          <i class="far fa-clock"></i> Available on Fri, 22 Mar
-                        </li>
-                        <li>
-                          <i class="far fa-money-bill-alt"></i> $300 - $1000
-                          <i
-                            class="fas fa-info-circle"
-                            data-toggle="tooltip"
-                            title="Lorem Ipsum"
-                          ></i>
-                        </li>
-                      </ul>
-                      <div class="row row-sm">
-                        <div class="col-6">
-                          <a href="doctor-profile.html" class="btn view-btn">
-                            View Profile
-                          </a>
-                        </div>
-                        <div class="col-6">
-                          <a href="booking.html" class="btn book-btn">
-                            Book Now
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="profile-widget">
-                    <div class="doc-img">
-                      <a href="doctor-profile.html">
-                        <img
-                          class="img-fluid"
-                          alt="User Image"
-                          src="assets/img/doctors/doctor-01.jpg"
-                        />
-                      </a>
-                      <a href="javascript:void(0)" class="fav-btn">
-                        <i class="far fa-bookmark"></i>
-                      </a>
-                    </div>
-                    <div class="pro-content">
-                      <h3 class="title">
-                        <a href="doctor-profile.html">Ruby Perrin</a>
-                        <i class="fas fa-check-circle verified"></i>
-                      </h3>
-                      <p class="speciality">
-                        MDS - Periodontology and Oral Implantology, BDS
-                      </p>
-                      <div class="rating">
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <span class="d-inline-block average-rating">(17)</span>
-                      </div>
-                      <ul class="available-info">
-                        <li>
-                          <i class="fas fa-map-marker-alt"></i> Florida, USA
-                        </li>
-                        <li>
-                          <i class="far fa-clock"></i> Available on Fri, 22 Mar
-                        </li>
-                        <li>
-                          <i class="far fa-money-bill-alt"></i> $300 - $1000
-                          <i
-                            class="fas fa-info-circle"
-                            data-toggle="tooltip"
-                            title="Lorem Ipsum"
-                          ></i>
-                        </li>
-                      </ul>
-                      <div class="row row-sm">
-                        <div class="col-6">
-                          <a href="doctor-profile.html" class="btn view-btn">
-                            View Profile
-                          </a>
-                        </div>
-                        <div class="col-6">
-                          <a href="booking.html" class="btn book-btn">
-                            Book Now
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="profile-widget">
-                    <div class="doc-img">
-                      <a href="doctor-profile.html">
-                        <img
-                          class="img-fluid"
-                          alt="User Image"
-                          src="assets/img/doctors/doctor-01.jpg"
-                        />
-                      </a>
-                      <a href="javascript:void(0)" class="fav-btn">
-                        <i class="far fa-bookmark"></i>
-                      </a>
-                    </div>
-                    <div class="pro-content">
-                      <h3 class="title">
-                        <a href="doctor-profile.html">Ruby Perrin</a>
-                        <i class="fas fa-check-circle verified"></i>
-                      </h3>
-                      <p class="speciality">
-                        MDS - Periodontology and Oral Implantology, BDS
-                      </p>
-                      <div class="rating">
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <span class="d-inline-block average-rating">(17)</span>
-                      </div>
-                      <ul class="available-info">
-                        <li>
-                          <i class="fas fa-map-marker-alt"></i> Florida, USA
-                        </li>
-                        <li>
-                          <i class="far fa-clock"></i> Available on Fri, 22 Mar
-                        </li>
-                        <li>
-                          <i class="far fa-money-bill-alt"></i> $300 - $1000
-                          <i
-                            class="fas fa-info-circle"
-                            data-toggle="tooltip"
-                            title="Lorem Ipsum"
-                          ></i>
-                        </li>
-                      </ul>
-                      <div class="row row-sm">
-                        <div class="col-6">
-                          <a href="doctor-profile.html" class="btn view-btn">
-                            View Profile
-                          </a>
-                        </div>
-                        <div class="col-6">
-                          <a href="booking.html" class="btn book-btn">
-                            Book Now
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="profile-widget">
-                    <div class="doc-img">
-                      <a href="doctor-profile.html">
-                        <img
-                          class="img-fluid"
-                          alt="User Image"
-                          src="assets/img/doctors/doctor-01.jpg"
-                        />
-                      </a>
-                      <a href="javascript:void(0)" class="fav-btn">
-                        <i class="far fa-bookmark"></i>
-                      </a>
-                    </div>
-                    <div class="pro-content">
-                      <h3 class="title">
-                        <a href="doctor-profile.html">Ruby Perrin</a>
-                        <i class="fas fa-check-circle verified"></i>
-                      </h3>
-                      <p class="speciality">
-                        MDS - Periodontology and Oral Implantology, BDS
-                      </p>
-                      <div class="rating">
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <span class="d-inline-block average-rating">(17)</span>
-                      </div>
-                      <ul class="available-info">
-                        <li>
-                          <i class="fas fa-map-marker-alt"></i> Florida, USA
-                        </li>
-                        <li>
-                          <i class="far fa-clock"></i> Available on Fri, 22 Mar
-                        </li>
-                        <li>
-                          <i class="far fa-money-bill-alt"></i> $300 - $1000
-                          <i
-                            class="fas fa-info-circle"
-                            data-toggle="tooltip"
-                            title="Lorem Ipsum"
-                          ></i>
-                        </li>
-                      </ul>
-                      <div class="row row-sm">
-                        <div class="col-6">
-                          <a href="doctor-profile.html" class="btn view-btn">
-                            View Profile
-                          </a>
-                        </div>
-                        <div class="col-6">
-                          <a href="booking.html" class="btn book-btn">
-                            Book Now
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="profile-widget">
-                    <div class="doc-img">
-                      <a href="doctor-profile.html">
-                        <img
-                          class="img-fluid"
-                          alt="User Image"
-                          src="assets/img/doctors/doctor-01.jpg"
-                        />
-                      </a>
-                      <a href="javascript:void(0)" class="fav-btn">
-                        <i class="far fa-bookmark"></i>
-                      </a>
-                    </div>
-                    <div class="pro-content">
-                      <h3 class="title">
-                        <a href="doctor-profile.html">Ruby Perrin</a>
-                        <i class="fas fa-check-circle verified"></i>
-                      </h3>
-                      <p class="speciality">
-                        MDS - Periodontology and Oral Implantology, BDS
-                      </p>
-                      <div class="rating">
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <span class="d-inline-block average-rating">(17)</span>
-                      </div>
-                      <ul class="available-info">
-                        <li>
-                          <i class="fas fa-map-marker-alt"></i> Florida, USA
-                        </li>
-                        <li>
-                          <i class="far fa-clock"></i> Available on Fri, 22 Mar
-                        </li>
-                        <li>
-                          <i class="far fa-money-bill-alt"></i> $300 - $1000
-                          <i
-                            class="fas fa-info-circle"
-                            data-toggle="tooltip"
-                            title="Lorem Ipsum"
-                          ></i>
-                        </li>
-                      </ul>
-                      <div class="row row-sm">
-                        <div class="col-6">
-                          <a href="doctor-profile.html" class="btn view-btn">
-                            View Profile
-                          </a>
-                        </div>
-                        <div class="col-6">
-                          <a href="booking.html" class="btn book-btn">
-                            Book Now
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <JobCard_Vertical />
+                  <JobCard_Vertical />
+                  <JobCard_Vertical />
+                  <JobCard_Vertical />
+                  <JobCard_Vertical />
                 </Slider>
               </div>
             </div>
