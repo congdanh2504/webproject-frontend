@@ -25,7 +25,6 @@ function BlogCard() {
                         </a>
                     </h5>
                     <Link to="/blog/detail" className="btn btn-primary float-right">View</Link>
-                    {/* <Link to="/blog/detail" className="btn btn-primary float-right">View</Link> */}
                 </div>
             </div>
         </div>

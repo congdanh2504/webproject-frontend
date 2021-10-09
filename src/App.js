@@ -23,8 +23,8 @@ function App() {
         <Route path="/register" component={Register} />
         <Route path="/jobs" component={Jobs}/>
         <Route path="/blog/detail" component={BlogDetail} />
-        <Route path="/blog" component={Blog} />      
-        <Route component={NotFound} />       
+        <Route path="/blog" component={Blog} />
+        <Route component={NotFound} />
       </Switch>
       <Footer />
     </Router>

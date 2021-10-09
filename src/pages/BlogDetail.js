@@ -4,7 +4,7 @@ import PostCard from '../components/PostCard'
 
 const BlogDetail = () => {
     return (
-        <div className='container bg-white'>
+        <div className='container bg-white mt-5'>
             <div className="row">
                 <div class="col-md-8">  
                     <MainBlogContent />
