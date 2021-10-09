@@ -31,7 +31,7 @@ function LoginForm() {
                 <label className="focus-label">Password</label>
             </div>
             <div className="text-right">
-                <a className="forgot-link" href="forgot-password.html">Forgot Password ?</a>
+                <Link className="forgot-link" to="/forgot" >Forgot Password ?</Link>
             </div>
             <button className="btn btn-primary btn-block btn-lg login-btn" onClick={submit}>Login</button>
             <div className="login-or">
