@@ -4,15 +4,11 @@ function Footer() {
     return (
         <div>
             <footer className="footer">
-
                 <div className="footer-top">
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-lg-3 col-md-6">
                                 <div className="footer-widget footer-about">
-                                    <div className="footer-logo">
-                                        <img src="assets/images/logo/logo.png" alt="logo" />
-                                    </div>
                                     <div className="footer-about-content">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                                         <div className="social-icon">
