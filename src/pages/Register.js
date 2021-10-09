@@ -1,5 +1,4 @@
 import React from 'react'
-import LoginBanner from "../assets/images/illustration/login-banner.svg"
 import { Link } from 'react-router-dom'
 
 function Register() {
@@ -13,7 +12,7 @@ function Register() {
                         <div className="account-content">
                             <div className="row align-items-center justify-content-center">
                                 <div className="col-md-7 col-lg-6 login-left">
-                                    <img src={LoginBanner} className="img-fluid" alt="Doccure Login" />
+                                    <img src="assets/images/illustration/login-banner.svg" className="img-fluid" alt="Doccure Login" />
                                 </div>
                                 <div className="col-md-12 col-lg-6 login-right">
                                     <div className="login-header">

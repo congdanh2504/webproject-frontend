@@ -1,5 +1,4 @@
 import React from 'react'
-import Logo from '../assets/images/logo/logo.png'
 
 function Footer() {
     return (
@@ -12,7 +11,7 @@ function Footer() {
                             <div className="col-lg-3 col-md-6">
                                 <div className="footer-widget footer-about">
                                     <div className="footer-logo">
-                                        {/* <img src={Logo} alt="logo" /> */}
+                                        <img src="assets/images/logo/logo.png" alt="logo" />
                                     </div>
                                     <div className="footer-about-content">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>

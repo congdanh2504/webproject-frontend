@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginBanner from "../assets/images/illustration/login-banner.svg"
+// import LoginBanner from "../assets/images/illustration/login-banner.svg"
 import {Link} from 'react-router-dom'
 
 function EmployerRegister() {
@@ -13,7 +13,7 @@ function EmployerRegister() {
                         <div className="account-content">
                             <div className="row align-items-center justify-content-center">
                                 <div className="col-md-7 col-lg-6 login-left">
-                                    <img src={LoginBanner} className="img-fluid" alt="Doccure Login" />
+                                    {/* <img src={LoginBanner} className="img-fluid" alt="Doccure Login" /> */}
                                 </div>
                                 <div className="col-md-12 col-lg-6 login-right">
                                     <div className="login-header">

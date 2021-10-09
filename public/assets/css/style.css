@@ -60,7 +60,7 @@ Version      : 1.0
 	src: url(../fonts/MaterialIcons-Regular.eot); /* For IE6-8 */
 	src: local('Material Icons'),
 	local('MaterialIcons-Regular'),
-	/* url(../fonts/MaterialIcons-Regular.html) format('woff2'), */
+	url(../fonts/MaterialIcons-Regular.html) format('woff2'),
 	url(../fonts/MaterialIcons-Regular.woff) format('woff'),
 	url(../fonts/MaterialIcons-Regular.ttf) format('truetype');
 }
@@ -2006,7 +2006,6 @@ html.menu-opened body {
 
 .footer {
     background-color: #15558d;
-	margin-top: 50px;
 }
 .footer .footer-top {
 	padding: 40px 0;

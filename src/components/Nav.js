@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import Logo from '../assets/images/logo/logo.png'
 
 function Nav() {
    
@@ -17,13 +16,13 @@ function Nav() {
                         </span>
                     </a>
                     <a href="/" className="navbar-brand logo">
-                        <img src={Logo} className="img-fluid" alt="Logo"/>
+                        <img src="assets/images/logo/logo.png" className="img-fluid" alt="Logo"/>
                     </a>
                 </div>
                 <div className="main-menu-wrapper">
                     <div className="menu-header">
                         <Link to='/' className="menu-logo" >
-                        <img src={Logo} className="img-fluid" alt="Logo"/>
+                        <img src="assets/images/logo/logo.png" className="img-fluid" alt="Logo"/>
                         </Link>
                         <a id="menu_close" className="menu-close" href="javascript:void(0);">
                             <i className="fas fa-times"></i>
