@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import CategoryCard from "../components/CategoryCard";
-import JobCard from "../components/JobCard";
+import JobCard_Vertical from "../components/JobCard_Vertical";
 
 function Home() {
   const settings_clinic_specialities = {
@@ -65,9 +66,6 @@ function Home() {
           <div className="banner-wrapper">
             <div className="banner-header text-center">
               <h1>What do you want to do?</h1>
-              <p>
-                jsadjsdsdjasjdasfj
-              </p>
             </div>
 
             <div className="search-box">
@@ -146,17 +144,17 @@ function Home() {
                   sollicitudin aliquam ultrices sagittis. Consectetur adipiscing
                   elit ut aliquam purus.
                 </p>
-                <a href="javascript:;">View More..</a>
+                <Link to="/jobs">View More</Link>
               </div>
             </div>
             <div className="col-lg-8">
               <div className="doctor-slider slider">
                 <Slider {...settings_popular}>
-                  <JobCard />
-                  <JobCard />
-                  <JobCard />
-                  <JobCard />
-                  <JobCard />
+                  <JobCard_Vertical />
+                  <JobCard_Vertical />
+                  <JobCard_Vertical />
+                  <JobCard_Vertical />
+                  <JobCard_Vertical />
                 </Slider>
               </div>
             </div>
