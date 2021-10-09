@@ -42,9 +42,9 @@ function LoginForm() {
         />
       </div>
       <div className="text-right">
-        <a className="forgot-link" href="forgot-password.html">
+        <Link className="forgot-link" to="/forgot">
           Forgot Password ?
-        </a>
+        </Link>
       </div>
       <button
         className="btn btn-primary btn-block btn-lg login-btn"
