@@ -197,6 +197,10 @@ input[type=password] {
 	padding: 30px 0 0;
 }
 
+.img-fix{
+	padding: 20px;
+}
+
 /*-----------------
 	2. Table
 -----------------------*/

@@ -518,7 +518,7 @@ function Home() {
           <div class="row">
             <div class="col-md-5 features-img">
               <img
-                src="assets/img/features/feature.png"
+                src="assets/img/partners/feature.png"
                 class="img-fluid"
                 alt="Feature"
               />
@@ -535,47 +535,47 @@ function Home() {
               <Slider {...settings_clinic_specialities}>
                 <div class="feature-item text-center">
                   <img
-                    src="assets/img/features/feature-01.jpg"
-                    class="img-fluid mx-auto"
+                    src="assets/img/partners/partners-01.png"
+                    class="img-fluid mx-auto img-fix"
                     alt="Feature"
                   />
-                  <p>Patient Ward</p>
+                  <p>Google</p>
                 </div>
 
                 <div class="feature-item text-center">
                   <img
-                    src="assets/img/features/feature-02.jpg"
+                    src="assets/img/partners/partners-02.png"
                     class="img-fluid mx-auto"
                     alt="Feature"
                   />
-                  <p>Test Room</p>
+                  <p>Microsoft</p>
                 </div>
 
                 <div class="feature-item text-center">
                   <img
-                    src="assets/img/features/feature-03.jpg"
+                    src="assets/img/partners/partners-03.png"
                     class="img-fluid mx-auto"
                     alt="Feature"
                   />
-                  <p>ICU</p>
+                  <p>VinGroup</p>
                 </div>
 
                 <div class="feature-item text-center">
                   <img
-                    src="assets/img/features/feature-04.jpg"
-                    class="img-fluid mx-auto"
+                    src="assets/img/partners/partners-04.png"
+                    class="img-fluid mx-auto img-fix"
                     alt="Feature"
                   />
-                  <p>Laboratory</p>
+                  <p>VKU</p>
                 </div>
 
                 <div class="feature-item text-center">
                   <img
-                    src="assets/img/features/feature-05.jpg"
-                    class="img-fluid mx-auto"
+                    src="assets/img/partners/partners-05.png"
+                    class="img-fluid mx-auto img-fix"
                     alt="Feature"
                   />
-                  <p>Operation</p>
+                  <p>Apple</p>
                 </div>
               </Slider>
             </div>
