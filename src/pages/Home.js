@@ -64,9 +64,7 @@ function Home() {
             <div className="banner-header text-center">
               <h1>What do you want to do?</h1>
               <p>
-                One of our jobs has some kind of flexibility option - such as
-                telecommutinga part-time schedule or a flexible or flextime
-                schedule.
+                jsadjsdsdjasjdasfj
               </p>
             </div>
 
@@ -112,7 +110,7 @@ function Home() {
                 <div class="speicality-item text-center">
                   <div class="speicality-img mx-auto">
                     <img
-                      src="assets/img/specialities/specialities-01.png"
+                      src="assets/img/categories/categories-01.png"
                       class="img-fluid"
                       alt="Speciality"
                     />
@@ -120,12 +118,12 @@ function Home() {
                       <i class="fa fa-circle" aria-hidden="true"></i>
                     </span>
                   </div>
-                  <p>Urology</p>
+                  <p>Programmer</p>
                 </div>
                 <div class="speicality-item text-center">
                   <div class="speicality-img mx-auto">
                     <img
-                      src="assets/img/specialities/specialities-02.png"
+                      src="assets/img/categories/categories-02.png"
                       class="img-fluid"
                       alt="Speciality"
                     />
@@ -133,12 +131,12 @@ function Home() {
                       <i class="fa fa-circle" aria-hidden="true"></i>
                     </span>
                   </div>
-                  <p>Neurology</p>
+                  <p>Doctor</p>
                 </div>
                 <div class="speicality-item text-center">
                   <div class="speicality-img mx-auto">
                     <img
-                      src="assets/img/specialities/specialities-03.png"
+                      src="assets/img/categories/categories-03.png"
                       class="img-fluid"
                       alt="Speciality"
                     />
@@ -146,7 +144,7 @@ function Home() {
                       <i class="fa fa-circle" aria-hidden="true"></i>
                     </span>
                   </div>
-                  <p>Orthopedic</p>
+                  <p>Salesman</p>
                 </div>
                 <div class="speicality-item text-center">
                   <div class="speicality-img mx-auto">
@@ -527,7 +525,7 @@ function Home() {
             </div>
             <div class="col-md-7">
               <div class="section-header">
-                <h2 class="mt-2">Oủ Partners</h2>
+                <h2 class="mt-2">Our Partners</h2>
                 <p>
                   Tincidunt augue interdum velit euismod. Dictumst quisque
                   sagittis purus sit amet volutpat. Adipiscing commodo elit at
