@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import sampleImage from '../assets/img/img-01.jpg'
 
 function BlogCard() {
@@ -23,7 +24,8 @@ function BlogCard() {
                             <i class="far fa-clock"> 1 minute ago</i><br />
                         </a>
                     </h5>
-                    <a class="btn btn-primary float-right" href="#">View</a>
+                    <Link to="/about" className="btn btn-primary float-right">View</Link>
+                    {/* <Link to="/blog/detail" className="btn btn-primary float-right">View</Link> */}
                 </div>
             </div>
         </div>

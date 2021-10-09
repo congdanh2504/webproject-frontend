@@ -3,6 +3,7 @@ import BlogCard from '../components/BlogCard';
 
 const Blog = () => {
     return (
+        <>
         <div className="container">
             <div class="main-wrapper" >
                 <section class="comp-section comp-cards">
@@ -17,7 +18,8 @@ const Blog = () => {
                     </div>
                 </section>
             </div>
-        </div>
+        </div>  
+        </>
     );
 }
 export default Blog
