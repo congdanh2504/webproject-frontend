@@ -24,8 +24,7 @@ function BlogCard() {
                             <i class="far fa-clock"> 1 minute ago</i><br />
                         </a>
                     </h5>
-                    <Link to="/about" className="btn btn-primary float-right">View</Link>
-                    {/* <Link to="/blog/detail" className="btn btn-primary float-right">View</Link> */}
+                    <Link to="/blog/detail" className="btn btn-primary float-right">View</Link>
                 </div>
             </div>
         </div>

@@ -20,10 +20,9 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/jobs" component={Jobs}/>
-        <Route path="/blog" component={Blog} />
-        <Route path="/about" component={BlogDetail} /> //test trang detail, bấm Link ở BlogCard không chuyển được
-        <Route component={NotFound} />
         <Route path="/blog/detail" component={BlogDetail} />
+        <Route path="/blog" component={Blog} />
+        <Route component={NotFound} />
       </Switch>
       <Footer />
     </Router>
