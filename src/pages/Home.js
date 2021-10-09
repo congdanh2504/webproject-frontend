@@ -62,10 +62,11 @@ function Home() {
         <div className="container-fluid">
           <div className="banner-wrapper">
             <div className="banner-header text-center">
-              <h1>Search Doctor, Make an Appointment</h1>
+              <h1>What do you want to do?</h1>
               <p>
-                Discover the best doctors, clinic & hospital the city nearest to
-                you.
+                One of our jobs has some kind of flexibility option - such as
+                telecommutinga part-time schedule or a flexible or flextime
+                schedule.
               </p>
             </div>
 
@@ -77,17 +78,13 @@ function Home() {
                     className="form-control"
                     placeholder="Search Location"
                   />
-                  <span className="form-text">Based on your Location</span>
                 </div>
                 <div className="form-group search-info">
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Search Doctors, Clinics, Hospitals, Diseases Etc"
+                    placeholder="Find a job, a field, a company, ..."
                   />
-                  <span className="form-text">
-                    Ex : Dental or Sugar Check up etc
-                  </span>
                 </div>
                 <button type="submit" className="btn btn-primary search-btn">
                   <i className="fas fa-search"></i> <span>Search</span>
@@ -103,10 +100,10 @@ function Home() {
       <section class="section section-specialities">
         <div class="container-fluid">
           <div class="section-header text-center">
-            <h2>Clinic and Specialities</h2>
+            <h2>Job Categories</h2>
             <p class="sub-title">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              We provide a wide range of fields. Choose the career that is right
+              for you!
             </p>
           </div>
           <div class="row justify-content-center">
@@ -190,22 +187,25 @@ function Home() {
           <div className="row">
             <div className="col-lg-4">
               <div className="section-header ">
-                <h2>Book Our Doctor</h2>
+                <h2>Latest recruitment</h2>
                 <p>Lorem Ipsum is simply dummy text </p>
               </div>
               <div className="about-content">
                 <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
                 <p>
-                  web page editors now use Lorem Ipsum as their default model
-                  text, and a search for 'lorem ipsum' will uncover many web
-                  sites still in their infancy. Various versions have evolved
-                  over the years, sometimes
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  In arcu cursus euismod quis viverra nibh cras pulvinar mattis.
+                  Odio euismod lacinia at quis risus. Mi in nulla posuere
+                  sollicitudin aliquam ultrices sagittis. Consectetur adipiscing
+                  elit ut aliquam purus.
                 </p>
-                <a href="javascript:;">Read More..</a>
+                <a href="javascript:;">View More..</a>
               </div>
             </div>
             <div className="col-lg-8">
@@ -527,10 +527,11 @@ function Home() {
             </div>
             <div class="col-md-7">
               <div class="section-header">
-                <h2 class="mt-2">Availabe Features in Our Clinic</h2>
+                <h2 class="mt-2">Oủ Partners</h2>
                 <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.{" "}
+                  Tincidunt augue interdum velit euismod. Dictumst quisque
+                  sagittis purus sit amet volutpat. Adipiscing commodo elit at
+                  imperdiet.
                 </p>
               </div>
               <Slider {...settings_clinic_specialities}>
