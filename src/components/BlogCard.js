@@ -23,7 +23,7 @@ function BlogCard() {
                             <i class="far fa-clock"> 1 minute ago</i><br />
                         </a>
                     </h5>
-                    <a class="btn btn-primary float-right" href="#">View</a>
+                    <a class="btn btn-primary nav-link header-login float-right" href="#">View</a>
                 </div>
             </div>
         </div>
