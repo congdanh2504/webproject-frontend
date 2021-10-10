@@ -13,6 +13,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import JobDetails from "./pages/JobDetails";
 import UserProfileSetting from "./pages/UserProfileSetting";
 import TopCompanies from "./pages/TopCompanies";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/blog/detail" component={BlogDetail} />
         <Route path="/blog" component={Blog} />
         <Route path="/userprofilesetting" component={UserProfileSetting} />
+        <Route path="/about" component={About} />
         <Route component={NotFound} />
       </Switch>
       <Footer />
