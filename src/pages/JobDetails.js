@@ -190,7 +190,7 @@ function JobDetails() {
                           <img
                             class="avatar avatar-sm rounded-circle"
                             alt="User Image"
-                            src="assets/img/patients/patient.jpg"
+                            src="../assets/img/patients/patient.jpg"
                           />
                           <div class="comment-body">
                             <div class="meta-data">
@@ -240,7 +240,7 @@ function JobDetails() {
                               <img
                                 class="avatar avatar-sm rounded-circle"
                                 alt="User Image"
-                                src="assets/img/patients/patient1.jpg"
+                                src="../assets/img/patients/patient1.jpg"
                               />
                               <div class="comment-body">
                                 <div class="meta-data">
@@ -290,7 +290,7 @@ function JobDetails() {
                           <img
                             class="avatar avatar-sm rounded-circle"
                             alt="User Image"
-                            src="assets/img/patients/patient2.jpg"
+                            src="../assets/img/patients/patient2.jpg"
                           />
                           <div class="comment-body">
                             <div class="meta-data">
@@ -341,7 +341,7 @@ function JobDetails() {
 
                   <div class="write-review">
                     <h4>
-                      Write a review for <strong>Dr. Darren Elder</strong>
+                      Write a review for <strong>VKU group</strong>
                     </h4>
 
                     <form>
@@ -418,17 +418,6 @@ function JobDetails() {
                         </div>
                       </div>
                       <hr />
-                      <div class="form-group">
-                        <div class="terms-accept">
-                          <div class="custom-checkbox">
-                            <input type="checkbox" id="terms_accept" />
-                            <label for="terms_accept">
-                              I have read and accept{" "}
-                              <a href="#">Terms &amp; Conditions</a>
-                            </label>
-                          </div>
-                        </div>
-                      </div>
                       <div class="submit-section">
                         <button
                           type="submit"
