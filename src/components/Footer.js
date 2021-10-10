@@ -54,7 +54,7 @@ function Footer() {
                   <h2 className="footer-title">For job seeker</h2>
                   <ul>
                     <li>
-                      <Link to="">
+                      <Link to="/jobs">
                         <i className="fas fa-angle-double-right"></i> Jobs
                       </Link>
                     </li>
@@ -83,7 +83,7 @@ function Footer() {
                   <h2 className="footer-title">For employer</h2>
                   <ul>
                     <li>
-                      <Link to="">
+                      <Link to="/jobs">
                         <i className="fas fa-angle-double-right"></i> Jobs
                       </Link>
                     </li>
