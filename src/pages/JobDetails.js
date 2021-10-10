@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function JobDetails() {
   return (
@@ -11,14 +12,14 @@ function JobDetails() {
               <nav aria-label="breadcrumb" class="page-breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item">
-                    <a href="index-2.html">Home</a>
+                    <Link to="/">Home</Link>
                   </li>
                   <li class="breadcrumb-item active" aria-current="page">
-                    Doctor Profile
+                    Job Details
                   </li>
                 </ol>
               </nav>
-              <h2 class="breadcrumb-title">Doctor Profile</h2>
+              <h2 class="breadcrumb-title">Job Details</h2>
             </div>
           </div>
         </div>
@@ -33,23 +34,21 @@ function JobDetails() {
                 <div class="doc-info-left">
                   <div class="doctor-img">
                     <img
-                      src="assets/img/doctors/doctor-thumb-02.jpg"
+                      src="../assets/img/doctors/doctor-01.jpg"
                       class="img-fluid"
                       alt="User Image"
                     />
                   </div>
                   <div class="doc-info-cont">
-                    <h4 class="doc-name">Dr. Darren Elder</h4>
-                    <p class="doc-speciality">
-                      BDS, MDS - Oral & Maxillofacial Surgery
-                    </p>
+                    <h4 class="doc-name">VKU group</h4>
+                    <p class="doc-speciality">We have the right job for you</p>
                     <p class="doc-department">
                       <img
-                        src="assets/img/specialities/specialities-05.png"
+                        src="../assets/img/categories/categories-01.png"
                         class="img-fluid"
                         alt="Speciality"
                       />
-                      Dentist
+                      Programmer
                     </p>
                     <div class="rating">
                       <i class="fas fa-star filled"></i>
@@ -61,59 +60,12 @@ function JobDetails() {
                     </div>
                     <div class="clinic-details">
                       <p class="doc-location">
-                        <i class="fas fa-map-marker-alt"></i> Newyork, USA -{" "}
-                        <a href="javascript:void(0);">Get Directions</a>
+                        <i class="fas fa-map-marker-alt"></i> Danang, VN
                       </p>
-                      <ul class="clinic-gallery">
-                        <li>
-                          <a
-                            href="assets/img/features/feature-01.jpg"
-                            data-fancybox="gallery"
-                          >
-                            <img
-                              src="assets/img/features/feature-01.jpg"
-                              alt="Feature"
-                            />
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="assets/img/features/feature-02.jpg"
-                            data-fancybox="gallery"
-                          >
-                            <img
-                              src="assets/img/features/feature-02.jpg"
-                              alt="Feature Image"
-                            />
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="assets/img/features/feature-03.jpg"
-                            data-fancybox="gallery"
-                          >
-                            <img
-                              src="assets/img/features/feature-03.jpg"
-                              alt="Feature"
-                            />
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="assets/img/features/feature-04.jpg"
-                            data-fancybox="gallery"
-                          >
-                            <img
-                              src="assets/img/features/feature-04.jpg"
-                              alt="Feature"
-                            />
-                          </a>
-                        </li>
-                      </ul>
                     </div>
                     <div class="clinic-services">
-                      <span>Dental Fillings</span>
-                      <span>Teeth Whitneing</span>
+                      <span>Progamming</span>
+                      <span>Java</span>
                     </div>
                   </div>
                 </div>
@@ -121,16 +73,16 @@ function JobDetails() {
                   <div class="clini-infos">
                     <ul>
                       <li>
-                        <i class="far fa-thumbs-up"></i> 99%
+                        <i class="far fa-thumbs-up"></i> 98%
                       </li>
                       <li>
-                        <i class="far fa-comment"></i> 35 Feedback
+                        <i class="far fa-comment"></i> 17 interested
                       </li>
                       <li>
-                        <i class="fas fa-map-marker-alt"></i> Newyork, USA
+                        <i class="far fa-clock"></i> Deadline Otc, 10
                       </li>
                       <li>
-                        <i class="far fa-money-bill-alt"></i> $100 per hour{" "}
+                        <i class="far fa-money-bill-alt"></i> $300 - $1000
                       </li>
                     </ul>
                   </div>
@@ -160,7 +112,7 @@ function JobDetails() {
                   </div>
                   <div class="clinic-booking">
                     <a class="apt-btn" href="booking.html">
-                      Book Appointment
+                      Apply
                     </a>
                   </div>
                 </div>
@@ -191,15 +143,6 @@ function JobDetails() {
                       Reviews
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      href="#doc_business_hours"
-                      data-toggle="tab"
-                    >
-                      Business Hours
-                    </a>
-                  </li>
                 </ul>
               </nav>
 
@@ -212,7 +155,7 @@ function JobDetails() {
                   <div class="row">
                     <div class="col-md-12 col-lg-9">
                       <div class="widget about-widget">
-                        <h4 class="widget-title">About Me</h4>
+                        <h4 class="widget-title">About Us</h4>
                         <p>
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit, sed do eiusmod tempor incididunt ut labore et
@@ -225,399 +168,18 @@ function JobDetails() {
                           deserunt mollit anim id est laborum.
                         </p>
                       </div>
-
-                      <div class="widget education-widget">
-                        <h4 class="widget-title">Education</h4>
-                        <div class="experience-box">
-                          <ul class="experience-list">
-                            <li>
-                              <div class="experience-user">
-                                <div class="before-circle"></div>
-                              </div>
-                              <div class="experience-content">
-                                <div class="timeline-content">
-                                  <a href="#/" class="name">
-                                    American Dental Medical University
-                                  </a>
-                                  <div>BDS</div>
-                                  <span class="time">1998 - 2003</span>
-                                </div>
-                              </div>
-                            </li>
-                            <li>
-                              <div class="experience-user">
-                                <div class="before-circle"></div>
-                              </div>
-                              <div class="experience-content">
-                                <div class="timeline-content">
-                                  <a href="#/" class="name">
-                                    American Dental Medical University
-                                  </a>
-                                  <div>MDS</div>
-                                  <span class="time">2003 - 2005</span>
-                                </div>
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-
-                      <div class="widget experience-widget">
-                        <h4 class="widget-title">Work & Experience</h4>
-                        <div class="experience-box">
-                          <ul class="experience-list">
-                            <li>
-                              <div class="experience-user">
-                                <div class="before-circle"></div>
-                              </div>
-                              <div class="experience-content">
-                                <div class="timeline-content">
-                                  <a href="#/" class="name">
-                                    Glowing Smiles Family Dental Clinic
-                                  </a>
-                                  <span class="time">
-                                    2010 - Present (5 years)
-                                  </span>
-                                </div>
-                              </div>
-                            </li>
-                            <li>
-                              <div class="experience-user">
-                                <div class="before-circle"></div>
-                              </div>
-                              <div class="experience-content">
-                                <div class="timeline-content">
-                                  <a href="#/" class="name">
-                                    Comfort Care Dental Clinic
-                                  </a>
-                                  <span class="time">
-                                    2007 - 2010 (3 years)
-                                  </span>
-                                </div>
-                              </div>
-                            </li>
-                            <li>
-                              <div class="experience-user">
-                                <div class="before-circle"></div>
-                              </div>
-                              <div class="experience-content">
-                                <div class="timeline-content">
-                                  <a href="#/" class="name">
-                                    Dream Smile Dental Practice
-                                  </a>
-                                  <span class="time">
-                                    2005 - 2007 (2 years)
-                                  </span>
-                                </div>
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-
-                      <div class="widget awards-widget">
-                        <h4 class="widget-title">Awards</h4>
-                        <div class="experience-box">
-                          <ul class="experience-list">
-                            <li>
-                              <div class="experience-user">
-                                <div class="before-circle"></div>
-                              </div>
-                              <div class="experience-content">
-                                <div class="timeline-content">
-                                  <p class="exp-year">July 2019</p>
-                                  <h4 class="exp-title">Humanitarian Award</h4>
-                                  <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Proin a ipsum tellus.
-                                    Interdum et malesuada fames ac ante ipsum
-                                    primis in faucibus.
-                                  </p>
-                                </div>
-                              </div>
-                            </li>
-                            <li>
-                              <div class="experience-user">
-                                <div class="before-circle"></div>
-                              </div>
-                              <div class="experience-content">
-                                <div class="timeline-content">
-                                  <p class="exp-year">March 2011</p>
-                                  <h4 class="exp-title">
-                                    Certificate for International Volunteer
-                                    Service
-                                  </h4>
-                                  <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Proin a ipsum tellus.
-                                    Interdum et malesuada fames ac ante ipsum
-                                    primis in faucibus.
-                                  </p>
-                                </div>
-                              </div>
-                            </li>
-                            <li>
-                              <div class="experience-user">
-                                <div class="before-circle"></div>
-                              </div>
-                              <div class="experience-content">
-                                <div class="timeline-content">
-                                  <p class="exp-year">May 2008</p>
-                                  <h4 class="exp-title">
-                                    The Dental Professional of The Year Award
-                                  </h4>
-                                  <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Proin a ipsum tellus.
-                                    Interdum et malesuada fames ac ante ipsum
-                                    primis in faucibus.
-                                  </p>
-                                </div>
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-
-                      <div class="service-list">
-                        <h4>Services</h4>
-                        <ul class="clearfix">
-                          <li>Tooth cleaning </li>
-                          <li>Root Canal Therapy</li>
-                          <li>Implants</li>
-                          <li>Composite Bonding</li>
-                          <li>Fissure Sealants</li>
-                          <li>Surgical Extractions</li>
-                        </ul>
-                      </div>
-
-                      <div class="service-list">
-                        <h4>Specializations</h4>
-                        <ul class="clearfix">
-                          <li>Children Care</li>
-                          <li>Dental Care</li>
-                          <li>Oral and Maxillofacial Surgery </li>
-                          <li>Orthodontist</li>
-                          <li>Periodontist</li>
-                          <li>Prosthodontics</li>
-                        </ul>
-                      </div>
                     </div>
                   </div>
                 </div>
 
                 <div role="tabpanel" id="doc_locations" class="tab-pane fade">
-                  <div class="location-list">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="clinic-content">
-                          <h4 class="clinic-name">
-                            <a href="#">Smile Cute Dental Care Center</a>
-                          </h4>
-                          <p class="doc-speciality">
-                            MDS - Periodontology and Oral Implantology, BDS
-                          </p>
-                          <div class="rating">
-                            <i class="fas fa-star filled"></i>
-                            <i class="fas fa-star filled"></i>
-                            <i class="fas fa-star filled"></i>
-                            <i class="fas fa-star filled"></i>
-                            <i class="fas fa-star"></i>
-                            <span class="d-inline-block average-rating">
-                              (4)
-                            </span>
-                          </div>
-                          <div class="clinic-details mb-0">
-                            <h5 class="clinic-direction">
-                              {" "}
-                              <i class="fas fa-map-marker-alt"></i> 2286 Sundown
-                              Lane, Austin, Texas 78749, USA <br />
-                              <a href="javascript:void(0);">Get Directions</a>
-                            </h5>
-                            <ul>
-                              <li>
-                                <a
-                                  href="assets/img/features/feature-01.jpg"
-                                  data-fancybox="gallery2"
-                                >
-                                  <img
-                                    src="assets/img/features/feature-01.jpg"
-                                    alt="Feature Image"
-                                  />
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  href="assets/img/features/feature-02.jpg"
-                                  data-fancybox="gallery2"
-                                >
-                                  <img
-                                    src="assets/img/features/feature-02.jpg"
-                                    alt="Feature Image"
-                                  />
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  href="assets/img/features/feature-03.jpg"
-                                  data-fancybox="gallery2"
-                                >
-                                  <img
-                                    src="assets/img/features/feature-03.jpg"
-                                    alt="Feature Image"
-                                  />
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  href="assets/img/features/feature-04.jpg"
-                                  data-fancybox="gallery2"
-                                >
-                                  <img
-                                    src="assets/img/features/feature-04.jpg"
-                                    alt="Feature Image"
-                                  />
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-4">
-                        <div class="clinic-timing">
-                          <div>
-                            <p class="timings-days">
-                              <span> Mon - Sat </span>
-                            </p>
-                            <p class="timings-times">
-                              <span>10:00 AM - 2:00 PM</span>
-                              <span>4:00 PM - 9:00 PM</span>
-                            </p>
-                          </div>
-                          <div>
-                            <p class="timings-days">
-                              <span>Sun</span>
-                            </p>
-                            <p class="timings-times">
-                              <span>10:00 AM - 2:00 PM</span>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-2">
-                        <div class="consult-price">$250</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="location-list">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="clinic-content">
-                          <h4 class="clinic-name">
-                            <a href="#">The Family Dentistry Clinic</a>
-                          </h4>
-                          <p class="doc-speciality">
-                            MDS - Periodontology and Oral Implantology, BDS
-                          </p>
-                          <div class="rating">
-                            <i class="fas fa-star filled"></i>
-                            <i class="fas fa-star filled"></i>
-                            <i class="fas fa-star filled"></i>
-                            <i class="fas fa-star filled"></i>
-                            <i class="fas fa-star"></i>
-                            <span class="d-inline-block average-rating">
-                              (4)
-                            </span>
-                          </div>
-                          <div class="clinic-details mb-0">
-                            <p class="clinic-direction">
-                              {" "}
-                              <i class="fas fa-map-marker-alt"></i> 2883
-                              University Street, Seattle, Texas Washington,
-                              98155 <br />
-                              <a href="javascript:void(0);">Get Directions</a>
-                            </p>
-                            <ul>
-                              <li>
-                                <a
-                                  href="assets/img/features/feature-01.jpg"
-                                  data-fancybox="gallery2"
-                                >
-                                  <img
-                                    src="assets/img/features/feature-01.jpg"
-                                    alt="Feature Image"
-                                  />
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  href="assets/img/features/feature-02.jpg"
-                                  data-fancybox="gallery2"
-                                >
-                                  <img
-                                    src="assets/img/features/feature-02.jpg"
-                                    alt="Feature Image"
-                                  />
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  href="assets/img/features/feature-03.jpg"
-                                  data-fancybox="gallery2"
-                                >
-                                  <img
-                                    src="assets/img/features/feature-03.jpg"
-                                    alt="Feature Image"
-                                  />
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  href="assets/img/features/feature-04.jpg"
-                                  data-fancybox="gallery2"
-                                >
-                                  <img
-                                    src="assets/img/features/feature-04.jpg"
-                                    alt="Feature Image"
-                                  />
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-4">
-                        <div class="clinic-timing">
-                          <div>
-                            <p class="timings-days">
-                              <span> Tue - Fri </span>
-                            </p>
-                            <p class="timings-times">
-                              <span>11:00 AM - 1:00 PM</span>
-                              <span>6:00 PM - 11:00 PM</span>
-                            </p>
-                          </div>
-                          <div>
-                            <p class="timings-days">
-                              <span>Sat - Sun</span>
-                            </p>
-                            <p class="timings-times">
-                              <span>8:00 AM - 10:00 AM</span>
-                              <span>3:00 PM - 7:00 PM</span>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-2">
-                        <div class="consult-price">$350</div>
-                      </div>
-                    </div>
-                  </div>
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122708.985564692!2d108.11870716273522!3d16.031423630108062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142196670000001%3A0x592b1fdb40a1cb95!2zTmdoxKlhIHRyYW5nIEjDsmEgUGjDoXQ!5e0!3m2!1svi!2s!4v1633850474257!5m2!1svi!2s"
+                    width="600"
+                    height="450"
+                    allowfullscreen=""
+                    loading="lazy"
+                  ></iframe>
                 </div>
 
                 <div role="tabpanel" id="doc_reviews" class="tab-pane fade">
@@ -876,82 +438,6 @@ function JobDetails() {
                         </button>
                       </div>
                     </form>
-                  </div>
-                </div>
-
-                <div
-                  role="tabpanel"
-                  id="doc_business_hours"
-                  class="tab-pane fade"
-                >
-                  <div class="row">
-                    <div class="col-md-6 offset-md-3">
-                      <div class="widget business-widget">
-                        <div class="widget-content">
-                          <div class="listing-hours">
-                            <div class="listing-day current">
-                              <div class="day">
-                                Today <span>5 Nov 2019</span>
-                              </div>
-                              <div class="time-items">
-                                <span class="open-status">
-                                  <span class="badge bg-success-light">
-                                    Open Now
-                                  </span>
-                                </span>
-                                <span class="time">07:00 AM - 09:00 PM</span>
-                              </div>
-                            </div>
-                            <div class="listing-day">
-                              <div class="day">Monday</div>
-                              <div class="time-items">
-                                <span class="time">07:00 AM - 09:00 PM</span>
-                              </div>
-                            </div>
-                            <div class="listing-day">
-                              <div class="day">Tuesday</div>
-                              <div class="time-items">
-                                <span class="time">07:00 AM - 09:00 PM</span>
-                              </div>
-                            </div>
-                            <div class="listing-day">
-                              <div class="day">Wednesday</div>
-                              <div class="time-items">
-                                <span class="time">07:00 AM - 09:00 PM</span>
-                              </div>
-                            </div>
-                            <div class="listing-day">
-                              <div class="day">Thursday</div>
-                              <div class="time-items">
-                                <span class="time">07:00 AM - 09:00 PM</span>
-                              </div>
-                            </div>
-                            <div class="listing-day">
-                              <div class="day">Friday</div>
-                              <div class="time-items">
-                                <span class="time">07:00 AM - 09:00 PM</span>
-                              </div>
-                            </div>
-                            <div class="listing-day">
-                              <div class="day">Saturday</div>
-                              <div class="time-items">
-                                <span class="time">07:00 AM - 09:00 PM</span>
-                              </div>
-                            </div>
-                            <div class="listing-day closed">
-                              <div class="day">Sunday</div>
-                              <div class="time-items">
-                                <span class="time">
-                                  <span class="badge bg-danger-light">
-                                    Closed
-                                  </span>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>

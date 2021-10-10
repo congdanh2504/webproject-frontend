@@ -41,52 +41,6 @@ function JobCard_Horizontal() {
                 <p class="doc-location">
                   <i class="fas fa-map-marker-alt"></i> Danang, VN
                 </p>
-                {/* <ul class="clinic-gallery">
-                  <li>
-                    <a
-                      href="assets/img/features/feature-01.jpg"
-                      data-fancybox="gallery"
-                    >
-                      <img
-                        src="assets/img/features/feature-01.jpg"
-                        alt="Feature"
-                      />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="assets/img/features/feature-02.jpg"
-                      data-fancybox="gallery"
-                    >
-                      <img
-                        src="assets/img/features/feature-02.jpg"
-                        alt="Feature"
-                      />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="assets/img/features/feature-03.jpg"
-                      data-fancybox="gallery"
-                    >
-                      <img
-                        src="assets/img/features/feature-03.jpg"
-                        alt="Feature"
-                      />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="assets/img/features/feature-04.jpg"
-                      data-fancybox="gallery"
-                    >
-                      <img
-                        src="assets/img/features/feature-04.jpg"
-                        alt="Feature"
-                      />
-                    </a>
-                  </li>
-                </ul> */}
               </div>
               <div class="clinic-services">
                 <span>Progamming</span>
@@ -107,12 +61,7 @@ function JobCard_Horizontal() {
                   <i class="far fa-clock"></i> Deadline Otc, 10
                 </li>
                 <li>
-                  <i class="far fa-money-bill-alt"></i> $300 - $1000{" "}
-                  <i
-                    class="fas fa-info-circle"
-                    data-toggle="tooltip"
-                    title="Lorem Ipsum"
-                  ></i>{" "}
+                  <i class="far fa-money-bill-alt"></i> $300 - $1000
                 </li>
               </ul>
             </div>
