@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import BlogDetail from "./pages/BlogDetail";
 import Jobs from "./pages/Jobs";
 import ForgotPassword from "./pages/ForgotPassword";
+import JobDetails from "./pages/JobDetails";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/forgot" component={ForgotPassword} />
         <Route path="/register" component={Register} />
+        <Route path="/jobs/job-details" component={JobDetails}/>
         <Route path="/jobs" component={Jobs}/>
         <Route path="/blog/detail" component={BlogDetail} />
         <Route path="/blog" component={Blog} />

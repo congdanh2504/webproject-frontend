@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function JobCard_Horizontal() {
   return (
@@ -88,8 +89,8 @@ function JobCard_Horizontal() {
                 </ul> */}
               </div>
               <div class="clinic-services">
-                <span>Dental Fillings</span>
-                <span> Whitneing</span>
+                <span>Progamming</span>
+                <span>Java</span>
               </div>
             </div>
           </div>
@@ -116,9 +117,7 @@ function JobCard_Horizontal() {
               </ul>
             </div>
             <div class="clinic-booking">
-              <a class="view-pro-btn" href="doctor-profile.html">
-                See details
-              </a>
+              <Link to="/jobs/job-details" class="view-pro-btn">See details</Link>
             </div>
           </div>
         </div>

@@ -48,6 +48,16 @@ Version      : 1.0
 
 ========================================*/
 
+
+.select{
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+}
+.select option{
+  border: 1px red solid !important; 
+}
+
 /*-----------------
 	1. General
 -----------------------*/
