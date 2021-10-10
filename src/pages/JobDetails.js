@@ -188,7 +188,7 @@ function JobDetails() {
                     <ul class="comments-list">
                       <li>
                         <div class="comment">
-                          <Link to="/userprofile">
+                          <Link to="/userprofilesetting">
                             <img
                               class="avatar avatar-sm rounded-circle"
                               alt="User Image"
@@ -197,7 +197,7 @@ function JobDetails() {
                           </Link>
                           <div class="comment-body">
                             <div class="meta-data">
-                              <Link to="/userprofile">
+                              <Link to="/userprofilesetting">
                                 <span class="comment-author">
                                   Richard Wilson
                                 </span>

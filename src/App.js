@@ -11,7 +11,7 @@ import BlogDetail from "./pages/BlogDetail";
 import Jobs from "./pages/Jobs";
 import ForgotPassword from "./pages/ForgotPassword";
 import JobDetails from "./pages/JobDetails";
-import UserProfile from "./pages/UserProfile";
+import UserProfileSetting from "./pages/UserProfileSetting";
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
         <Route path="/jobs" component={Jobs}/>
         <Route path="/blog/detail" component={BlogDetail} />
         <Route path="/blog" component={Blog} />
-        <Route path="/userprofile" component={UserProfile} />
+        <Route path="/userprofilesetting" component={UserProfileSetting} />
         <Route component={NotFound} />
       </Switch>
       <Footer />
