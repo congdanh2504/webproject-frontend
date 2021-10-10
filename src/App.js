@@ -12,6 +12,7 @@ import Jobs from "./pages/Jobs";
 import ForgotPassword from "./pages/ForgotPassword";
 import JobDetails from "./pages/JobDetails";
 import UserProfileSetting from "./pages/UserProfileSetting";
+import TopCompanies from "./pages/TopCompanies";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/register" component={Register} />
         <Route path="/jobs/job-details" component={JobDetails}/>
         <Route path="/jobs" component={Jobs}/>
+        <Route path="/topcompanies" component={TopCompanies} />
         <Route path="/blog/detail" component={BlogDetail} />
         <Route path="/blog" component={Blog} />
         <Route path="/userprofilesetting" component={UserProfileSetting} />
