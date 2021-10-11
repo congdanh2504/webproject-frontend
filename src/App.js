@@ -14,7 +14,8 @@ import JobDetails from "./pages/JobDetails";
 import UserProfileSetting from "./pages/UserProfileSetting";
 import TopCompanies from "./pages/TopCompanies";
 import About from "./pages/About";
-
+import AddBlog from "./pages/AddBlog";
+import AddJob from "./pages/AddJob";
 function App() {
   return (
     <Router>
@@ -26,10 +27,14 @@ function App() {
         <Route path="/forgot" component={ForgotPassword} />
         <Route path="/register" component={Register} />
         <Route path="/jobs/job-details" component={JobDetails}/>
+        <Route path="/job-add" component={AddJob} />
         <Route path="/jobs" component={Jobs}/>
         <Route path="/topcompanies" component={TopCompanies} />
+
         <Route path="/blog/detail" component={BlogDetail} />
+        <Route path="/blog/add-blog" component={AddBlog} />
         <Route path="/blog" component={Blog} />
+        
         <Route path="/userprofilesetting" component={UserProfileSetting} />
         <Route path="/about" component={About} />
         <Route component={NotFound} />

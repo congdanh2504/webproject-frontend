@@ -47,8 +47,6 @@ Version      : 1.0
 38. Responsive
 
 ========================================*/
-
-
 .select{
   padding: 10px;
   border-radius: 10px;
@@ -57,7 +55,6 @@ Version      : 1.0
 .select option{
   border: 1px red solid !important; 
 }
-
 /*-----------------
 	1. General
 -----------------------*/
