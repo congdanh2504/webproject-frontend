@@ -27,7 +27,7 @@ function App() {
         <Route path="/forgot" component={ForgotPassword} />
         <Route path="/register" component={Register} />
         <Route path="/jobs/job-details" component={JobDetails}/>
-        <Route path="/job-add" component={AddJob} />
+        <Route path="/add-job" component={AddJob} />
         <Route path="/jobs" component={Jobs}/>
         <Route path="/topcompanies" component={TopCompanies} />
 

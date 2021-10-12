@@ -1,6 +1,8 @@
 import { CKEditor } from 'ckeditor4-react';
 import React from 'react'
 import sampleImage from '../assets/img/img-01.jpg'
+import InputTag from '../components/InputTag'
+import TextAreaTag from '../components/TextAreaTag'
 
 
 const AddBlog = () => {
@@ -36,26 +38,13 @@ const AddBlog = () => {
             <div class="card-body">
               <form>
                 <div class="row form-row">
-                  <div class="col-12 col-md-6">
-                    <div class="form-group">
-                      <label>Title Name</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Write the title of the blog here!"                      />
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <div class="form-group">
-                      <label>Short Description</label>
-                      <textarea
-                        type="text"
-                        class="form-control "
-                        rows='5'
-                        placeholder="Write short description of the blog here!"
-                      />
-                    </div>
-                  </div>
+                  <InputTag type='text' title="Title Name" placeholder="Write the title of the blog here!" />
+                  <InputTag type='file' title="Image" />
+                  <TextAreaTag
+                      title="Short Description"
+                      rows="5"
+                      placeholder="Write short description of the blog here!"
+                    />
                 </div>
                 <div className="col-12 mb-5 p-0">
                   <CKEditor initData="<h1>Write the contents of your blog here!</h1>"/>
