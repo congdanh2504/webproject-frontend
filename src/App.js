@@ -16,6 +16,9 @@ import TopCompanies from "./pages/TopCompanies";
 import About from "./pages/About";
 import AddBlog from "./pages/AddBlog";
 import AddJob from "./pages/AddJob";
+
+import Index from "./pages/admin/Index";
+
 function App() {
   return (
     <Router>
@@ -37,6 +40,9 @@ function App() {
         
         <Route path="/userprofilesetting" component={UserProfileSetting} />
         <Route path="/about" component={About} />
+
+        {/* For admin */}
+        <Route path="/admin/dashboard" component={Index} />
         <Route component={NotFound} />
       </Switch>
       <Footer />
