@@ -17,37 +17,41 @@ import About from "./pages/About";
 import AddBlog from "./pages/AddBlog";
 import AddJob from "./pages/AddJob";
 
-import Index from "./pages/admin/Index";
+import Companies from "./pages/admin/Companies";
+import JobSeekers from "./pages/admin/JobSeekers";
+import SideBarAdmin from "./components/SideBarAdmin";
 
 function App() {
   return (
     <Router>
-      <Nav/>
+      <Nav />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/employer-register" component={EmployerRegister} />
         <Route path="/login" component={Login} />
         <Route path="/forgot" component={ForgotPassword} />
         <Route path="/register" component={Register} />
-        <Route path="/jobs/job-details" component={JobDetails}/>
+        <Route path="/jobs/job-details" component={JobDetails} />
         <Route path="/add-job" component={AddJob} />
-        <Route path="/jobs" component={Jobs}/>
+        <Route path="/jobs" component={Jobs} />
         <Route path="/topcompanies" component={TopCompanies} />
 
         <Route path="/blog/detail" component={BlogDetail} />
         <Route path="/blog/add-blog" component={AddBlog} />
         <Route path="/blog" component={Blog} />
-        
+
         <Route path="/userprofilesetting" component={UserProfileSetting} />
         <Route path="/about" component={About} />
 
         {/* For admin */}
-        <Route path="/admin/dashboard" component={Index} />
+        <Route exact="/" path="/admin/companies" component={Companies} />
+        <Route path="/admin/job-seekers" component={JobSeekers} />
+
         <Route component={NotFound} />
       </Switch>
       <Footer />
     </Router>
-  )
+  );
 }
 
 export default App;
