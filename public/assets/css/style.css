@@ -47,19 +47,18 @@ Version      : 1.0
 38. Responsive
 
 ========================================*/
-.select{
+.select {
   padding: 10px;
   border-radius: 10px;
   outline: none;
 }
-.select option{
-  border: 1px red solid !important; 
+.select option {
+  border: 1px red solid !important;
 }
 /*-----------------
 	1. General
 -----------------------*/
 
-@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900");
 @font-face {
   font-family: "Material Icons";
   font-style: normal;
