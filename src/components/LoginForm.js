@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState,  } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { login } from "../api/loginAPI";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const history = useHistory();
 
   const updateEmail = (param) => {
     setEmail(param.target.value);
@@ -13,8 +16,12 @@ function LoginForm() {
     setPassword(param.target.value);
   };
 
+  // const setSuccess = () => {
+    
+  // }
+
   const submit = () => {
-    // console.log(email + password)
+    login(email, password, setError, history)
   };
 
   return (
@@ -41,6 +48,10 @@ function LoginForm() {
           onChange={updatePassword}
         />
       </div>
+      { error && <div class="alert alert-danger">
+        {error}
+      </div>}
+      
       <div className="text-right">
         <Link className="forgot-link" to="/forgot">
           Forgot Password ?

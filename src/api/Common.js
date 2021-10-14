@@ -1,0 +1,27 @@
+export const getUser = () => {
+    const userStr = sessionStorage.getItem('user')
+    if (userStr) {
+        return JSON.parse(userStr)
+    }
+    return null
+}
+
+export const getToken = () => {
+    return sessionStorage.getItem('token')
+}
+
+export const setUserSession = (user) => {
+    sessionStorage.setItem('user', JSON.stringify(user))
+}
+
+export const setTokenSession = (token) => {
+    sessionStorage.setItem('token', token)
+}
+
+export const removeUserSession = () => {
+    sessionStorage.removeItem('user')
+    sessionStorage.removeItem('token')
+    // window.location.reload()
+}
+
+export const BASE_URL = "http://localhost:8000/api/" 

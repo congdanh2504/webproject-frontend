@@ -1,7 +1,38 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { employeeRegister } from "../api/loginAPI";
 
 function RegisterForm() {
+  const [userName, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [rePassword, setRePassword] = useState("")
+  const [userNameError, setUserNameError] = useState(null)
+  const [emailError, setEmailError] = useState(null)
+  const [passwordError, setPasswordError] = useState(null)
+  const [rePasswordError, setRePasswordError] = useState(null)
+  const history = useHistory()
+
+  const updateUsername = (param) => {
+    setUsername(param.target.value)
+  }
+
+  const updateEmail = (param) => {
+    setEmail(param.target.value)
+  }
+
+  const updatePassword = (param) => {
+    setPassword(param.target.value)
+  }
+
+  const updateRePassword = (param) => {
+    setRePassword(param.target.value)
+  }
+
+  const submit = () => {
+    employeeRegister(email, userName, password, rePassword, setEmailError, setUserNameError, setPasswordError, setRePasswordError, history)
+  }
+
   return (
     <div className="col-md-12 col-lg-6 login-right">
       <div className="login-header">
@@ -12,27 +43,35 @@ function RegisterForm() {
           </Link>
         </h3>
       </div>
-      <form action="#">
         <div className="form-group">
-          <input type="text" className="form-control" placeholder="Email" />
+          <input type="text" className="form-control" placeholder="Username" onChange={updateUsername}/>
         </div>
+        {userNameError && <div class="alert alert-danger">{userNameError}</div>}
+        <div className="form-group">
+          <input type="email" className="form-control" placeholder="Email" onChange={updateEmail}/>
+        </div>
+        {emailError && <div class="alert alert-danger">{emailError}</div>}
         <div className="form-group">
           <input
             type="password"
             className="form-control"
             placeholder="Create a Password"
+            onChange={updatePassword}
           />
         </div>
+        {passwordError && <div class="alert alert-danger">{passwordError}</div>}
         <div className="form-group">
           <input
             type="password"
             className="form-control"
             placeholder="Confirm your Password"
+            onChange={updateRePassword}
           />
         </div>
+        {rePasswordError && <div class="alert alert-danger">{rePasswordError}</div>}
         <button
           className="btn btn-primary btn-block btn-lg login-btn"
-          type="submit"
+          onClick={submit}
         >
           Signup
         </button>
@@ -40,7 +79,6 @@ function RegisterForm() {
           <span className="or-line"></span>
           <span className="span-or">or</span>
         </div>
-      </form>
       <div className="row form-row social-login">
         <button className="btn btn-google btn-block">
           <i className="fab fa-google mr-1"></i> Sign Up

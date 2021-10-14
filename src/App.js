@@ -19,11 +19,30 @@ import AddJob from "./pages/AddJob";
 
 import Companies from "./pages/admin/Companies";
 import JobSeekers from "./pages/admin/JobSeekers";
+import { getToken } from "./api/Common";
+import { useEffect, useState } from "react";
+import { getUser } from "./api/loginAPI";
 
 function App() {
+
+  const [authLoading, setAuthLoading] = useState(true);
+  
+  useEffect(() => {
+    if (!getToken) {
+      return
+    } else {
+      getUser(setAuthLoading)
+    }
+  }, [])
+
+  if (authLoading && getToken()!= null) {
+    return <div>Check Authentication</div>
+  }
+
+
   return (
     <Router>
-      <Nav />
+      <Nav/>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/employer-register" component={EmployerRegister} />

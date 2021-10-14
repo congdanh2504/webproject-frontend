@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import InputTag from '../components/InputTag'
 import TextAreaTag from '../components/TextAreaTag'
 import Select from 'react-select'
-import {getDistricts, getProvinces, getWards} from '../api/api'
+import {getDistricts, getProvinces, getWards} from '../api/locationAPI'
 
 const AddJob = () => {
   const [provinceOptions, changeProvinceOptions] = useState([]);
