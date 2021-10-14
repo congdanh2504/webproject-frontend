@@ -44,6 +44,9 @@ function Nav() {
                         <li>
                             <NavLink activeStyle={{ color:'#09dca4'}} to='/about'>About</NavLink>
                         </li>
+                        <li>
+                            <NavLink activeStyle={{ color:'#09dca4'}} to='/admin/dashboard'>Admin</NavLink>
+                        </li>
 
                     </ul>
                 </div>
