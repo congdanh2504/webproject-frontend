@@ -24,4 +24,4 @@ export const removeUserSession = () => {
     // window.location.reload()
 }
 
-export const BASE_URL = "http://localhost:8000/api/" 
+export const BASE_URL = "https://jobhubb.herokuapp.com/api/" 
