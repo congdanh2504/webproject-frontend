@@ -1,9 +1,11 @@
 import React from 'react'
 import BlogCard from '../components/BlogCard';
 import { Link, NavLink } from 'react-router-dom'
+import Breadcrumb from "../components/Breadcrumb";
 const Blog = () => {
   return (
     <>
+      <Breadcrumb title="Blog" />
       <div className="container mt-3">
         <div className="main-wrapper" >
           <section className="comp-section comp-cards mt-3">

@@ -19,7 +19,6 @@ import AddJob from "./pages/AddJob";
 
 import Companies from "./pages/admin/Companies";
 import JobSeekers from "./pages/admin/JobSeekers";
-import SideBarAdmin from "./components/SideBarAdmin";
 
 function App() {
   return (
