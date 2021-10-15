@@ -1,6 +1,7 @@
 import React, { useState,  } from "react";
+import GoogleLogin from "react-google-login";
 import { Link, useHistory } from "react-router-dom";
-import { login } from "../api/loginAPI";
+import { login, loginWithGG } from "../api/loginAPI";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -16,13 +17,13 @@ function LoginForm() {
     setPassword(param.target.value);
   };
 
-  // const setSuccess = () => {
-    
-  // }
-
   const submit = () => {
     login(email, password, setError, history)
   };
+
+  const handleGG = (param) => {
+    loginWithGG(param.tokenId, setError, history)
+  }
 
   return (
     <div className="col-md-12 col-lg-6 login-right">
@@ -68,9 +69,12 @@ function LoginForm() {
         <span className="span-or">or</span>
       </div>
       <div className="row form-row social-login">
-        <button className="btn btn-google btn-block">
-          <i className="fab fa-google mr-1"></i> Login
-        </button>
+        <GoogleLogin 
+          clientId="246456551142-222jord9ruqrqlafkbnm7212euatdihl.apps.googleusercontent.com"
+          buttonText="Login"
+          onSuccess={handleGG}
+          className="btn btn-google btn-block justify-content-center"
+          cookiePolicy={'single_host_origin'}/>
       </div>
       <div className="text-center dont-have">
         Don’t have an account? <Link to="/register">Register</Link>{" "}

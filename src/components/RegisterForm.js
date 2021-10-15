@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import GoogleLogin from "react-google-login";
 import { Link, useHistory } from "react-router-dom";
-import { employeeRegister } from "../api/loginAPI";
+import { employeeRegister, registerWithGG } from "../api/loginAPI";
 
 function RegisterForm() {
   const [userName, setUsername] = useState("")
@@ -31,6 +32,10 @@ function RegisterForm() {
 
   const submit = () => {
     employeeRegister(email, userName, password, rePassword, setEmailError, setUserNameError, setPasswordError, setRePasswordError, history)
+  }
+
+  const handleGG = (param) => {
+    registerWithGG(param.tokenId, setPasswordError, history, "Employee")
   }
 
   return (
@@ -79,11 +84,12 @@ function RegisterForm() {
           <span className="or-line"></span>
           <span className="span-or">or</span>
         </div>
-      <div className="row form-row social-login">
-        <button className="btn btn-google btn-block">
-          <i className="fab fa-google mr-1"></i> Sign Up
-        </button>
-      </div>
+      <GoogleLogin 
+          clientId="246456551142-bhogm2nf5tbokl5sr68rts8j7kud8o4r.apps.googleusercontent.com"
+          buttonText="Login"
+          onSuccess={handleGG}
+          className="btn btn-google btn-block justify-content-center"
+          cookiePolicy={'single_host_origin'}/>
       <div className="text-center dont-have">
         Already have an account?{" "}
         <Link to="/login" className="menu-logo">

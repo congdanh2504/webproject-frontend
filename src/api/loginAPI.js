@@ -13,7 +13,7 @@ export const login = (email, password, setError, history) => {
     }).then(response => {
         setTokenSession(response.data.token)
         setUserSession(response.data.user)
-        
+        history.push("/")
         window.location.reload()
     }).catch(error => {
         setError(error.response.data.message)
@@ -74,6 +74,48 @@ export const employerRegister = (email, username, password, repassword, setEmail
             } catch ($e) {
                 setEmailError("Email is already use")
             }
+        }
+    })
+}
+
+export const loginWithGG = (idToken, setError, history) => {
+    axios({
+        method: 'post',
+        url: `${BASE_URL}loginWithGG`,
+        headers: {'Content-Type': 'application/json'},
+        withCredentials: true,
+        data: {
+            id_token: idToken,
+        }
+    }).then(response => {
+        setUserSession(response.data['user'])
+        setTokenSession(response.data['token'])
+        history.push('/')
+        window.location.reload()
+    }).catch(error => {
+        if (error.response.status === 401 || error.response.status === 400) {
+            setError(error.response.data.message)
+        }
+    })
+}
+
+export const registerWithGG = (idToken, setError, history, type) => {
+    axios({
+        method: 'post',
+        url: `${BASE_URL}registerWithGG/${type}`,
+        headers: {'Content-Type': 'application/json'},
+        withCredentials: true,
+        data: {
+            id_token: idToken,
+        }
+    }).then(response => {
+        setUserSession(response.data['user'])
+        setTokenSession(response.data['token'])
+        history.push('/')
+        window.location.reload()
+    }).catch(error => {
+        if (error.response.status === 401 || error.response.status === 400) {
+            setError(error.response.data.message)
         }
     })
 }

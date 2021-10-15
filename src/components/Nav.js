@@ -1,12 +1,14 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useHistory } from 'react-router-dom'
 import { getUser, removeUserSession } from '../api/Common'
-import image from '../assets/img/img-01.jpg'
+import image from '../assets/img/default_avatar.png'
 
 function Nav() {
+    const history = useHistory()
 
     const onLogout = () => {
         removeUserSession()
+        history.push("/login")
         window.location.reload()
     }
 
@@ -22,9 +24,9 @@ function Nav() {
                         <span></span>
                         </span>
                     </a>
-                    <a href="/" className="navbar-brand logo">
+                    <Link to="/" className="navbar-brand logo">
                         <img src="assets/images/logo/logo.png" className="img-fluid" alt="Logo"/>
-                    </a>
+                    </Link>
                 </div>
                 <div className="main-menu-wrapper">
                     <div className="menu-header">
@@ -72,12 +74,12 @@ function Nav() {
                     <li className="nav-item">
                         {getUser() ? <li class="nav-item dropdown has-arrow">
 						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-							<span class="user-img"><img class="rounded-circle" src={image} width="31" alt="Ryan Taylor"/>{getUser().name}</span>
+							<span class="user-img"><img class="rounded-circle" src={getUser().avatarAddress ? getUser().avatarAddress : image} width="31" alt="Ryan Taylor"/>{getUser().name}</span>
 						</a>
 						<div class="dropdown-menu">
 							<div class="user-header">
 								<div class="avatar avatar-sm">
-									<img src={image} alt="User Image" class="avatar-img rounded-circle"/>
+									<img src={getUser().avatarAddress ? getUser().avatarAddress : image} alt="User Image" class="avatar-img rounded-circle"/>
 								</div>
 								<div class="user-text">
 									<h6>{getUser().name}</h6>
@@ -88,7 +90,7 @@ function Nav() {
 							<a class="dropdown-item" href="settings.html">Settings</a>
 							<button class="dropdown-item" onClick={onLogout}>Logout</button>
 						</div>              
-					</li> :<NavLink activeClassName='active' className="nav-link header-login" to='/login'>Login/Sign up</NavLink> }             
+					</li> : <NavLink activeClassName='active' className="nav-link header-login" to='/login'>Login/Sign up</NavLink> }             
                     </li>
                 </ul>
             </nav>

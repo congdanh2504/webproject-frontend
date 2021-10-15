@@ -21,7 +21,6 @@ export const setTokenSession = (token) => {
 export const removeUserSession = () => {
     sessionStorage.removeItem('user')
     sessionStorage.removeItem('token')
-    // window.location.reload()
 }
 
 export const BASE_URL = "https://jobhubb.herokuapp.com/api/" 

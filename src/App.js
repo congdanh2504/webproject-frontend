@@ -16,12 +16,12 @@ import TopCompanies from "./pages/TopCompanies";
 import About from "./pages/About";
 import AddBlog from "./pages/AddBlog";
 import AddJob from "./pages/AddJob";
-
 import Companies from "./pages/admin/Companies";
 import JobSeekers from "./pages/admin/JobSeekers";
 import { getToken } from "./api/Common";
 import { useEffect, useState } from "react";
 import { getUser } from "./api/loginAPI";
+import ReactLoading from 'react-loading';
 
 function App() {
 
@@ -36,7 +36,12 @@ function App() {
   }, [])
 
   if (authLoading && getToken()!= null) {
-    return <div>Check Authentication</div>
+    return <div class="container h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+              <ReactLoading type={"spinningBubbles"} color={'#09dca4'} height={'10%'} width={'10%'} />
+            </div>
+            </div>
+   
   }
 
 
