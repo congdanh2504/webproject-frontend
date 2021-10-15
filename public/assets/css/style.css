@@ -52,9 +52,13 @@ Version      : 1.0
   border-radius: 10px;
   outline: none;
 }
-.select option {
-  border: 1px red solid !important;
+.blog-card{
+  transition: 0.3s ease-in;
 }
+.blog-card:hover {
+  box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+}
+
 /*-----------------
 	1. General
 -----------------------*/

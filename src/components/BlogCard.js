@@ -5,19 +5,19 @@ import sampleImage from "../assets/img/img-01.jpg";
 function BlogCard() {
   return (
     <div class="col-12 col-md-6 col-lg-4">
-      <div class="card flex-fill">
+      <div class="card flex-fill blog-card">
         <i
           class="far fa-eye pt-2 pl-3 pb-2 pr-3 position-absolute text-white"
           style={{ right: "5%", backgroundColor: "rgba(0, 230, 91, 0.7)" }}
         >
           {" "}
-          6969
+          3K
         </i>
         <img alt="Card Image" src={sampleImage} class="card-img-top" />
         <div class="card-header">
           <div class="table-avatar pt-2 pb-3">
             <div className="d-flex justify-content-between align-items-center">
-              <div>
+              <div className="d-flex align-items-center">
                 <a href="#" class="avatar avatar-xs mr-2 float-left">
                   <img
                     class="avatar-img rounded-circle"
