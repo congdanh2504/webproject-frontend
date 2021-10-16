@@ -44,11 +44,11 @@ const MainBlogContent = (props) => {
                     </li> */}
                 </ul>
             </div>
-            {/* <div class="wrap__article-detail-image mt-4">
+            <div class="wrap__article-detail-image mt-4">
                 <figure>
-                    <img src={sampleImage} alt="" class="img-fluid" />
+                    <img src={props.blog.imageAddress} alt="" class="img-fluid" />
                 </figure>
-            </div> */}
+            </div>
             <div class="wrap__article-detail-content">
                 <div
                 dangerouslySetInnerHTML={{
