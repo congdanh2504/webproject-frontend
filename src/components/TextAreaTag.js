@@ -6,9 +6,10 @@ function TextAreaTag(props) {
       <div class="form-group">
         <label>{props.title}</label>
         <textarea
-          class="form-control "
+          class="form-control"
           rows={props.rows}
           placeholder={props.placeholder}
+          onChange={props.onChange}
         />
       </div>
     </div>

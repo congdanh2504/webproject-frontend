@@ -5,11 +5,11 @@ const InputTag = (props) => {
     <div class="col-12 col-md-6">
       <div class="form-group">
         <label >{props.title}</label>
-        {/* <label className="font-weight-bold">{props.title}</label> */}
         <input
           type={props.type}
           class="form-control"
-          placeholder= {props.placeholder} />
+          placeholder= {props.placeholder}
+          onChange={props.onChange} />
       </div>
     </div>
   )
