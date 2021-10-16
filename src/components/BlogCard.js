@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import sampleImage from "../assets/img/img-01.jpg";
+import Moment from 'react-moment';
 
-function BlogCard() {
+function BlogCard(props) {
   return (
     <div class="col-12 col-md-6 col-lg-4">
       <div class="card flex-fill blog-card">
@@ -11,9 +11,9 @@ function BlogCard() {
           style={{ right: "5%", backgroundColor: "rgba(0, 230, 91, 0.7)" }}
         >
           {" "}
-          3K
+          {props.views}
         </i>
-        <img alt="Card Image" src={sampleImage} class="card-img-top" />
+        <img alt="Card Image" style={{ height : 250 }} src={"https://jobhubb.herokuapp.com/"+props.imageAddress} class="card-img-top" />
         <div class="card-header">
           <div class="table-avatar pt-2 pb-3">
             <div className="d-flex justify-content-between align-items-center">
@@ -29,12 +29,13 @@ function BlogCard() {
                   <span> Mr. Ruby Perrin </span>
                 </a>
               </div>
-              <i class="far fa-clock text-muted"> 1 minute ago</i>
+              <i class="far fa-clock text-muted"><Moment format="YYYY/MM/DD">
+                {parseInt(props.time)}
+            </Moment></i>
             </div>
           </div>
           <Link to="/blog/detail" className="card-title h4 font-weight-bold">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae,
-            ullam?
+            {props.title}
           </Link>
         </div>
       </div>
