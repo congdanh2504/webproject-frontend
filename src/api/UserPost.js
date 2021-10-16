@@ -30,3 +30,15 @@ export const getBlogs = (setBlogs, pageNumber = 1) => {
 
     });
 }
+
+
+export const getById = (setBlog, id) => {
+    axios({
+        method: 'get',
+        url: `${BASE_URL}blog/${id}`,
+        headers: {'Content-Type': 'application/json'},
+        }).then(response => {
+        setBlog(response.data)
+        console.log(response.data)
+    })
+}

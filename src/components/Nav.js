@@ -86,7 +86,7 @@ function Nav() {
 									<p class="text-muted mb-0">{getUser().type}</p>
 								</div>
 							</div>
-							<a class="dropdown-item" href="profile.html">My Profile</a>
+							<Link class="dropdown-item" to="/userprofilesetting">My Profile</Link>
 							<a class="dropdown-item" href="settings.html">Settings</a>
 							<button class="dropdown-item" onClick={onLogout}>Logout</button>
 						</div>              

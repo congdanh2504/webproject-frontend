@@ -59,7 +59,7 @@ function App() {
         <Route path="/jobs" component={Jobs} />
         <Route path="/topcompanies" component={TopCompanies} />
 
-        <Route path="/blog/detail" component={BlogDetail} />
+        <Route path="/blog/detail/:id" component={BlogDetail} />
         <Route path="/blog/add-blog" component={AddBlog} />
         <Route path="/blog" component={Blog} />
 

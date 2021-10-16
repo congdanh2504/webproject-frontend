@@ -1,16 +1,17 @@
 import React from 'react'
+import Moment from 'react-moment';
 import sampleImage from '../assets/img/img-01.jpg'
 
-const MainBlogContent = () => {
+const MainBlogContent = (props) => {
     return (
 
         <div class="wrap__article-detail">
             <div class="wrap__article-detail-title">
                 <h1>
-                    These Are the 5 Big Tech Stories to Watch in 2017
+                    {props.blog.title}
                 </h1>
                 <h3>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae, hic.
+                    {props.blog.description}
                 </h3>
             </div>
             <hr />
@@ -19,15 +20,19 @@ const MainBlogContent = () => {
                     <li class="list-inline-item">
                         <span>by </span>
                         <a href="#">
-                            Mr. Ruby Perrin,
+                            {props.blog.user.name}
                         </a>
                     </li>
                     <li class="list-inline-item">
                         <span class="text-dark text-capitalize ml-1">
-                            descember 09, 2016
+                        <i class="far fa-clock text-muted">
+                        <Moment format="YYYY/MM/DD">
+                            {props.blog.created_at}
+                        </Moment>
+                        </i>
                         </span>
                     </li>
-                    <li class="list-inline-item">
+                    {/* <li class="list-inline-item">
                         <span class="text-dark text-capitalize">
                             in
                         </span>
@@ -36,16 +41,21 @@ const MainBlogContent = () => {
                         <a href="#">
                             business
                         </a>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
-            <div class="wrap__article-detail-image mt-4">
+            {/* <div class="wrap__article-detail-image mt-4">
                 <figure>
                     <img src={sampleImage} alt="" class="img-fluid" />
                 </figure>
-            </div>
+            </div> */}
             <div class="wrap__article-detail-content">
-                <div class="total-views">
+                <div
+                dangerouslySetInnerHTML={{
+                    __html: props.blog.content
+                }}></div>
+                {/* {props.blog.content} */}
+                {/* <div class="total-views">
                     <div class="total-views-read">
                         15.k
                         <span>
@@ -80,7 +90,7 @@ const MainBlogContent = () => {
                     a large language
                     ocean.A small river named Duden flows by their place and supplies it with the necessary
                     regelialia.
-                </p>
+                </p> */}
             </div>
 
 

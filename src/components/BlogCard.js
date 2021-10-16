@@ -34,7 +34,7 @@ function BlogCard(props) {
             </Moment></i>
             </div>
           </div>
-          <Link to="/blog/detail" className="card-title h4 font-weight-bold">
+          <Link to={`/blog/detail/${props.id}`} className="card-title h4 font-weight-bold">
             {props.title}
           </Link>
         </div>
