@@ -86,8 +86,12 @@ function Nav() {
 									<p class="text-muted mb-0">{getUser().type}</p>
 								</div>
 							</div>
-							<Link class="dropdown-item" to="/userprofilesetting">My Profile</Link>
-							<a class="dropdown-item" href="settings.html">Settings</a>
+							
+                            {getUser().type == "Employee" ? <div> <Link class="dropdown-item" to="/employeeProfile">My Profile</Link>
+                            <Link class="dropdown-item" to="/userprofilesetting">Update Profile</Link></div> : 
+                            <div> <Link class="dropdown-item" to="/employerProfile">My Profile</Link>
+                            <Link class="dropdown-item" to="/userprofilesetting">Update Profile</Link></div>}
+							
 							<button class="dropdown-item" onClick={onLogout}>Logout</button>
 						</div>              
 					</li> : <NavLink activeClassName='active' className="nav-link header-login" to='/login'>Login/Sign up</NavLink> }             

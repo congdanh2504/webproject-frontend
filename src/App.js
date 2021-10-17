@@ -21,7 +21,7 @@ import JobSeekers from "./pages/admin/JobSeekers";
 import { getToken } from "./api/Common";
 import { useEffect, useState } from "react";
 import { getUser } from "./api/loginAPI";
-import ReactLoading from 'react-loading';
+import Loading from "./components/Loading";
 
 function App() {
 
@@ -35,15 +35,7 @@ function App() {
     }
   }, [])
 
-  if (authLoading && getToken()!= null) {
-    return <div class="container h-100">
-            <div class="row h-100 justify-content-center align-items-center">
-              <ReactLoading type={"spinningBubbles"} color={'#09dca4'} height={'10%'} width={'10%'} />
-            </div>
-            </div>
-   
-  }
-
+  if (authLoading && getToken()!= null) return <Loading/>
 
   return (
     <Router>

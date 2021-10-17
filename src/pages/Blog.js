@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import { getUser } from '../api/Common';
 import Pagination from 'react-js-pagination'
 import { getBlogs } from '../api/UserPost';
+import Loading from '../components/Loading';
 
 const Blog = () => {
   const [blogs, setBlogs] = useState()
@@ -23,9 +24,9 @@ const Blog = () => {
               Add your post
             </Link>} 
             <div className="row">
-              {blogs && blogs.data.map((data, index) => { 
+              {blogs ? blogs.data.map((data, index) => { 
                 return <BlogCard key={data._id} user={data.user} id={data._id} title={data.title} imageAddress={data.imageAddress} views={data.views} time={data.created_at}/>
-              })}
+              }): <Loading/>}
             </div>
             { blogs && <div className="mt-3">
               <Pagination 
