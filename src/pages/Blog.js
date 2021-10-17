@@ -24,7 +24,7 @@ const Blog = () => {
             </Link>} 
             <div className="row">
               {blogs && blogs.data.map((data, index) => { 
-                return <BlogCard key={data._id.$oid} id={data._id.$oid} title={data.title} imageAddress={data.imageAddress} views={data.views} time={data.created_at.$date.$numberLong}/>
+                return <BlogCard key={data._id} user={data.user} id={data._id} title={data.title} imageAddress={data.imageAddress} views={data.views} time={data.created_at}/>
               })}
             </div>
             { blogs && <div className="mt-3">

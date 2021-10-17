@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import Moment from 'react-moment';
+import image from '../assets/img/default_avatar.png'
 
 function BlogCard(props) {
   return (
@@ -18,19 +19,19 @@ function BlogCard(props) {
           <div class="table-avatar pt-2 pb-3">
             <div className="d-flex justify-content-between align-items-center">
               <div className="d-flex align-items-center">
-                {/* <a href="#" class="avatar avatar-xs mr-2 float-left">
+                <a href="#" class="avatar avatar-xs mr-2 float-left">
                   <img
                     class="avatar-img rounded-circle"
-                    src="assets/img/img-01.jpg"
+                    src={props.user.avatarAddress ? props.user.avatarAddress : image}
                     alt="User Image"
                   />
-                </a> */}
-                {/* <a href="#" class="float-left">
-                  <span> Mr. Ruby Perrin </span>
-                </a> */}
+                </a>
+                <a href="#" class="float-left">
+                  <span> {props.user.name}</span>
+                </a>
               </div>
               <i class="far fa-clock text-muted"><Moment format="YYYY/MM/DD">
-                {parseInt(props.time)}
+                {props.time}
             </Moment></i>
             </div>
           </div>
