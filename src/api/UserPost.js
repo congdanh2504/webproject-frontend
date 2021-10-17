@@ -15,9 +15,8 @@ export const addBlog = (title, description, content, image) => {
         url: `${BASE_URL}addBlog?token=${getToken()}`,
         headers: {'Content-Type': 'multipart/form-data'},
         data: formData
-    })
+    })  
 }
-
 export const getBlogs = (setBlogs, pageNumber = 1) => {
     axios({
         method: 'get',
@@ -31,7 +30,6 @@ export const getBlogs = (setBlogs, pageNumber = 1) => {
     });
 }
 
-
 export const getById = (setBlog, id) => {
     axios({
         method: 'get',
@@ -42,3 +40,35 @@ export const getById = (setBlog, id) => {
         console.log(response.data)
     })
 }
+
+export const postJob = (title, nameJob, description,category, salary, duration, province, 
+    district,ward ,street, image ) => {
+        var formData = new FormData();
+        formData.append('image', image);
+        formData.append('document', JSON.stringify({ 
+            title: title, 
+            nameJob: nameJob, 
+            description: description, 
+            category: category, 
+            salary: salary,
+            duration: duration,
+            province: province,
+            detailedAddress: `${street}, ${ward}, ${district}, ${province}`,
+            image: image
+        }))
+        axios({
+            method: 'post',
+            url: `${BASE_URL}postJob?token=${getToken()}`,
+            headers: {'Content-Type': 'multipart/form-data'},
+            data: formData
+        })
+        .then((response)=>{
+            alert(response.data)
+        })
+        .catch((error)=>{
+            alert(error.message)
+        })
+}
+
+
+

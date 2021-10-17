@@ -23,4 +23,4 @@ export const removeUserSession = () => {
     sessionStorage.removeItem('token')
 }
 
-export const BASE_URL = "https://jobhubb.herokuapp.com/api/" 
+export const BASE_URL = "http://localhost:8000/api/" 
