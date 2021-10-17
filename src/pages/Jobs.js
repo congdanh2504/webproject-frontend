@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import JobCard_Horizontal from "../components/JobCard_Horizontal";
 import JobCard_Vertical from "../components/JobCard_Vertical";
+import Loading from '../components/Loading';
+import Pagination from 'react-js-pagination'
+
+import { getUser } from '../api/Common';
+import { getJobs } from '../api/jobAPI';
 
 function Jobs() {
+  const [jobs, setJobs] = useState();
+
+  useEffect(() => {
+    getJobs(setJobs);
+  }, [])
+
   return (
     <>
       {/* <!-- Breadcrumb --> */}
@@ -48,6 +59,7 @@ function Jobs() {
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12 col-lg-4 col-xl-3 theiaStickySidebar">
+              {getUser() && <Link to='jobs/add-job' className="add-new-btn">Hire employee</Link>}
               {/* <!-- Search Filter --> */}
               <div class="card search-filter">
                 <div class="card-header">
@@ -66,13 +78,33 @@ function Jobs() {
             </div>
 
             <div class="col-md-12 col-lg-8 col-xl-9">
-              {/* <!-- Doctor Widget --> */}
-              <JobCard_Horizontal />
-              <JobCard_Horizontal />
-              <JobCard_Horizontal />
-              {/* <!-- /Doctor Widget --> */}
+              {jobs ? jobs.data.map((data, index) => {
+                return <JobCard_Horizontal 
+                  key={data.id} user={data.user} 
+                  id ={data.id} title={data.title}
+                  imagesAddress={data.imagesAddress}
+                  nameJob={data.nameJob}
+                  duration={data.duration}
+                  salary={data.salary}
+                  category={data.category}
+                  address={data.address}
+                />
+              }) : <Loading />}
+              {jobs && <div className="row mt-3 justify-content-center">
+                <Pagination
+                  activePage={jobs.current_page}
+                  itemsCountPerPage={jobs.per_page}
+                  totalItemsCount={jobs.total}
+                  pageRangeDisplayed={5}
+                  onChange={(num) => getJobs(setJobs, num)}
+                  itemClass="page-item"
+                  linkClass="page-link"
+                  firstPageText="First"
+                  lastPageText="Last"
+                />
+              </div>
+              }
             </div>
-            {/* <!-- /Doctor Widget --> */}
           </div>
         </div>
 

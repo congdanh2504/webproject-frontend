@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function JobCard_Horizontal() {
+function JobCard_Horizontal(props) {
   return (
     <div class="card">
       <div class="card-body">
@@ -10,24 +10,24 @@ function JobCard_Horizontal() {
             <div class="doctor-img">
               <a href="doctor-profile.html">
                 <img
-                  src="./assets/img/doctors/doctor-01.jpg"
+                  src={props.imagesAddress}
                   class="img-fluid"
-                  alt="User Image"
+                  alt="Job Image"
                 />
               </a>
             </div>
             <div class="doc-info-cont">
               <h4 class="doc-name">
-                <a href="doctor-profile.html">VKU group</a>
+                <a href="doctor-profile.html">{props.user.name}</a> {/*name employer, company */}
               </h4>
-              <p class="doc-speciality">We have the right job for you</p>
+              <p class="doc-speciality">{props.nameJob} - {props.title}</p>
               <h5 class="doc-department">
                 <img
                   src="assets/img/categories/categories-01.png"
                   class="img-fluid"
                   alt="Speciality"
                 />
-                Programmer
+                { props.category}
               </h5>
               <div class="rating">
                 <i class="fas fa-star filled"></i>
@@ -39,7 +39,7 @@ function JobCard_Horizontal() {
               </div>
               <div class="clinic-details">
                 <p class="doc-location">
-                  <i class="fas fa-map-marker-alt"></i> Danang, VN
+                  <i class="fas fa-map-marker-alt"></i> {props.address.detail}
                 </p>
               </div>
               <div class="clinic-services">
@@ -58,10 +58,10 @@ function JobCard_Horizontal() {
                   <i class="far fa-comment"></i> 17 interested
                 </li>
                 <li>
-                  <i class="far fa-clock"></i> Deadline Otc, 10
+                  <i class="far fa-clock"></i> Deadline { props.duration }
                 </li>
                 <li>
-                  <i class="far fa-money-bill-alt"></i> $300 - $1000
+                  <i class="far fa-money-bill-alt"></i> {props.salary} USD
                 </li>
               </ul>
             </div>

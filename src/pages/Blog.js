@@ -28,7 +28,7 @@ const Blog = () => {
                 return <BlogCard key={data._id} user={data.user} id={data._id} title={data.title} imageAddress={data.imageAddress} views={data.views} time={data.created_at}/>
               }): <Loading/>}
             </div>
-            { blogs && <div className="mt-3">
+            { blogs && <div className="row mt-3 justify-content-center">
               <Pagination 
                 activePage={blogs.current_page}
                 itemsCountPerPage={blogs.per_page}

@@ -48,7 +48,7 @@ function App() {
         <Route path="/forgot" component={ForgotPassword} />
         <Route path="/register" component={Register} />
         <Route path="/jobs/job-details" component={JobDetails} />
-        <PrivateRoute path="/add-job" component={AddJob} />
+        <PrivateRoute path="/jobs/add-job" component={AddJob} />
         <Route path="/jobs" component={Jobs} />
         <Route path="/topcompanies" component={TopCompanies} />
 

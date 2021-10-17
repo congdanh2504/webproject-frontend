@@ -3,7 +3,7 @@ import InputTag from '../components/InputTag'
 import TextAreaTag from '../components/TextAreaTag'
 import Select from 'react-select'
 import { getDistricts, getProvinces, getWards } from '../api/locationAPI'
-import { postJob } from '../api/UserPost';
+import { postJob } from '../api/jobAPI';
 import { useHistory } from 'react-router';
 
 const AddJob = () => {
