@@ -23,6 +23,7 @@ import { useEffect, useState } from "react";
 import { getUser } from "./api/loginAPI";
 import Loading from "./components/Loading";
 import PrivateRoute from "./components/PrivateRoute";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
 
@@ -57,6 +58,7 @@ function App() {
         <Route path="/blog" component={Blog} />
 
         <PrivateRoute path="/userprofilesetting" component={UserProfileSetting} />
+        <PrivateRoute path="/profile/:id" component={UserProfile} />
         <Route path="/about" component={About} />
 
         {/* For admin */}

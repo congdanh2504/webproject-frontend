@@ -2969,6 +2969,7 @@ html.menu-opened body {
   flex: 0 0 150px;
   margin-right: 20px;
   width: 150px;
+  width: 100vh
 }
 .doctor-img img {
   border-radius: 5px;
