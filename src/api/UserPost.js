@@ -63,7 +63,7 @@ export const postJob = (title, nameJob, description,category, salary, duration, 
             data: formData
         })
         .then((response)=>{
-            alert(response.data)
+
         })
         .catch((error)=>{
             alert(error.message)

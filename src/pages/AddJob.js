@@ -70,6 +70,11 @@ const AddJob = () => {
     setImage(param.target.files[0])
   }
 
+  // const changeImage =(param) => {
+  //   const fileToAdd = param.target.files
+  //   setImage([...image,...fileToAdd])
+  // }
+
   const changeCategory = (param) =>{
     setCategory(param.target.value)
   }
@@ -83,7 +88,7 @@ const AddJob = () => {
   }
 
   const submit = (e) => {
-    if(title && description && nameJob && image &&category && duration &&salary
+    if(title && nameJob && description  && image &&category && duration &&salary
       &&province && ward && district && street) {
         postJob(title, nameJob, description,category, salary, duration, province, 
           district,ward ,street, image)
