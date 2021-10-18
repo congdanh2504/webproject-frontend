@@ -2959,7 +2959,7 @@ html.menu-opened body {
   display: flex;
 }
 .doc-info-right {
-  margin-left: 5%;
+  margin-left: 0;
   -ms-flex: 0 0 200px;
   flex: 0 0 200px;
   max-width: 200px;
