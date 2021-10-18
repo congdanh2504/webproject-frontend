@@ -6626,7 +6626,6 @@ html.menu-opened body {
   .doc-info-left {
     -ms-flex-direction: column;
     flex-direction: column;
-    max-width: 300px;
   }
   .clinic-services {
     display: none;
