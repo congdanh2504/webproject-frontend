@@ -1,6 +1,6 @@
 import React from "react";
 
-function CategoryCard() {
+function CategoryCard(props) {
   return (
     <div class="speicality-item text-center">
       <div class="speicality-img mx-auto">
