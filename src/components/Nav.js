@@ -87,9 +87,9 @@ function Nav() {
 								</div>
 							</div>
 							
-                            {getUser().type == "Employee" ? <div> <Link class="dropdown-item" to="/employeeProfile">My Profile</Link>
+                            {getUser().type == "Employee" ? <div> <Link class="dropdown-item" to={`/profile/${getUser()._id}`}>My Profile</Link>
                             <Link class="dropdown-item" to="/userprofilesetting">Update Profile</Link></div> : 
-                            <div> <Link class="dropdown-item" to="/employerProfile">My Profile</Link>
+                            <div> <Link class="dropdown-item" to="/employerProfile/">My Profile</Link>
                             <Link class="dropdown-item" to="/userprofilesetting">Update Profile</Link></div>}
 							
 							<button class="dropdown-item" onClick={onLogout}>Logout</button>

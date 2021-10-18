@@ -76,7 +76,7 @@ function UserProfileSetting() {
                     <Link to="/">Home</Link>
                   </li>
                   <li class="breadcrumb-item active" aria-current="page">
-                    Profile
+                    Update Profile
                   </li>
                 </ol>
               </nav>
@@ -101,7 +101,7 @@ function UserProfileSetting() {
                       />
                     </a>
                     <div class="profile-det-info">
-                      <h3>Richard Wilson</h3>
+                      <h3>{getUser().name}</h3>
                       <div class="patient-details">
                         <h5>
                           <i class="fas fa-user-tie"></i> {getUser().type}
