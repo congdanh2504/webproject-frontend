@@ -2957,12 +2957,14 @@ html.menu-opened body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  border: 1px solid red;
 }
 .doc-info-right {
   margin-left: 0;
   -ms-flex: 0 0 200px;
   flex: 0 0 200px;
   max-width: 200px;
+  border: 1px solid red;
 }
 .doctor-img {
   -ms-flex: 0 0 150px;
