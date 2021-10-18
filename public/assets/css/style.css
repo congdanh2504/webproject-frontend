@@ -2957,14 +2957,12 @@ html.menu-opened body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border: 1px solid red;
 }
 .doc-info-right {
   margin-left: auto;
   -ms-flex: 0 0 200px;
   flex: 0 0 200px;
   max-width: 200px;
-  border: 1px solid red;
 }
 .doctor-img {
   -ms-flex: 0 0 150px;
@@ -2974,6 +2972,7 @@ html.menu-opened body {
 }
 .doctor-img img {
   border-radius: 5px;
+  object-fit: cover;
 }
 .doc-department {
   color: #20c0f3;
