@@ -22,6 +22,7 @@ import { getToken } from "./api/Common";
 import { useEffect, useState } from "react";
 import { getUser } from "./api/loginAPI";
 import Loading from "./components/Loading";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
 
@@ -47,15 +48,15 @@ function App() {
         <Route path="/forgot" component={ForgotPassword} />
         <Route path="/register" component={Register} />
         <Route path="/jobs/job-details" component={JobDetails} />
-        <Route path="/add-job" component={AddJob} />
+        <PrivateRoute path="/add-job" component={AddJob} />
         <Route path="/jobs" component={Jobs} />
         <Route path="/topcompanies" component={TopCompanies} />
 
         <Route path="/blog/detail/:id" component={BlogDetail} />
-        <Route path="/blog/add-blog" component={AddBlog} />
+        <PrivateRoute path="/blog/add-blog" component={AddBlog} />
         <Route path="/blog" component={Blog} />
 
-        <Route path="/userprofilesetting" component={UserProfileSetting} />
+        <PrivateRoute path="/userprofilesetting" component={UserProfileSetting} />
         <Route path="/about" component={About} />
 
         {/* For admin */}
