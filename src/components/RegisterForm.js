@@ -86,7 +86,7 @@ function RegisterForm() {
         </div>
       <GoogleLogin 
           clientId="246456551142-bhogm2nf5tbokl5sr68rts8j7kud8o4r.apps.googleusercontent.com"
-          buttonText="Login"
+          buttonText="Register"
           onSuccess={handleGG}
           className="btn btn-google btn-block justify-content-center"
           cookiePolicy={'single_host_origin'}/>
