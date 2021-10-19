@@ -26,49 +26,50 @@ import PrivateRoute from "./components/PrivateRoute";
 import UserProfile from "./pages/UserProfile";
 
 function App() {
-
   const [authLoading, setAuthLoading] = useState(true);
-  
+
   useEffect(() => {
     if (!getToken) {
-      return
+      return;
     } else {
-      getUser(setAuthLoading)
+      getUser(setAuthLoading);
     }
-  }, [])
+  }, []);
 
-  if (authLoading && getToken()!= null) return <Loading/>
+  if (authLoading && getToken() != null) return <Loading />;
 
   return (
-    <Router>
-      <Nav/>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/employer-register" component={EmployerRegister} />
-        <Route path="/login" component={Login} />
-        <Route path="/forgot" component={ForgotPassword} />
-        <Route path="/register" component={Register} />
-        <Route path="/jobs/job-details" component={JobDetails} />
-        <PrivateRoute path="/jobs/add-job" component={AddJob} />
-        <Route path="/jobs" component={Jobs} />
-        <Route path="/topcompanies" component={TopCompanies} />
+    <>
+      <Router>
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/employer-register" component={EmployerRegister} />
+          <Route path="/login" component={Login} />
+          <Route path="/forgot" component={ForgotPassword} />
+          <Route path="/register" component={Register} />
+          <Route path="/jobs/job-details" component={JobDetails} />
+          <PrivateRoute path="/jobs/add-job" component={AddJob} />
+          <Route path="/jobs" component={Jobs} />
+          <Route path="/topcompanies" component={TopCompanies} />
+          <Route path="/blog/detail/:id" component={BlogDetail} />
+          <PrivateRoute path="/blog/add-blog" component={AddBlog} />
+          <Route path="/blog" component={Blog} />
+          <PrivateRoute
+            path="/userprofilesetting"
+            component={UserProfileSetting}
+          />
+          <PrivateRoute path="/profile/:id" component={UserProfile} />
+          <Route path="/about" component={About} />
 
-        <Route path="/blog/detail/:id" component={BlogDetail} />
-        <PrivateRoute path="/blog/add-blog" component={AddBlog} />
-        <Route path="/blog" component={Blog} />
-
-        <PrivateRoute path="/userprofilesetting" component={UserProfileSetting} />
-        <PrivateRoute path="/profile/:id" component={UserProfile} />
-        <Route path="/about" component={About} />
-
-        {/* For admin */}
-        <Route exact="/" path="/admin/companies" component={Companies} />
-        <Route path="/admin/job-seekers" component={JobSeekers} />
-
-        <Route component={NotFound} />
-      </Switch>
-      <Footer />
-    </Router>
+          {/* Testing */}
+          <Route path="/admin/companies" component={Companies} />
+          <Route path="/admin/job-seekers" component={JobSeekers} />
+          {/* End Testing */}
+        </Switch>
+        <Footer />
+      </Router>
+    </>
   );
 }
 
