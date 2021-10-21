@@ -1,6 +1,6 @@
 import React from "react";
 
-function JobCard() {
+function JobCard(props) {
   return (
     <div class="profile-widget">
       <div class="doc-img">
@@ -8,7 +8,7 @@ function JobCard() {
           <img
             class="img-fluid"
             alt="User Image"
-            src="assets/img/doctors/doctor-01.jpg"
+            src={props.imagesAddress}
           />
         </a>
         <a href="javascript:void(0)" class="fav-btn">
@@ -17,10 +17,10 @@ function JobCard() {
       </div>
       <div class="pro-content">
         <h3 class="title">
-          <a href="">VKU group</a>
+          <a href="">{props.user.name}</a>
           <i class="fas fa-check-circle verified"></i>
         </h3>
-        <p class="speciality">We have the right job for you</p>
+        <p class="speciality">{props.title}</p>
         <div class="rating">
           <i class="fas fa-star filled"></i>
           <i class="fas fa-star filled"></i>
@@ -31,13 +31,13 @@ function JobCard() {
         </div>
         <ul class="available-info">
           <li>
-            <i class="fas fa-map-marker-alt"></i> Danang, VN
+            <i class="fas fa-map-marker-alt"></i> {props.address.province}
           </li>
           <li>
-            <i class="far fa-clock"></i> Deadline Otc, 10
+            <i class="far fa-clock"></i> Deadline { props.duration }
           </li>
           <li>
-            <i class="far fa-money-bill-alt"></i> $300 - $1000
+            <i class="far fa-money-bill-alt"></i> ${props.salary}
             <i
               class="fas fa-info-circle"
               data-toggle="tooltip"
@@ -47,7 +47,7 @@ function JobCard() {
         </ul>
         <div class="row row-sm">
           <div class="col-12">
-            <a href="" class="btn view-btn">
+            <a href={`/jobs/job-details/${props.id}`} class="btn view-btn">
               See details
             </a>
           </div>

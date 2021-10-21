@@ -45,5 +45,21 @@ export const getJobs= (setJobs, pageNumber =1)=>{
         .catch(err => {
             console.log( `${BASE_URL}postItem?page=${pageNumber}`)
             console.log(err.message)
+        });
+}
+
+export const getJobItem= (setJob, id)=>{
+    axios({
+        method:'get',
+        url: `${BASE_URL}postItem/${id}`,
+        headers: {'Content-Type': 'application/json'},
+    })
+        .then(response => {
+            setJob(response.data)
+            console.log(response.data)
         })
+        .catch(err => {
+            console.log(err.message)
+        })
+       
 }

@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import CategoryCard from "../components/CategoryCard";
 import JobCard_Vertical from "../components/JobCard_Vertical";
+import { getJobs } from '../api/jobAPI';
 
 function Home() {
+  const [jobs, setJobs] = useState();
+
+  useEffect(() => {
+    getJobs(setJobs);
+  }, [])
+
   const settings_clinic_specialities = {
     dots: true,
     infinite: true,
@@ -150,11 +157,19 @@ function Home() {
             <div className="col-lg-8">
               <div className="doctor-slider slider">
                 <Slider {...settings_popular}>
-                  <JobCard_Vertical />
-                  <JobCard_Vertical />
-                  <JobCard_Vertical />
-                  <JobCard_Vertical />
-                  <JobCard_Vertical />
+                  {jobs ? jobs.data.map((data) => {
+                    return <JobCard_Vertical
+                      key={data._id} user={data.user}
+                      id={data._id} title={data.title}
+                      imagesAddress={data.imagesAddress}
+                      nameJob={data.nameJob}
+                      duration={data.duration}
+                      salary={data.salary}
+                      address={data.address}
+                      rate={data.rate}
+                    />
+                  }) :null
+                  }
                 </Slider>
               </div>
             </div>

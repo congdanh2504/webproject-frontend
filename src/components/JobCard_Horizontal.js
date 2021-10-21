@@ -66,7 +66,7 @@ function JobCard_Horizontal(props) {
               </ul>
             </div>
             <div class="clinic-booking">
-              <Link to="/jobs/job-details" class="view-pro-btn">See details</Link>
+              <Link to={`/jobs/job-details/${props.id}`} class="view-pro-btn">See details</Link>
             </div>
           </div>
         </div>

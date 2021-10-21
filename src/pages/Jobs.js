@@ -80,14 +80,17 @@ function Jobs() {
             <div class="col-md-12 col-lg-8 col-xl-9">
               {jobs ? jobs.data.map((data, index) => {
                 return <JobCard_Horizontal 
-                  key={data.id} user={data.user} 
-                  id ={data.id} title={data.title}
+                  key={data._id} user={data.user} 
+                  id ={data._id} title={data.title}
                   imagesAddress={data.imagesAddress}
                   nameJob={data.nameJob}
                   duration={data.duration}
                   salary={data.salary}
                   category={data.category}
                   address={data.address}
+                  rate={data.rate}
+                  like={data.like}
+                  comments={data.comments}
                 />
               }) : <Loading />}
               {jobs && <div className="row mt-3 justify-content-center">
