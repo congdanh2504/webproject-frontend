@@ -14,7 +14,7 @@ function BlogCard(props) {
           {" "}
           {props.views}
         </i>
-        <img alt="Card Image" style={{ objectFit: "cover" }} src={props.imageAddress} class="card-img-top" />
+        <img alt="Card Image" style={{ height : 250, objectFit: "cover" }} src={props.imageAddress} class="card-img-top" />
         <div class="card-header">
           <div class="table-avatar pt-2 pb-3">
             <div className="d-flex justify-content-between align-items-center">
