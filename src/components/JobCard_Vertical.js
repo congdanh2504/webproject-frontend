@@ -8,6 +8,7 @@ function JobCard(props) {
           <img
             class="img-fluid"
             alt="User Image"
+            style={{ height:150, objectFit: "cover" }}
             src={props.imagesAddress}
           />
         </a>
