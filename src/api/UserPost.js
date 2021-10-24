@@ -30,6 +30,17 @@ export const getBlogs = (setBlogs, pageNumber = 1) => {
     });
 }
 
+export const getNewBlogs = (setNewBlogs)=>{
+    axios({
+        method: 'GET',
+        url: `${BASE_URL}new-blogs`,
+        headers: {'Content-Type': 'application/json'},
+    }).then(response => {
+        setNewBlogs(response.data)
+    })
+}
+
+
 export const getById = (setBlog, id) => {
     axios({
         method: 'get',

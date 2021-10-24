@@ -1,42 +1,45 @@
 import React from 'react'
+import Moment from 'react-moment'
+import { Link } from "react-router-dom";
 import sampleImage from '../assets/img/img-01.jpg'
-
-const PostCard = () => {
+const PostCard = (props) => {
   return (
-    <div class="mb-3">
-      <div class="card__post card__post-list">
-        <div class="image-sm">
-          <a href="./card-article-detail-v1.html">
-            <img src={sampleImage} class="img-fluid" alt="" />
-          </a>
+    <div className="mb-3 ">
+      <div className="card__post card__post-list">
+        <div className="image-sm">
+          <Link to={`/blog/detail/${props.id}`}>
+            <img src={props.image} className="img-fluid" style={{ height: 80, objectFit: "cover" }} alt="" />
+          </Link>
         </div>
-        <div class="card__post__body ">
-          <div class="card__post__content">
-            <div class="card__post__author-info mb-2">
-              <ul class="list-inline">
-                <li class="list-inline-item">
-                  <span class="text-primary">
-                    by david hall
+        <div className="card__post__body">
+          <div className="card__post__content">
+            <div className="card__post__author-info mb-2">
+              <ul className="list-inline" style={{ minWidth: '100%' }}>
+                <li className="list-inline-item">
+                  <span className="text-primary">
+                    By {props.user.name}
                   </span>
                 </li>
-                <li class="list-inline-item">
-                  <span class="text-dark text-capitalize">
-                    descember 09, 2016
+                <li className="list-inline-item float-right">
+                  <span className="text-dark text-capitalize">
+                    <Moment format="YYYY/MM/DD">{props.time}</Moment>
                   </span>
                 </li>
               </ul>
             </div>
-            <div class="card__post__title">
+            <div className="card__post__title">
               <h6>
-                <a href="./card-article-detail-v1.html">
-                  6 Best Tips for Building a Good Shipping Boat
-                </a>
+                <Link to={`/blog/detail/${props.id}`}>
+                  {props.title}
+                </Link>
               </h6>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+
   )
 }
 

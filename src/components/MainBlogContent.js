@@ -3,7 +3,7 @@ import Moment from 'react-moment';
 
 const MainBlogContent = (props) => {
     return (
-        <div class="wrap__article-detail">
+        <div class="wrap__article-detail mt-5 ml-3">
             <div class="wrap__article-detail-title">
                 <h1>
                     {props.blog.title}
