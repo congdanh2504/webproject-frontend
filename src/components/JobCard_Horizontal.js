@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function JobCard_Horizontal(props) {
+  const [rates, setRates] = useState([])
+  useEffect(() => {
+    getRates(setRates)
+  }, [])
+  function getRates(setRates) {
+    var rates = [];
+    for (var i = 0; i < props.rate; i++) {
+      rates = [...rates, <i class="fas fa-star filled"></i>]
+    }
+    for (var i = props.rate; i <5; i++) {
+      rates = [...rates, <i class="fas fa-star"></i>]
+    }
+    setRates(rates);
+  }
   return (
     <div class="card">
       <div class="card-body">
@@ -27,15 +41,13 @@ function JobCard_Horizontal(props) {
                   class="img-fluid"
                   alt="Speciality"
                 />
-                { props.category}
+                {props.category}
               </h5>
               <div class="rating">
-                <i class="fas fa-star filled"></i>
-                <i class="fas fa-star filled"></i>
-                <i class="fas fa-star filled"></i>
-                <i class="fas fa-star filled"></i>
-                <i class="fas fa-star"></i>
-                <span class="d-inline-block average-rating">(17)</span>
+                {rates ? rates.map((rate) => {
+                  return rate;
+                }) : null}
+                <span class="d-inline-block average-rating"> ({props.rate})</span>
               </div>
               <div class="clinic-details">
                 <p class="doc-location">
@@ -58,7 +70,7 @@ function JobCard_Horizontal(props) {
                   <i class="far fa-comment"></i> 17 interested
                 </li>
                 <li>
-                  <i class="far fa-clock"></i> Deadline { props.duration }
+                  <i class="far fa-clock"></i> Deadline {props.duration}
                 </li>
                 <li>
                   <i class="far fa-money-bill-alt"></i> {props.salary} USD

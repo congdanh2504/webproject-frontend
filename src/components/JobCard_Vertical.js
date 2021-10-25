@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function JobCard(props) {
+  const [rates, setRates] = useState([])
+  useEffect(() => {
+    getRates(setRates)
+  }, [])
+  function getRates(setRates) {
+    var rates = [];
+    for (var i = 0; i < props.rate; i++) {
+      rates = [...rates, <i class="fas fa-star filled"></i>]
+    }
+    for (var i = props.rate; i < 5; i++) {
+      rates = [...rates, <i class="fas fa-star"></i>]
+    }
+    setRates(rates);
+  }
+
   return (
     <div class="profile-widget">
       <div class="doc-img">
@@ -8,7 +23,7 @@ function JobCard(props) {
           <img
             class="img-fluid"
             alt="User Image"
-            style={{ height:150, objectFit: "cover" }}
+            style={{ height: 150, objectFit: "cover" }}
             src={props.imagesAddress}
           />
         </a>
@@ -23,19 +38,17 @@ function JobCard(props) {
         </h3>
         <p class="speciality">{props.title}</p>
         <div class="rating">
-          <i class="fas fa-star filled"></i>
-          <i class="fas fa-star filled"></i>
-          <i class="fas fa-star filled"></i>
-          <i class="fas fa-star filled"></i>
-          <i class="fas fa-star filled"></i>
-          <span class="d-inline-block average-rating">(17)</span>
+          {rates ? rates.map((rate) => {
+            return rate;
+          }) : null}
+          <span class="d-inline-block average-rating"> ({props.rate})</span>
         </div>
         <ul class="available-info">
           <li>
             <i class="fas fa-map-marker-alt"></i> {props.address.province}
           </li>
           <li>
-            <i class="far fa-clock"></i> Deadline { props.duration }
+            <i class="far fa-clock"></i> Deadline {props.duration}
           </li>
           <li>
             <i class="far fa-money-bill-alt"></i> ${props.salary}
