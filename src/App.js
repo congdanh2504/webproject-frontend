@@ -45,7 +45,7 @@ function App() {
           path="/admin"
           render={({ match: { url } }) => (
             <>
-              <h1>a</h1>
+              <Nav type="admin" />
               <Route exact path={`${url}/companies`} component={Companies} />
               <Route path={`${url}/job-seekers`} component={JobSeekers} />
             </>
@@ -55,7 +55,7 @@ function App() {
           path="/user"
           render={({ match: { url } }) => (
             <>
-              <Nav />
+              <Nav type="user" />
               <Route exact path={`${url}`} component={Home} />
               <Route
                 path={`${url}/employer-register`}
@@ -83,10 +83,10 @@ function App() {
                 component={UserProfile}
               />
               <Route path={`${url}/about`} component={About} />
+              <Footer />
             </>
           )}
         />
-        <Footer />
       </Router>
     </>
   );

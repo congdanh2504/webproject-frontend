@@ -1,8 +1,10 @@
 import React from "react";
+import Breadcrumb from "../../components/Breadcrumb";
 
 function JobSeekers() {
   return (
     <>
+      <Breadcrumb title="Users" type="admin" />
       <div class="container-fluid">
         <div class="row">
           <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">

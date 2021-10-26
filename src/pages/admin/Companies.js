@@ -1,12 +1,11 @@
 import React from "react";
-import SideBarAdmin from "../../components/SideBarAdmin";
-import Style from "./Styles.css";
+import Breadcrumb from "../../components/Breadcrumb";
 function Companies() {
   return (
     <>
+      <Breadcrumb title="Companies" type="admin" />
       <div class="container-fluid">
         <div class="row">
-          <SideBarAdmin />
           <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
             <h2>Companies Management</h2>
             <div class="row">
