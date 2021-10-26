@@ -62,10 +62,15 @@ function App() {
           <PrivateRoute path="/profile/:id" component={UserProfile} />
           <Route path="/about" component={About} />
 
-          {/* Testing */}
-          <Route path="/admin/companies" component={Companies} />
-          <Route path="/admin/job-seekers" component={JobSeekers} />
-          {/* End Testing */}
+          <Route
+            path="/admin"
+            render={({ match: { url } }) => (
+              <>
+                <Route exact path={`${url}/companies`} component={Companies} />
+                <Route path={`${url}/job-seekers`} component={JobSeekers} />
+              </>
+            )}
+          />
         </Switch>
         <Footer />
       </Router>
