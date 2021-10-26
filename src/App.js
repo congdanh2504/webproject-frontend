@@ -24,6 +24,8 @@ import { getUser } from "./api/loginAPI";
 import Loading from "./components/Loading";
 import PrivateRoute from "./components/PrivateRoute";
 import UserProfile from "./pages/UserProfile";
+import EmployerProfile from "./components/EmployerProfile";
+import EmployerProfileSetting from "./pages/EmployerProfileSetting";
 
 function App() {
   const [authLoading, setAuthLoading] = useState(true);
@@ -55,6 +57,10 @@ function App() {
           <Route path="/blog/detail/:id" component={BlogDetail} />
           <PrivateRoute path="/blog/add-blog" component={AddBlog} />
           <Route path="/blog" component={Blog} />
+
+          <Route path='/employerProfile/:id' component ={EmployerProfile} />
+          <Route path='/employerprofilesetting' component ={EmployerProfileSetting} />
+
           <PrivateRoute
             path="/userprofilesetting"
             component={UserProfileSetting}

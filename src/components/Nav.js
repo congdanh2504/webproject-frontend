@@ -154,10 +154,10 @@ function Nav() {
                     ) : (
                       <div>
                         {" "}
-                        <Link class="dropdown-item" to="/employerProfile/">
+                        <Link class="dropdown-item" to={`/employerProfile/${getUser()._id}`}>
                           My Profile
                         </Link>
-                        <Link class="dropdown-item" to="/userprofilesetting">
+                        <Link class="dropdown-item" to="/employerprofilesetting">
                           Update Profile
                         </Link>
                       </div>

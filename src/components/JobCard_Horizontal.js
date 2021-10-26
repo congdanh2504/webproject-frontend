@@ -39,7 +39,7 @@ function JobCard_Horizontal(props) {
                 <img
                   src="assets/img/categories/categories-01.png"
                   class="img-fluid"
-                  alt="Speciality"
+                  alt=""
                 />
                 {props.category}
               </h5>

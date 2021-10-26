@@ -4,7 +4,7 @@ import { BASE_URL, getToken } from "./Common";
 
 
 export const postJob = (title, nameJob, description, category, salary, duration, province,
-        district, ward, street, image) => {
+    district, ward, street, image) => {
     var formData = new FormData();
     formData.append('image', image);
     formData.append('document', JSON.stringify({
@@ -32,27 +32,27 @@ export const postJob = (title, nameJob, description, category, salary, duration,
         })
 }
 
-export const getJobs= (setJobs, pageNumber =1)=>{
+export const getJobs = (setJobs, pageNumber = 1) => {
     axios({
-        method:'get',
+        method: 'get',
         url: `${BASE_URL}postItem?page=${pageNumber}`,
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
     })
         .then(response => {
             setJobs(response.data)
             console.log(response.data)
         })
         .catch(err => {
-            console.log( `${BASE_URL}postItem?page=${pageNumber}`)
+            console.log(`${BASE_URL}postItem?page=${pageNumber}`)
             console.log(err.message)
         });
 }
 
-export const getJobItem= (setJob, id)=>{
+export const getJobItem = (setJob, id) => {
     axios({
-        method:'get',
+        method: 'get',
         url: `${BASE_URL}postItem/${id}`,
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
     })
         .then(response => {
             setJob(response.data)
@@ -61,5 +61,16 @@ export const getJobItem= (setJob, id)=>{
         .catch(err => {
             console.log(err.message)
         })
-       
+
+}
+
+// get all job is post by employer
+export const getMyJobs = (setJobs, id, pageNumber = 1) => {
+    axios({
+        method: 'GET',
+        url: `${BASE_URL}my-posts/${id}?token=${getToken()}`,
+        headers: { 'Content-Type': 'application/json' },
+    }).then(response => {
+        setJobs(response.data)
+    })
 }
