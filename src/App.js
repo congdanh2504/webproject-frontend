@@ -41,37 +41,51 @@ function App() {
   return (
     <>
       <Router>
-        <Nav />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/employer-register" component={EmployerRegister} />
-          <Route path="/login" component={Login} />
-          <Route path="/forgot" component={ForgotPassword} />
-          <Route path="/register" component={Register} />
-          <Route path="/jobs/job-details/:id" component={JobDetails} />
-          <PrivateRoute path="/jobs/add-job" component={AddJob} />
-          <Route path="/jobs" component={Jobs} />
-          <Route path="/topcompanies" component={TopCompanies} />
-          <Route path="/blog/detail/:id" component={BlogDetail} />
-          <PrivateRoute path="/blog/add-blog" component={AddBlog} />
-          <Route path="/blog" component={Blog} />
-          <PrivateRoute
-            path="/userprofilesetting"
-            component={UserProfileSetting}
-          />
-          <PrivateRoute path="/profile/:id" component={UserProfile} />
-          <Route path="/about" component={About} />
-
-          <Route
-            path="/admin"
-            render={({ match: { url } }) => (
-              <>
-                <Route exact path={`${url}/companies`} component={Companies} />
-                <Route path={`${url}/job-seekers`} component={JobSeekers} />
-              </>
-            )}
-          />
-        </Switch>
+        <Route
+          path="/admin"
+          render={({ match: { url } }) => (
+            <>
+              <h1>a</h1>
+              <Route exact path={`${url}/companies`} component={Companies} />
+              <Route path={`${url}/job-seekers`} component={JobSeekers} />
+            </>
+          )}
+        />
+        <Route
+          path="/user"
+          render={({ match: { url } }) => (
+            <>
+              <Nav />
+              <Route exact path={`${url}`} component={Home} />
+              <Route
+                path={`${url}/employer-register`}
+                component={EmployerRegister}
+              />
+              <Route path={`${url}/login`} component={Login} />
+              <Route path={`${url}/forgot`} component={ForgotPassword} />
+              <Route path={`${url}/register`} component={Register} />
+              <Route
+                path={`${url}/jobs/job-details/:id`}
+                component={JobDetails}
+              />
+              <PrivateRoute path={`${url}/jobs/add-job`} component={AddJob} />
+              <Route path={`${url}/jobs`} component={Jobs} />
+              <Route path={`${url}/topcompanies`} component={TopCompanies} />
+              <Route path={`${url}/blog/detail/:id`} component={BlogDetail} />
+              <PrivateRoute path={`${url}/blog/add-blog`} component={AddBlog} />
+              <Route path={`${url}/blog`} component={Blog} />
+              <PrivateRoute
+                path={`${url}/userprofilesetting`}
+                component={UserProfileSetting}
+              />
+              <PrivateRoute
+                path={`${url}/profile/:id`}
+                component={UserProfile}
+              />
+              <Route path={`${url}/about`} component={About} />
+            </>
+          )}
+        />
         <Footer />
       </Router>
     </>

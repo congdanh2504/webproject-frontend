@@ -51,28 +51,28 @@ function Nav() {
             </div>
             <ul className="main-nav">
               <li className="">
-                <NavLink exact activeStyle={{ color: "#09dca4" }} to="/">
+                <NavLink exact activeStyle={{ color: "#09dca4" }} to="/user">
                   {" "}
                   <span className="active">Home</span>{" "}
                 </NavLink>
               </li>
               <li>
-                <NavLink activeStyle={{ color: "#09dca4" }} to="/jobs">
+                <NavLink activeStyle={{ color: "#09dca4" }} to="/user/jobs">
                   Jobs
                 </NavLink>
               </li>
               <li>
-                <NavLink activeStyle={{ color: "#09dca4" }} to="/topCompanies">
+                <NavLink activeStyle={{ color: "#09dca4" }} to="/user/topCompanies">
                   Top Companies
                 </NavLink>
               </li>
               <li>
-                <NavLink activeStyle={{ color: "#09dca4" }} to="/blog">
+                <NavLink activeStyle={{ color: "#09dca4" }} to="/user/blog">
                   Blogs
                 </NavLink>
               </li>
               <li>
-                <NavLink activeStyle={{ color: "#09dca4" }} to="/about">
+                <NavLink activeStyle={{ color: "#09dca4" }} to="/user/about">
                   About
                 </NavLink>
               </li>
@@ -143,7 +143,7 @@ function Nav() {
                         {" "}
                         <Link
                           class="dropdown-item"
-                          to={`/profile/${getUser()._id}`}
+                          to={`user/profile/${getUser()._id}`}
                         >
                           My Profile
                         </Link>
@@ -172,7 +172,7 @@ function Nav() {
                 <NavLink
                   activeClassName="active"
                   className="nav-link header-login"
-                  to="/login"
+                  to="user/login"
                 >
                   Login/Sign up
                 </NavLink>
