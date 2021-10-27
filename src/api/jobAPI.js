@@ -40,11 +40,9 @@ export const getJobs = (setJobs, pageNumber = 1) => {
     })
         .then(response => {
             setJobs(response.data)
-            console.log(response.data)
         })
         .catch(err => {
             console.log(`${BASE_URL}postItem?page=${pageNumber}`)
-            console.log(err.message)
         });
 }
 
@@ -56,7 +54,6 @@ export const getJobItem = (setJob, id) => {
     })
         .then(response => {
             setJob(response.data)
-            console.log(response.data)
         })
         .catch(err => {
             console.log(err.message)

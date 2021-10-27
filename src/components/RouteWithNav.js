@@ -1,8 +1,7 @@
-import { Redirect, Route } from "react-router";
-import { getToken, getUser } from "../api/Common";
+import { Route } from "react-router";
 import Nav from "./Nav";
 
-export const PrivateRoute = ({
+export const RouteWithNav = ({
     exact,
     path,
     type,
@@ -15,12 +14,12 @@ export const PrivateRoute = ({
         path={path}
         {...rest}
         render={(routeProps) => {
-          return getToken() && getUser() ? (
+          return (
             <>
               <Nav type={type === "user" ? "user" : "admin"} {...routeProps} />
               <Component {...routeProps} />{" "}
             </>
-          ) : <Redirect to= {{ pathname:'/'}}/>;
+          );
         }}
       />
     );

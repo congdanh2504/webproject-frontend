@@ -24,7 +24,6 @@ export const getBlogs = (setBlogs, pageNumber = 1) => {
         headers: {'Content-Type': 'application/json'},
       }).then(response => {
         setBlogs(response.data)
-        console.log(response.data)
       }).catch(error => {
 
     });
@@ -48,7 +47,6 @@ export const getById = (setBlog, id) => {
         headers: {'Content-Type': 'application/json'},
         }).then(response => {
         setBlog(response.data)
-        console.log(response.data)
     })
 }
 

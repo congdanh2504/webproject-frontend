@@ -28,6 +28,10 @@ import EmployerProfileSetting from "./pages/EmployerProfileSetting";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminBlog from "./pages/AdminBlog";
 import AdminReviews from "./pages/AdminReviews";
+import { RouteWithNav } from "./components/RouteWithNav";
+import { EmployerRoute } from "./components/EmployerRoute";
+import { PrivateRoute } from "./components/PrivateRoute";
+
 function App() {
   const [authLoading, setAuthLoading] = useState(true);
 
@@ -41,29 +45,6 @@ function App() {
 
   if (authLoading && getToken() != null) return <Loading />;
 
-  const RouteWithNav = ({
-    exact,
-    path,
-    type,
-    component: Component,
-    ...rest
-  }) => {
-    return (
-      <Route
-        exact={exact}
-        path={path}
-        {...rest}
-        render={(routeProps) => {
-          return (
-            <>
-              <Nav type={type === "user" ? "user" : "admin"} {...routeProps} />
-              <Component {...routeProps} />
-            </>
-          );
-        }}
-      />
-    );
-  };
   return (
     <>
       <Router>
@@ -76,7 +57,7 @@ function App() {
           path="/jobs/job-details/:id"
           component={JobDetails}
         />
-        <RouteWithNav
+        <EmployerRoute
           type="user"
           exact
           path="/jobs/add-job"
@@ -95,7 +76,7 @@ function App() {
           path="/blog/detail/:id"
           component={BlogDetail}
         />
-        <RouteWithNav
+        <PrivateRoute
           type="user"
           exact
           path="/blog/add-blog"
@@ -122,13 +103,13 @@ function App() {
           path="/employerProfile/:id"
           component={EmployerProfile}
         />
-        <RouteWithNav
+        <EmployerRoute
           type="user"
           exact
           path="/employerprofilesetting"
           component={EmployerProfileSetting}
         />
-        <RouteWithNav
+        <PrivateRoute
           type="user"
           exact
           path="/userprofilesetting"
