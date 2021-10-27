@@ -16,17 +16,18 @@ import TopCompanies from "./pages/TopCompanies";
 import About from "./pages/About";
 import AddBlog from "./pages/AddBlog";
 import AddJob from "./pages/AddJob";
-import Companies from "./pages/admin/Companies";
-import JobSeekers from "./pages/admin/JobSeekers";
+import AdminCompanies from "./pages/AdminCompanies";
+import AdminJobSeekers from "./pages/AdminJobSeekers";
 import { getToken } from "./api/Common";
 import { useEffect, useState } from "react";
 import { getUser } from "./api/loginAPI";
 import Loading from "./components/Loading";
-import PrivateRoute from "./components/PrivateRoute";
 import UserProfile from "./pages/UserProfile";
 import EmployerProfile from "./components/EmployerProfile";
 import EmployerProfileSetting from "./pages/EmployerProfileSetting";
-
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminBlog from "./pages/AdminBlog";
+import AdminReviews from "./pages/AdminReviews";
 function App() {
   const [authLoading, setAuthLoading] = useState(true);
 
@@ -56,7 +57,7 @@ function App() {
           return (
             <>
               <Nav type={type === "user" ? "user" : "admin"} {...routeProps} />
-              <Component {...routeProps} />{" "}
+              <Component {...routeProps} />
             </>
           );
         }}
@@ -140,32 +141,38 @@ function App() {
           component={UserProfile}
         />
         {/* End user's routes */}
-        {/* <PrivateRoute
-          path={`/employerProfile/:id`}
-          component={EmployerProfile}
-        />
-        <PrivateRoute
-          path={`/employerprofilesetting`}
-          component={EmployerProfileSetting}
-        />
-        <PrivateRoute
-          path={`/userprofilesetting`}
-          component={UserProfileSetting}
-        />
-        <PrivateRoute path={`/profile/:id`} component={UserProfile} /> */}
 
         {/* Admin's routes */}
+        
+        <RouteWithNav
+          type="admin"
+          path="/admin"
+          exact
+          component={AdminDashboard}
+        />
         <RouteWithNav
           type="admin"
           path="/admin/companies"
           exact
-          component={Companies}
+          component={AdminCompanies}
         />
         <RouteWithNav
           type="admin"
           path="/admin/job-seekers"
           exact
-          component={JobSeekers}
+          component={AdminJobSeekers}
+        />
+        <RouteWithNav
+          type="admin"
+          path="/admin/blog"
+          exact
+          component={AdminBlog}
+        />
+        <RouteWithNav
+          type="admin"
+          path="/admin/reviews"
+          exact
+          component={AdminReviews}
         />
         {/* End admin's routes */}
       </Router>

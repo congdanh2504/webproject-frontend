@@ -12,7 +12,7 @@ function Breadcrumb(props) {
                 {props.type == "admin" ? (
                   <>
                     <li class="breadcrumb-item">
-                      <Link to="/admin/dashboard">Dashboard</Link>
+                      <Link to="/admin">Dashboard</Link>
                     </li>
                   </>
                 ) : (
