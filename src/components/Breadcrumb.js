@@ -9,9 +9,19 @@ function Breadcrumb(props) {
           <div class="col-md-12 col-12">
             <nav aria-label="breadcrumb" class="page-breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                  <Link to="/">Home</Link>
-                </li>
+                {props.type == "admin" ? (
+                  <>
+                    <li class="breadcrumb-item">
+                      <Link to="/admin/dashboard">Dashboard</Link>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li class="breadcrumb-item">
+                      <Link to="/">Home</Link>
+                    </li>
+                  </>
+                )}
                 <li class="breadcrumb-item active" aria-current="page">
                   {props.title}
                 </li>
