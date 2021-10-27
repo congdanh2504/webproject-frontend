@@ -54,39 +54,40 @@ function App() {
           )}
         />
         <Route
-          path="/user"
+          path=""
+          exact
           render={({ match: { url } }) => (
             <>
               <Nav type="user" />
               <Route exact path={`${url}`} component={Home} />
               <Route
-                path={`${url}/employer-register`}
+                path={`/employer-register`}
                 component={EmployerRegister}
               />
-              <Route path={`${url}/login`} component={Login} />
-              <Route path={`${url}/forgot`} component={ForgotPassword} />
-              <Route path={`${url}/register`} component={Register} />
+              <Route path={`/login`} component={Login} />
+              <Route path={`/forgot`} component={ForgotPassword} />
+              <Route path={`/register`} component={Register} />
               <Route
-                path={`${url}/jobs/job-details/:id`}
+                path={`/jobs/job-details/:id`}
                 component={JobDetails}
               />
-              <PrivateRoute path={`${url}/jobs/add-job`} component={AddJob} />
-              <Route path={`${url}/jobs`} component={Jobs} />
-              <Route path={`${url}/topcompanies`} component={TopCompanies} />
-              <Route path={`${url}/blog/detail/:id`} component={BlogDetail} />
-              <PrivateRoute path={`${url}/blog/add-blog`} component={AddBlog} />
-              <Route path={`${url}/blog`} component={Blog} />
-              <PrivateRoute path={`${url}/employerProfile/:id`} component={EmployerProfile} />
-              <PrivateRoute path={`${url}/employerprofilesetting`} component={EmployerProfileSetting} />
+              <PrivateRoute path={`/jobs/add-job`} component={AddJob} />
+              <Route path={`/jobs`} component={Jobs} />
+              <Route path={`/topcompanies`} component={TopCompanies} />
+              <Route path={`/blog/detail/:id`} component={BlogDetail} />
+              <PrivateRoute path={`/blog/add-blog`} component={AddBlog} />
+              <Route path={`/blog`} component={Blog} />
+              <PrivateRoute path={`/employerProfile/:id`} component={EmployerProfile} />
+              <PrivateRoute path={`/employerprofilesetting`} component={EmployerProfileSetting} />
               <PrivateRoute
-                path={`${url}/userprofilesetting`}
+                path={`/userprofilesetting`}
                 component={UserProfileSetting}
               />
               <PrivateRoute
-                path={`${url}/profile/:id`}
+                path={`/profile/:id`}
                 component={UserProfile}
               />
-              <Route path={`${url}/about`} component={About} />
+              <Route path={`/about`} component={About} />
               <Footer />
             </>
           )}

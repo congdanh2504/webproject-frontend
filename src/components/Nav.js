@@ -51,31 +51,31 @@ function Nav_User() {
             </div>
             <ul className="main-nav">
               <li className="">
-                <NavLink exact activeStyle={{ color: "#09dca4" }} to="/user">
+                <NavLink exact activeStyle={{ color: "#09dca4" }} to="/">
                   {" "}
                   <span className="active">Home</span>{" "}
                 </NavLink>
               </li>
               <li>
-                <NavLink activeStyle={{ color: "#09dca4" }} to="/user/jobs">
+                <NavLink activeStyle={{ color: "#09dca4" }} to="/jobs">
                   Jobs
                 </NavLink>
               </li>
               <li>
                 <NavLink
                   activeStyle={{ color: "#09dca4" }}
-                  to="/user/topCompanies"
+                  to="/topCompanies"
                 >
                   Top Companies
                 </NavLink>
               </li>
               <li>
-                <NavLink activeStyle={{ color: "#09dca4" }} to="/user/blog">
+                <NavLink activeStyle={{ color: "#09dca4" }} to="/blog">
                   Blogs
                 </NavLink>
               </li>
               <li>
-                <NavLink activeStyle={{ color: "#09dca4" }} to="/user/about">
+                <NavLink activeStyle={{ color: "#09dca4" }} to="/about">
                   About
                 </NavLink>
               </li>
@@ -146,21 +146,21 @@ function Nav_User() {
                         {" "}
                         <Link
                           class="dropdown-item"
-                          to={`/user/profile/${getUser()._id}`}
+                          to={`/profile/${getUser()._id}`}
                         >
                           My Profile
                         </Link>
-                        <Link class="dropdown-item" to="/user/userprofilesetting">
+                        <Link class="dropdown-item" to="/userprofilesetting">
                           Update Profile
                         </Link>
                       </div>
                     ) : (
                       <div>
                         {" "}
-                        <Link class="dropdown-item" to={`/user/employerProfile/${getUser()._id}`}>
+                        <Link class="dropdown-item" to={`/employerProfile/${getUser()._id}`}>
                           My Profile
                         </Link>
-                        <Link class="dropdown-item" to="/user/employerprofilesetting">
+                        <Link class="dropdown-item" to="/employerprofilesetting">
                           Update Profile
                         </Link>
                       </div>
@@ -175,7 +175,7 @@ function Nav_User() {
                 <NavLink
                   activeClassName="active"
                   className="nav-link header-login"
-                  to="user/login"
+                  to="/login"
                 >
                   Login/Sign up
                 </NavLink>
