@@ -11,6 +11,10 @@ function Nav_User() {
     history.push("/login");
     window.location.reload();
   };
+  
+  const admin = {
+    
+  }
 
   return (
     <div>
