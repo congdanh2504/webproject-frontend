@@ -2,6 +2,7 @@ import React from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import { getUser, removeUserSession } from "../api/Common";
 import image from "../assets/img/default_avatar.png";
+
 const user = [
   { name: `Home`, path: `/` },
   { name: `Jobs`, path: `/jobs` },
