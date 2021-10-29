@@ -63,7 +63,7 @@ function Nav(props) {
             </a>
             <Link to="/" className="navbar-brand logo">
               <img
-                src="assets/images/logo/logo.png"
+                src="http://localhost:3000/assets/images/logo/logo.png"
                 className="img-fluid"
                 alt="Logo"
               />
@@ -73,7 +73,7 @@ function Nav(props) {
             <div className="menu-header">
               <Link to="/" className="menu-logo">
                 <img
-                  src="assets/images/logo/logo.png"
+                  src={process.env.PUBLIC_URL + "assets/images/logo/logo.png"}
                   className="img-fluid"
                   alt="Logo"
                 />
