@@ -30,6 +30,7 @@ import AdminBlog from "./pages/AdminBlog";
 import AdminReviews from "./pages/AdminReviews";
 import { RouteWithNav } from "./components/RouteWithNav";
 import { EmployerRoute } from "./components/EmployerRoute";
+import { EmployeeRoute } from "./components/EmployeeRoute";
 import { PrivateRoute } from "./components/PrivateRoute";
 
 function App() {
@@ -109,7 +110,7 @@ function App() {
           path="/employerprofilesetting"
           component={EmployerProfileSetting}
         />
-        <PrivateRoute
+        <EmployeeRoute
           type="user"
           exact
           path="/userprofilesetting"

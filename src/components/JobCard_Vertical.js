@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function JobCard(props) {
   const [rates, setRates] = useState([])
@@ -19,21 +20,21 @@ function JobCard(props) {
   return (
     <div class="profile-widget">
       <div class="doc-img">
-        <a href="">
+        <Link to={`/profile/${props.user._id}`}>
           <img
             class="img-fluid"
             alt="User Image"
             style={{ height: 150, objectFit: "cover" }}
             src={props.imagesAddress}
           />
-        </a>
+        </Link>
         <a href="javascript:void(0)" class="fav-btn">
           <i class="far fa-bookmark"></i>
         </a>
       </div>
       <div class="pro-content">
         <h3 class="title">
-          <a href="">{props.user.name}</a>
+          <Link to={`/profile/${props.user._id}`}>{props.user.name}</Link>
           <i class="fas fa-check-circle verified"></i>
         </h3>
         <p class="speciality">{props.title}</p>

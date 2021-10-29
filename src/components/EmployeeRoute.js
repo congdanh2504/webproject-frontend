@@ -1,8 +1,8 @@
-import { Route } from "react-router";
-import Footer from "./Footer";
+import { Redirect, Route } from "react-router";
+import { getToken, getUser } from "../api/Common";
 import Nav from "./Nav";
 
-export const RouteWithNav = ({
+export const EmployeeRoute = ({
     exact,
     path,
     type,
@@ -15,13 +15,12 @@ export const RouteWithNav = ({
         path={path}
         {...rest}
         render={(routeProps) => {
-          return (
+          return getToken() && getUser().type == "Employee" ? (
             <>
               <Nav type={type === "user" ? "user" : "admin"} {...routeProps} />
               <Component {...routeProps} />{" "}
-              <Footer/>
             </>
-          );
+          ) : <Redirect to= {{ pathname:'/'}}/>;
         }}
       />
     );

@@ -59,7 +59,7 @@ function Jobs() {
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12 col-lg-4 col-xl-3 theiaStickySidebar">
-              {getUser() && <Link to='jobs/add-job' className="add-new-btn">Hire employee</Link>}
+              {(getUser() && getUser().type == "Employer") && <Link to='jobs/add-job' className="add-new-btn">Add job</Link>}
               {/* <!-- Search Filter --> */}
               <div class="card search-filter">
                 <div class="card-header">

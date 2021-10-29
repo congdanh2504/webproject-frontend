@@ -22,17 +22,17 @@ function JobCard_Horizontal(props) {
         <div class="doctor-widget">
           <div class="doc-info-left">
             <div class="doctor-img">
-              <a href="doctor-profile.html">
+              <Link to={`/profile/${props.user._id}`}>
                 <img
                   src={props.imagesAddress}
                   class="img-fluid"
                   alt="Job Image"
                 />
-              </a>
+              </Link>
             </div>
             <div class="doc-info-cont">
               <h4 class="doc-name">
-                <a href="doctor-profile.html">{props.user.name}</a> {/*name employer, company */}
+                <Link to={`/profile/${props.user._id}`}>{props.user.name}</Link> {/*name employer, company */}
               </h4>
               <p class="doc-speciality">{props.nameJob} - {props.title}</p>
               <h5 class="doc-department">

@@ -129,7 +129,10 @@ function Nav(props) {
                         <p class="text-muted mb-0">{getUser().type}</p>
                       </div>
                     </div>
-
+                    {getUser().type == "Employee" ? <Link to="/userprofilesetting" className="dropdown-item"> Update Profile </Link> : 
+                    <Link to="/employerprofilesetting" className="dropdown-item"> Update Profile </Link>}
+                    <Link to={`/profile/${getUser()._id}`} className="dropdown-item"> Your Profile </Link>
+                    
                     <button class="dropdown-item" onClick={onLogout}>
                       Logout
                     </button>
@@ -139,7 +142,7 @@ function Nav(props) {
                 <NavLink
                   activeClassName="active"
                   className="nav-link header-login"
-                  to="user/login"
+                  to="/login"
                 >
                   Login/Sign up
                 </NavLink>
