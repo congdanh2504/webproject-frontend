@@ -129,10 +129,20 @@ function Nav(props) {
                         <p class="text-muted mb-0">{getUser().type}</p>
                       </div>
                     </div>
-                    {getUser().type == "Employee" ? <Link to="/userprofilesetting" className="dropdown-item"> Update Profile </Link> : 
-                    <Link to="/employerprofilesetting" className="dropdown-item"> Update Profile </Link>}
-                    <Link to={`/profile/${getUser()._id}`} className="dropdown-item"> Your Profile </Link>
-                    
+                    {/* {getUser().type == "Employee" ?
+                      (<Link to={`/profile/${getUser()._id}`} className="dropdown-item"> Your Profile </Link> &&
+                      <Link to="/userprofilesetting" className="dropdown-item"> Update s Profile </Link>):
+                      <Link to={`/employerprofile/${getUser()._id}`} className="dropdown-item"> Your Profile </Link> &&
+                      <Link to="/employerprofilesetting" className="dropdown-item"> Update sssd Profile </Link>
+                    } */}
+                    {getUser().type == "Employee" ?
+                      <Link to={`/profile/${getUser()._id}`} className="dropdown-item"> Your Profile </Link> :
+                      <Link to={`/employerprofile/${getUser()._id}`} className="dropdown-item"> Your Profile </Link>
+                    }
+                    {getUser().type == "Employee" ?
+                      <Link to="/userprofilesetting" className="dropdown-item"> Update Profile </Link> :
+                      <Link to="/employerprofilesetting" className="dropdown-item"> Update Profile </Link>
+                    }
                     <button class="dropdown-item" onClick={onLogout}>
                       Logout
                     </button>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Loading from '../components/Loading';
 import Breadcrumb from './Breadcrumb'
 import JobCard_Horizontal from "../components/JobCard_Horizontal";
+import image from "../assets/img/default_avatar.png";
 import Pagination from 'react-js-pagination'
 import { getMyJobs } from '../api/jobAPI';
 import { useParams } from 'react-router'
@@ -33,14 +34,14 @@ const EmployerProfile = (props) => {
                 <div class="doctor-widget">
                   <div class="doc-info-left">
                     <div class="doctor-img">
-                      <img src={user?.avatarAddress} class="img-fluid" alt="User Image" />
+                      <img src={user?.avatarAddress ? user.avatarAddress : image} class="img-fluid" alt="User Image" />
                     </div>
                     <div class="doc-info-cont">
-                      <h4 class="doc-name">{user?.name ? user?.name: "Name of Employeer"}</h4>
+                      <h4 class="doc-name">{user?.name ? user?.name : "Name of Employeer"}</h4>
                       <div class="clini-infos">
                         <ul>
                           <li><i class="fas fa-map-marker-alt"></i>{user?.address?.detail ? user.address.detail : "Address"} </li>
-                          <li><i class="far fa-envelope"></i>{user?.email ?user?.email : "abc@gmail.com"}</li>
+                          <li><i class="far fa-envelope"></i>{user?.email ? user?.email : "abc@gmail.com"}</li>
                           <li><i class="fas fa-mobile"></i> {user?.mobile ? user?.mobile : "0123424"} </li>
                         </ul>
                       </div>
