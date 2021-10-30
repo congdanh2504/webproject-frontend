@@ -44,7 +44,7 @@ function EmployeeProfile(props) {
           </div>
         </div>
         <div className='container card'>
-          <h1><b>They CV</b></h1>
+          <h1><b>The CV</b></h1>
           <div
             dangerouslySetInnerHTML={{
               __html: props.user.cv
