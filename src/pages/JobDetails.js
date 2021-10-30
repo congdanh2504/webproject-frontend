@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb";
 import { getJobItem } from '../api/jobAPI';
 import Loading from '../components/Loading'
-import { getUser } from "../api/Common";
 
 
 
@@ -152,7 +151,7 @@ function JobDetails() {
                           <h4 className="widget-title">About Us:</h4>
                           <p
                             dangerouslySetInnerHTML={{
-                              __html: getUser()?.description
+                              __html: job.user?.description
                             }}>
                           </p>
                           <h4 className="widget-title">Job Description:</h4>
