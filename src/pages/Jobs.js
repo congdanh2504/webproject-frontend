@@ -7,13 +7,32 @@ import Pagination from 'react-js-pagination'
 
 import { getUser } from '../api/Common';
 import { getJobs } from '../api/jobAPI';
-
+import { sortDescendingByRating } from '../models/Jobs'
+import { sortLatest } from '../models/Jobs'
 function Jobs() {
   const [jobs, setJobs] = useState();
 
   useEffect(() => {
     getJobs(setJobs);
   }, [])
+
+  const sortChange = (param) => {
+    const option = param.target.value;
+    switch (option) {
+      case 'Rating':
+        sortDescendingByRating(setJobs, jobs);
+        break;
+      case 'Popular':
+        break;
+      case 'Latest':
+        sortLatest(setJobs, jobs);
+        break;
+      case 'Free':
+        break;
+      default:
+        getJobs(setJobs);
+    }
+  }
 
   return (
     <>
@@ -40,12 +59,12 @@ function Jobs() {
               <div class="sort-by">
                 <span class="sort-title">Sort by</span>
                 <span class="sortby-fliter">
-                  <select class="select">
+                  <select class="select" onChange={sortChange}>
                     <option>Select</option>
-                    <option class="sorting">Rating</option>
-                    <option class="sorting">Popular</option>
-                    <option class="sorting">Latest</option>
-                    <option class="sorting">Free</option>
+                    <option class="sorting" value="Rating">Rating</option>
+                    <option class="sorting" value="Popular">Popular</option>
+                    <option class="sorting" value="Latest">Latest</option>
+                    <option class="sorting" value="Free">Free</option>
                   </select>
                 </span>
               </div>
@@ -78,10 +97,11 @@ function Jobs() {
             </div>
 
             <div class="col-md-12 col-lg-8 col-xl-9">
+              {jobs ? console.log(jobs): null}
               {jobs ? jobs.data.map((data, index) => {
-                return <JobCard_Horizontal 
-                  key={data._id} user={data.user} 
-                  id ={data._id} title={data.title}
+                return <JobCard_Horizontal
+                  key={data._id} user={data.user}
+                  id={data._id} title={data.title}
                   imagesAddress={data.imagesAddress}
                   nameJob={data.nameJob}
                   duration={data.duration}

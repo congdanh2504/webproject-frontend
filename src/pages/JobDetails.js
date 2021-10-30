@@ -14,8 +14,6 @@ function JobDetails() {
 
   useEffect(() => {
     getJobItem(setJob, id.id);
-    // console.log(id.id);
-    // console.log(job);
   }, [])
 
   return (
@@ -154,7 +152,7 @@ function JobDetails() {
                           <h4 className="widget-title">About Us:</h4>
                           <p
                             dangerouslySetInnerHTML={{
-                              __html: getUser().description
+                              __html: getUser()?.description
                             }}>
                           </p>
                           <h4 className="widget-title">Job Description:</h4>
