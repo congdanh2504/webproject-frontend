@@ -97,7 +97,6 @@ function Jobs() {
             </div>
 
             <div class="col-md-12 col-lg-8 col-xl-9">
-              {jobs ? console.log(jobs): null}
               {jobs ? jobs.data.map((data, index) => {
                 return <JobCard_Horizontal
                   key={data._id} user={data.user}
@@ -108,7 +107,7 @@ function Jobs() {
                   salary={data.salary}
                   category={data.category}
                   address={data.address}
-                  rate={data.rate}
+                  rate={data.user.rate}
                   like={data.like}
                   comments={data.comments}
                 />

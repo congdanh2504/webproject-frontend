@@ -1,21 +1,8 @@
 import React, { useState, useEffect } from "react";
+import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
 
 function JobCard_Horizontal(props) {
-  const [rates, setRates] = useState([])
-  useEffect(() => {
-    getRates(setRates)
-  }, [])
-  function getRates(setRates) {
-    var rates = [];
-    for (var i = 0; i < props.rate; i++) {
-      rates = [...rates, <i class="fas fa-star filled"></i>]
-    }
-    for (var i = props.rate; i <5; i++) {
-      rates = [...rates, <i class="fas fa-star"></i>]
-    }
-    setRates(rates);
-  }
   return (
     <div class="card">
       <div class="card-body">
@@ -43,11 +30,16 @@ function JobCard_Horizontal(props) {
                 />
                 {props.category}
               </h5>
-              <div class="rating">
-                {rates ? rates.map((rate) => {
-                  return rate;
-                }) : null}
-                <span class="d-inline-block average-rating"> ({props.rate})</span>
+              <div className="rating">
+                  <ReactStars
+                    count={5}
+                    size={24}
+                    edit={false}
+                    // half={true}
+                    value={props.user.rate.avg}
+                    activeColor="#ffd700"
+                  />
+                <span className="d-inline-block average-rating">({props.user.rate.count})</span>
               </div>
               <div class="clinic-details">
                 <p class="doc-location">

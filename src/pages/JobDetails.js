@@ -40,12 +40,14 @@ function JobDetails() {
                         {job.category}
                       </p>
                       <div className="rating">
-                        <i className="fas fa-star filled"></i>
-                        <i className="fas fa-star filled"></i>
-                        <i className="fas fa-star filled"></i>
-                        <i className="fas fa-star filled"></i>
-                        <i className="fas fa-star"></i>
-                        <span className="d-inline-block average-rating">(35)</span>
+                          <ReactStars
+                            count={5}
+                            size={24}
+                            edit={false}
+                            value={job.user.rate.avg}
+                            activeColor="#ffd700"
+                          />
+                        <span className="d-inline-block average-rating">({job.user.rate.count})</span>
                       </div>
                       <div className="clinic-details">
                         <p className="doc-location">
