@@ -67,7 +67,25 @@ export const getMyJobs = (setJobs, id, pageNumber = 1) => {
         method: 'GET',
         url: `${BASE_URL}my-posts/${id}?token=${getToken()}`,
         headers: { 'Content-Type': 'application/json' },
+        data: {}
     }).then(response => {
         setJobs(response.data)
     })
 }
+
+export const addReview = (id, title, message, rate) => {
+    axios({
+        method: 'POST',
+        url: `${BASE_URL}review?token=${getToken()}`,
+        headers: { 'Content-Type': 'application/json' },
+        data: {
+            id : id,
+            title : title,
+            message : message,
+            rate : rate
+        }
+    }).then((res) => {
+        window.location.reload();
+    })
+}
+
