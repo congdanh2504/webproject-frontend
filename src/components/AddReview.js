@@ -20,7 +20,8 @@ function AddReview(props) {
     }
 
     const submit = () => {
-        addReview(props.id, title, message, rate)
+        if (rate && title && message)
+        addReview(props.id, title, message, rate, props.setJob, props.idJob)
     }
 
     return (

@@ -212,7 +212,7 @@ function JobDetails() {
                       </ul>
                     </div>
 
-                    {getUser() && <AddReview id={job.user._id}/>}
+                    {getUser() && <AddReview idJob={id.id} setJob={setJob} id={job.user._id}/>}
                     
                   </div>
                 </div>

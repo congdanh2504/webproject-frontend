@@ -54,6 +54,7 @@ export const getJobItem = (setJob, id) => {
     })
         .then(response => {
             setJob(response.data)
+            // console.log(response.data)
         })
         .catch(err => {
             console.log(err.message)
@@ -73,7 +74,7 @@ export const getMyJobs = (setJobs, id, pageNumber = 1) => {
     })
 }
 
-export const addReview = (id, title, message, rate) => {
+export const addReview = (id, title, message, rate, setJob, idJob) => {
     axios({
         method: 'POST',
         url: `${BASE_URL}review?token=${getToken()}`,
@@ -85,7 +86,7 @@ export const addReview = (id, title, message, rate) => {
             rate : rate
         }
     }).then((res) => {
-        window.location.reload();
+        getJobItem(setJob, idJob)
     })
 }
 
