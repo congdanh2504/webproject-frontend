@@ -55,7 +55,7 @@ const EmployerProfile = (props) => {
                 <h3 className="bg-primary text-white text-center p-3 mb-4">All of your posts!</h3>:
                 <div className="alert alert-danger">You don't have any post.</div>
               }
-              {jobs ? jobs.map((data, index) => {
+              {jobs ? jobs.data.map((data, index) => {
                 return <JobCard_Horizontal
                   key={data._id} user={data.user}
                   id={data._id} title={data.title}

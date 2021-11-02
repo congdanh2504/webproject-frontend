@@ -12,7 +12,7 @@ function JobSeekers() {
   }, [])
 
   const getUserLink = (user) => {
-    var userLink = user.type == "Employee" ? `/profile/${user._id}` : `/employerprofile/${user._id}`;
+    var userLink = `/profile/${user._id}`;
     return userLink;
   }
   return (
@@ -34,7 +34,7 @@ function JobSeekers() {
                       </tr>
                     </thead>
                     <tbody>
-                      {users ? users.map((user) => {
+                      {users ? users.data.map((user) => {
                         return (
                           <tr key={user.id}>
                             <td>{user._id}</td>
