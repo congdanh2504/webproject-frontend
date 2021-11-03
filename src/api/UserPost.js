@@ -32,7 +32,7 @@ export const getBlogs = (setBlogs, pageNumber = 1) => {
 export const getNewBlogs = (setNewBlogs)=>{
     axios({
         method: 'GET',
-        url: `${BASE_URL}blog/new`,
+        url: `${BASE_URL}blog/new/4`,
         headers: {'Content-Type': 'application/json'},
     }).then(response => {
         setNewBlogs(response.data)
