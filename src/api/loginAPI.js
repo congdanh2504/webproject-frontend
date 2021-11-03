@@ -14,7 +14,6 @@ export const login = (email, password, setError, history) => {
         setTokenSession(response.data.token)
         setUserSession(response.data.user)
         history.push("/")
-        window.location.reload()
     }).catch(error => {
         setError(error.response.data.message)
     })
@@ -81,7 +80,7 @@ export const employerRegister = (email, username, password, repassword, setEmail
 export const loginWithGG = (idToken, setError, history) => {
     axios({
         method: 'post',
-        url: `${BASE_URL}loginWithGG`,
+        url: `${BASE_URL}login/google`,
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
         data: {
@@ -91,7 +90,7 @@ export const loginWithGG = (idToken, setError, history) => {
         setUserSession(response.data['user'])
         setTokenSession(response.data['token'])
         history.push('/')
-        window.location.reload()
+        // window.location.reload()
     }).catch(error => {
         if (error.response.status === 401 || error.response.status === 400) {
             setError(error.response.data.message)
@@ -102,7 +101,7 @@ export const loginWithGG = (idToken, setError, history) => {
 export const registerWithGG = (idToken, setError, history, type) => {
     axios({
         method: 'post',
-        url: `${BASE_URL}registerWithGG/${type}`,
+        url: `${BASE_URL}register/google/${type}`,
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
         data: {
@@ -112,7 +111,7 @@ export const registerWithGG = (idToken, setError, history, type) => {
         setUserSession(response.data['user'])
         setTokenSession(response.data['token'])
         history.push('/')
-        window.location.reload()
+        // window.location.reload()
     }).catch(error => {
         if (error.response.status === 401 || error.response.status === 400) {
             setError(error.response.data.message)
@@ -137,7 +136,7 @@ export const getUser = (setAuthLoading) => {
 export const getUserById = (id, setUser) => {
     axios({
         method: 'get',
-        url: `${BASE_URL}getUserById/${id}`,
+        url: `${BASE_URL}user/${id}`,
         headers: {'Content-Type': 'application/json'},
       }).then(response => {
         setUser(response.data)

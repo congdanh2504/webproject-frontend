@@ -12,7 +12,7 @@ export const addBlog = (title, description, content, image) => {
     }))
     axios({
         method: 'post',
-        url: `${BASE_URL}addBlog?token=${getToken()}`,
+        url: `${BASE_URL}blog?token=${getToken()}`,
         headers: {'Content-Type': 'multipart/form-data'},
         data: formData
     })  
@@ -32,7 +32,7 @@ export const getBlogs = (setBlogs, pageNumber = 1) => {
 export const getNewBlogs = (setNewBlogs)=>{
     axios({
         method: 'GET',
-        url: `${BASE_URL}new-blogs`,
+        url: `${BASE_URL}blog/new`,
         headers: {'Content-Type': 'application/json'},
     }).then(response => {
         setNewBlogs(response.data)

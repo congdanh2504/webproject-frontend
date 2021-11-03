@@ -20,7 +20,7 @@ export const postJob = (title, nameJob, description, category, salary, duration,
     }))
     axios({
         method: 'post',
-        url: `${BASE_URL}postJob?token=${getToken()}`,
+        url: `${BASE_URL}postItem?token=${getToken()}`,
         headers: { 'Content-Type': 'multipart/form-data' },
         data: formData
     })
