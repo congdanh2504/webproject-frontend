@@ -66,7 +66,7 @@ export const getJobItem = (setJob, id) => {
 export const getMyJobs = (setJobs, id, pageNumber = 1) => {
     axios({
         method: 'GET',
-        url: `${BASE_URL}my-posts/${id}?token=${getToken()}&page=${pageNumber}`,
+        url: `${BASE_URL}postItem/myPost/${id}?token=${getToken()}&page=${pageNumber}`,
         headers: { 'Content-Type': 'application/json' },
         data: {}
     }).then(response => {
