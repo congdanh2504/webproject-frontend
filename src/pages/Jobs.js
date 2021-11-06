@@ -7,8 +7,7 @@ import Pagination from 'react-js-pagination'
 
 import { getUser } from '../api/Common';
 import { getJobs } from '../api/jobAPI';
-import { sortDescendingByRating } from '../models/Jobs'
-import { sortLatest } from '../models/Jobs'
+import { sortDescendingByRating,  sortLatest, sortBySalary } from '../models/Jobs'
 function Jobs() {
   const [jobs, setJobs] = useState();
 
@@ -27,7 +26,8 @@ function Jobs() {
       case 'Latest':
         sortLatest(setJobs, jobs);
         break;
-      case 'Free':
+      case 'Salary':
+        sortBySalary(setJobs, jobs);
         break;
       default:
         getJobs(setJobs);
@@ -64,7 +64,7 @@ function Jobs() {
                     <option class="sorting" value="Rating">Rating</option>
                     <option class="sorting" value="Popular">Popular</option>
                     <option class="sorting" value="Latest">Latest</option>
-                    <option class="sorting" value="Free">Free</option>
+                    <option class="sorting" value="Free">Salary</option>
                   </select>
                 </span>
               </div>
@@ -97,6 +97,7 @@ function Jobs() {
             </div>
 
             <div class="col-md-12 col-lg-8 col-xl-9">
+    
               {jobs ? jobs.data.map((data, index) => {
                 return <JobCard_Horizontal
                   key={data._id} user={data.user}

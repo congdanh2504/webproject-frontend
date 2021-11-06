@@ -26,6 +26,7 @@ function TopCompanies() {
                 name={data.name}
                 rate={data.rate}
                 address={data.address}
+                avatar={data.avatarAddress}
               />
             }) : <Loading />}
           </div>

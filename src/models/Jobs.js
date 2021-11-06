@@ -1,14 +1,8 @@
 export function sortDescendingByRating (setJobs, jobs){
   var newJobs = jobs.data.sort((a, b)=>{
-    return parseInt(b.rate) - parseInt(a.rate);
+    return parseInt(b.user.rate.avg) - parseInt(a.user.rate.avg);
   });
-  var job={
-    current_page: jobs.current_page,
-    per_page: jobs.per_page,
-    total: jobs.total,
-    data: newJobs,
-  }
-  setJobs(job);
+  setJobs({...jobs, data:newJobs});
 }
 
 export function sortLatest(setJobs, jobs) {
@@ -17,11 +11,12 @@ export function sortLatest(setJobs, jobs) {
     var date_2 =new Date(a.created_at)
     return date_1 - date_2;
   });
-  var job={
-    current_page: jobs.current_page,
-    per_page: jobs.per_page,
-    total: jobs.total,
-    data: newJobs,
-  }
-  setJobs(job);
+  setJobs({...jobs, data:newJobs});
+}
+
+export function sortBySalary(setJobs, jobs) {
+  var newJobs= jobs.data.sort((a, b)=>{
+    return parseInt(b.salary) - parseInt(a.salary);
+  });
+  setJobs({...jobs, data:newJobs});
 }

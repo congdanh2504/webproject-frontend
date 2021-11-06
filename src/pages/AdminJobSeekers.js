@@ -58,18 +58,11 @@ function JobSeekers() {
                             <td class="text-right">
                               <div class="actions">
                                 <a
-                                  class="btn btn-sm bg-success-light"
-                                  data-toggle="modal"
-                                  href="#edit_specialities_details"
-                                >
-                                  <i class="fe fe-pencil"></i> View
-                                </a>
-                                <a
                                   data-toggle="modal"
                                   href="#delete_modal"
                                   class="btn btn-sm bg-danger-light"
                                 >
-                                  <i class="fe fe-trash"></i> Delete
+                                  <i class="fa fa-trash"></i> Delete
                                 </a>
                               </div>
                             </td>
