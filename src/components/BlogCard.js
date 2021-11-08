@@ -19,14 +19,14 @@ function BlogCard(props) {
           <div class="table-avatar pt-2 pb-3">
             <div className="d-flex justify-content-between align-items-center">
               <div className="d-flex align-items-center">
-                <Link to={`/profile/${props.user._id}`} class="avatar avatar-xs mr-2 float-left">
+                <Link to={`/profile/${props.user?._id}`} class="avatar avatar-xs mr-2 float-left">
                   <img
                     class="avatar-img rounded-circle"
-                    src={props.user.avatarAddress ? props.user.avatarAddress : image}
+                    src={props.user?.avatarAddress ? props.user?.avatarAddress : image}
                     alt="User Image"
                   />
                 </Link>
-                <Link to={`/profile/${props.user._id}`} class="float-left">
+                <Link to={`/profile/${props.user?._id}`} class="float-left">
                   <span> {props.user.name}</span>
                 </Link>
               </div>

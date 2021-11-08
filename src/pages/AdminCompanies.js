@@ -3,6 +3,7 @@ import { Link, NavLink, useHistory } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb";
 import { getCompany } from "../api/Admin";
 import image from "../assets/img/default_avatar.png";
+import Moment from 'react-moment';
 
 function JobSeekers() {
   const [company, setCompany] = useState(null);
@@ -26,6 +27,7 @@ function JobSeekers() {
                         <th>ID</th>
                         <th>Company Name</th>
                         <th>Email</th>
+                        <th>Registered at</th>
                         <th class="text-right">Actions</th>
                       </tr>
                     </thead>
@@ -51,21 +53,17 @@ function JobSeekers() {
                             <td>
                               {user?.email ? user.email : null}
                             </td>
+                            <td>
+                              <Moment format="YYYY/MM/DD">{user.created_at}</Moment>
+                            </td>
                             <td class="text-right">
                               <div class="actions">
-                                <a
-                                  class="btn btn-sm bg-success-light"
-                                  data-toggle="modal"
-                                  href="#edit_specialities_details"
-                                >
-                                  <i class="fe fe-pencil"></i> View
-                                </a>
                                 <a
                                   data-toggle="modal"
                                   href="#delete_modal"
                                   class="btn btn-sm bg-danger-light"
                                 >
-                                  <i class="fe fe-trash"></i> Delete
+                                  <i class="fa fa-trash"></i> Delete
                                 </a>
                               </div>
                             </td>

@@ -20,3 +20,13 @@ export const getCompany= (setCompany, pageNumber = 1)=>{
     setCompany(response.data)
   })
 }
+
+export const deleteUser= (setUsers, user_id) =>{
+  axios({
+    method: 'DELETE',
+    url: `${BASE_URL}admin/users/${user_id}?token=${getToken()}`,
+    headers: {'Content-Type': 'application/json'}
+  }).then(response => {
+    setUsers(response.data)
+  })
+}
