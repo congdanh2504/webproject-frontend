@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import CompanyCard from "../components/CompanyCard";
 import Loading from '../components/Loading';
-import { getCompany } from "../api/Admin";
+import { getCompany } from "../api/System";
 import Pagination from 'react-js-pagination'
 
 

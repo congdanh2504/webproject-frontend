@@ -32,6 +32,7 @@ import { RouteWithNav } from "./components/RouteWithNav";
 import { EmployerRoute } from "./components/EmployerRoute";
 import { EmployeeRoute } from "./components/EmployeeRoute";
 import { PrivateRoute } from "./components/PrivateRoute";
+import { AdminRoute } from "./components/AdminRoute";
 
 function App() {
   const [authLoading, setAuthLoading] = useState(true);
@@ -126,31 +127,31 @@ function App() {
 
         {/* Admin's routes */}
         
-        <RouteWithNav
+        <AdminRoute
           type="admin"
           path="/admin"
           exact
           component={AdminDashboard}
         />
-        <RouteWithNav
+        <AdminRoute
           type="admin"
           path="/admin/companies"
           exact
           component={AdminCompanies}
         />
-        <RouteWithNav
+        <AdminRoute
           type="admin"
           path="/admin/job-seekers"
           exact
           component={AdminJobSeekers}
         />
-        <RouteWithNav
+        <AdminRoute
           type="admin"
           path="/admin/blog"
           exact
           component={AdminBlog}
         />
-        <RouteWithNav
+        <AdminRoute
           type="admin"
           path="/admin/reviews"
           exact

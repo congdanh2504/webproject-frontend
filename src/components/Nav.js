@@ -8,8 +8,7 @@ const user = [
   { name: `Jobs`, path: `/jobs` },
   { name: `Top Companies`, path: `/topCompanies` },
   { name: `Blog`, path: `/blog` },
-  { name: `About`, path: `/about` },
-  { name: `Admin`, path: `/admin` },
+  { name: `About`, path: `/about` }
 ];
 const admin = [
   { name: `Home`, path: `/` },
@@ -135,14 +134,19 @@ function Nav(props) {
                       <Link to={`/employerprofile/${getUser()._id}`} className="dropdown-item"> Your Profile </Link> &&
                       <Link to="/employerprofilesetting" className="dropdown-item"> Update sssd Profile </Link>
                     } */}
-                    {getUser().type == "Employee" ?
-                      <Link to={`/profile/${getUser()._id}`} className="dropdown-item"> Your Profile </Link> :
+                    {getUser().type == "Employee" &&
+                    <div>
+                      <Link to={`/profile/${getUser()._id}`} className="dropdown-item"> Your Profile </Link>
+                      <Link to="/userprofilesetting" className="dropdown-item"> Update Profile </Link> 
+                    </div>
+                    }
+                    {getUser().type == "Employer" &&
+                    <div>
                       <Link to={`/employerprofile/${getUser()._id}`} className="dropdown-item"> Your Profile </Link>
-                    }
-                    {getUser().type == "Employee" ?
-                      <Link to="/userprofilesetting" className="dropdown-item"> Update Profile </Link> :
                       <Link to="/employerprofilesetting" className="dropdown-item"> Update Profile </Link>
+                    </div>
                     }
+                    {getUser().type == "Admin" && <Link to="/admin" className="dropdown-item"> Adminstration </Link>}
                     <button class="dropdown-item" onClick={onLogout}>
                       Logout
                     </button>
