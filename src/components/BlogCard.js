@@ -19,18 +19,20 @@ function BlogCard(props) {
           <div class="table-avatar pt-2 pb-3">
             <div className="d-flex justify-content-between align-items-center">
               <div className="d-flex align-items-center">
-                <div class="avatar avatar-xs mr-2 float-left"><img
+                <div  class="avatar avatar-xs mr-2 float-left">
+                  <img
                     class="avatar-img rounded-circle"
-                    src={props.user.avatarAddress ? props.user.avatarAddress : image}
+                    src={props.user?.avatarAddress ? props.user?.avatarAddress : image}
                     alt="User Image"
                   />
-                </div>        
-                {props.user.type == "Employee" ? <Link to={`/profile/${props.user._id}`} class="float-left">
+                </div>
+
+                <Link to={`/profile/${props.user?._id}`} class="float-left">
                   <span> {props.user.name}</span>
-                </Link> : 
-                  <Link to={`/employerProfile/${props.user._id}`} class="float-left">
+                </Link> 
+                <Link to={`/employerProfile/${props.user._id}`} class="float-left">
                   <span> {props.user.name}</span>
-                </Link>}  
+                </Link>
               </div>
               <i class="far fa-clock text-muted"><Moment format="YYYY/MM/DD">
                 {props.time}

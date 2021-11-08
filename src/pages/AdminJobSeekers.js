@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb";
-import { getUsers } from "../api/Admin";
+import { getUsers, deleteUser } from "../api/Admin";
 import image from "../assets/img/default_avatar.png";
+import Moment from 'react-moment';
+import Pagination from 'react-js-pagination';
 
 function JobSeekers() {
   const [users, setUsers] = useState(null);
@@ -15,6 +17,7 @@ function JobSeekers() {
     var userLink = `/profile/${user._id}`;
     return userLink;
   }
+
   return (
     <>
       <Breadcrumb title="Users" type="admin" />
@@ -30,6 +33,7 @@ function JobSeekers() {
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Registered at</th>
                         <th class="text-right">Actions</th>
                       </tr>
                     </thead>
@@ -55,12 +59,16 @@ function JobSeekers() {
                             <td>
                               {user?.email ? user.email : null}
                             </td>
+                            <td>
+                              <Moment format="YYYY/MM/DD">{user.created_at}</Moment>
+                            </td>
                             <td class="text-right">
                               <div class="actions">
                                 <a
                                   data-toggle="modal"
                                   href="#delete_modal"
                                   class="btn btn-sm bg-danger-light"
+                                  onClick={() => deleteUser(setUsers, user._id)}
                                 >
                                   <i class="fa fa-trash"></i> Delete
                                 </a>
@@ -73,6 +81,20 @@ function JobSeekers() {
                     </tbody>
                   </table>
                 </div>
+                {users && <div className="row mt-3 justify-content-center">
+                  <Pagination
+                    activePage={users.current_page}
+                    itemsCountPerPage={users.per_page}
+                    totalItemsCount={users.total}
+                    pageRangeDisplayed={5}
+                    onChange={(num) => getUsers(setUsers, num)}
+                    itemClass="page-item"
+                    linkClass="page-link"
+                    firstPageText="First"
+                    lastPageText="Last"
+                  />
+                </div>
+                }
               </div>
             </div>
           </div>
