@@ -19,7 +19,7 @@ function JobCard_Horizontal(props) {
             </div>
             <div class="doc-info-cont">
               <h4 class="doc-name">
-                <Link to={`/profile/${props.user._id}`}>{props.user.name}</Link> {/*name employer, company */}
+                <Link to={`/employerProfile/${props.user._id}`}>{props.user.name}</Link> {/*name employer, company */}
               </h4>
               <p class="doc-speciality">{props.nameJob} - {props.title}</p>
               <h5 class="doc-department">

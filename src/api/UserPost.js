@@ -24,6 +24,7 @@ export const getBlogs = (setBlogs, pageNumber = 1) => {
         headers: {'Content-Type': 'application/json'},
       }).then(response => {
         setBlogs(response.data)
+        console.log(response.data)
       }).catch(error => {
 
     });

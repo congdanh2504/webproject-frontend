@@ -11,7 +11,7 @@ function CompanyCard(props) {
             <img
               class="img-fluid"
               alt="User Image"
-              src="assets/img/doctors/doctor-01.jpg"
+              src={props.avatar}
             />
           </a>
           <a href="javascript:void(0)" class="fav-btn">

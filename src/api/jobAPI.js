@@ -71,7 +71,7 @@ export const getMyJobs = (setJobs, id, pageNumber = 1) => {
         data: {}
     }).then(response => {
         setJobs(response.data)
-        console.log(response.data)
+        // console.log(response.data)
     })
 }
 

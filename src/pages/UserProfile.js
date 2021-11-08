@@ -15,15 +15,9 @@ function UserProfile() {
 
   if (user) {
     if (user.mobile)
-      if (user.type == "Employee")
-        return (
-          <EmployeeProfile user={user} />
-        )
-      else {
-        return (
-          <div>no</div>
-        )
-      }
+      return (
+        <EmployeeProfile user={user} />
+      )
     else {
       return (
         <div style={{ "height": "100vh" }}>

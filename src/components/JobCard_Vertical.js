@@ -20,7 +20,7 @@ function JobCard(props) {
       </div>
       <div class="pro-content">
         <h3 class="title">
-          <Link to={`/profile/${props.user._id}`}>{props.user.name}</Link>
+          <Link to={`/employerProfile/${props.user._id}`}>{props.user.name}</Link>
           <i class="fas fa-check-circle verified"></i>
         </h3>
         <p class="speciality">{props.title}</p>

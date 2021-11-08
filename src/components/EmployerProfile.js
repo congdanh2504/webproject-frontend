@@ -52,10 +52,10 @@ const EmployerProfile = (props) => {
             </div>
             <div class="col-md-12 col-lg-8 col-xl-9 m-auto">
               {jobs ?
-                <h3 className="bg-primary text-white text-center p-3 mb-4">All of your posts!</h3>:
-                <div className="alert alert-danger">You don't have any post.</div>
+                <h3 className="bg-primary text-white text-center p-3 mb-4">All posts!</h3>:
+                <div className="alert alert-danger">Don't have any post.</div>
               }
-              {jobs ? jobs.data.map((data, index) => {
+              {jobs && jobs.map((data, index) => {
                 return <JobCard_Horizontal
                   key={data._id} user={data.user}
                   id={data._id} title={data.title}
@@ -69,7 +69,7 @@ const EmployerProfile = (props) => {
                   like={data.like}
                   comments={data.comments}
                 />
-              }) : <Loading />}
+              })}
               {jobs && <div className="row mt-3 justify-content-center">
                 <Pagination
                   activePage={jobs.current_page}
