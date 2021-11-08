@@ -26,13 +26,13 @@ function BlogCard(props) {
                     alt="User Image"
                   />
                 </div>
-
-                <Link to={`/profile/${props.user?._id}`} class="float-left">
+                {props.user.type == "Employee" ? <Link to={`/profile/${props.user?._id}`} class="float-left">
                   <span> {props.user.name}</span>
-                </Link> 
-                <Link to={`/employerProfile/${props.user._id}`} class="float-left">
+                </Link> : <Link to={`/employerProfile/${props.user._id}`} class="float-left">
                   <span> {props.user.name}</span>
-                </Link>
+                </Link>}
+                
+                
               </div>
               <i class="far fa-clock text-muted"><Moment format="YYYY/MM/DD">
                 {props.time}
