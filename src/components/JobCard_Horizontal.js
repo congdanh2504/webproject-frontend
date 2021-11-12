@@ -35,7 +35,7 @@ function JobCard_Horizontal(props) {
                     count={5}
                     size={24}
                     edit={false}
-                    // half={true}
+                    half={true}
                     value={props.user.rate.avg}
                     activeColor="#ffd700"
                   />
@@ -46,21 +46,11 @@ function JobCard_Horizontal(props) {
                   <i class="fas fa-map-marker-alt"></i> {props.address.detail}
                 </p>
               </div>
-              <div class="clinic-services">
-                <span>Progamming</span>
-                <span>Java</span>
-              </div>
             </div>
           </div>
           <div class="doc-info-right">
             <div class="clini-infos">
               <ul>
-                <li>
-                  <i class="far fa-thumbs-up"></i> 98%
-                </li>
-                <li>
-                  <i class="far fa-comment"></i> 17 interested
-                </li>
                 <li>
                   <i class="far fa-clock"></i> Deadline {props.duration}
                 </li>

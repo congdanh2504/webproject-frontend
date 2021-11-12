@@ -1,5 +1,6 @@
 import React from 'react'
 import Breadcrumb from './Breadcrumb'
+import image from "../assets/img/default_avatar.png";
 
 function EmployeeProfile(props) {
   const getAge = (dateString) => {
@@ -24,7 +25,7 @@ function EmployeeProfile(props) {
                 <div class="doctor-widget">
                   <div class="doc-info-left">
                     <div class="doctor-img">
-                      <img src={props.user.avatarAddress} class="img-fluid" alt="User Image" />
+                      <img src={props.user.avatarAddress ? props.user.avatarAddress : image} class="img-fluid" alt="User Image" />
                     </div>
                     <div class="doc-info-cont">
                       <h4 class="doc-name">{props.user.name}</h4>

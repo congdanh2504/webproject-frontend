@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
+import image from "../assets/img/default_avatar.png";
 
 function CompanyCard(props) {
   return (
@@ -11,7 +12,7 @@ function CompanyCard(props) {
             <img
               class="img-fluid"
               alt="User Image"
-              src={props.avatar}
+              src={props.avatar? props.avatar : image}
             />
           </a>
           <a href="javascript:void(0)" class="fav-btn">
@@ -20,7 +21,7 @@ function CompanyCard(props) {
         </div>
         <div class="pro-content">
           <h3 class="title">
-            <a href="">{props.name}</a>
+            <Link to={`/employerprofile/${props.id}`} className="">{props.name}</Link>
             <i class="fas fa-check-circle verified"></i>
           </h3>
           <p class="speciality">We have the right job for you</p>

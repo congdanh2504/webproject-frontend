@@ -21,7 +21,7 @@ export const getCompany= (setCompany, pageNumber = 1)=>{
   })
 }
 
-export const deleteUser= (setUsers, user_id) =>{
+export const deleteUser = (setUsers, user_id) =>{
   axios({
     method: 'DELETE',
     url: `${BASE_URL}admin/users/${user_id}?token=${getToken()}`,

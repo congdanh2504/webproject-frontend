@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Loading from '../components/Loading';
 import Breadcrumb from './Breadcrumb'
 import JobCard_Horizontal from "../components/JobCard_Horizontal";
 import image from "../assets/img/default_avatar.png";
@@ -15,12 +14,8 @@ const EmployerProfile = (props) => {
   const id = useParams('id')
 
   useEffect(() => {
-    getMyJobs(setJobs, id.id);
-  }, [])
-
-
-  useEffect(() => {
     getUserById(id.id, setUser)
+    getMyJobs(setJobs, id.id);
   }, [])
 
   return (
@@ -51,11 +46,11 @@ const EmployerProfile = (props) => {
               </div>
             </div>
             <div class="col-md-12 col-lg-8 col-xl-9 m-auto">
-              {jobs ?
+              {(jobs && jobs.data.length > 0) ?
                 <h3 className="bg-primary text-white text-center p-3 mb-4">All posts!</h3>:
                 <div className="alert alert-danger">Don't have any post.</div>
               }
-              {jobs && jobs.map((data, index) => {
+              {jobs && jobs.data.length > 0 && jobs.data.map((data, index) => {
                 return <JobCard_Horizontal
                   key={data._id} user={data.user}
                   id={data._id} title={data.title}
@@ -70,7 +65,7 @@ const EmployerProfile = (props) => {
                   comments={data.comments}
                 />
               })}
-              {jobs && <div className="row mt-3 justify-content-center">
+              {jobs && jobs.data.length > 0 && <div className="row mt-3 justify-content-center">
                 <Pagination
                   activePage={jobs.current_page}
                   itemsCountPerPage={jobs.per_page}

@@ -7,6 +7,7 @@ import Loading from '../components/Loading'
 import { getUser } from "../api/Common";
 import AddReview from "../components/AddReview";
 import ReactStars from "react-rating-stars-component";
+import image from "../assets/img/default_avatar.png";
 
 function JobDetails() {
   const id = useParams('id')
@@ -63,12 +64,6 @@ function JobDetails() {
                   <div className="doc-info-right">
                     <div className="clini-infos">
                       <ul>
-                        <li>
-                          <i className="far fa-thumbs-up"></i> 98%
-                        </li>
-                        <li>
-                          <i className="far fa-comment"></i> 17 interested
-                        </li>
                         <li>
                           <i className="far fa-clock"></i> Deadline {job.duration}
                         </li>
@@ -180,7 +175,7 @@ function JobDetails() {
                               <img
                                 className="avatar avatar-sm rounded-circle"
                                 alt="User Image"
-                                src={review.user.avatarAddress}
+                                src={review.user.avatarAddress ? review.user.avatarAddress : image}
                               />
                             </Link>
                             <div className="comment-body">
