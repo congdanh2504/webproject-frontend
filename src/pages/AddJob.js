@@ -126,11 +126,11 @@ const AddJob = () => {
                         <label>Types of Career</label>
                         <select class="form-control select" onChange={changeCategory}>
                           <option>Select</option>
-                          <option>Progammer</option>
+                          <option>Programmer</option>
                           <option>Designer</option>
-                          <option> Editor</option>
-                          <option> Web developer</option>
-                          <option> Receptionist</option>
+                          <option>Editor</option>
+                          <option>Web developer</option>
+                          <option>Receptionist</option>
                         </select>
                       </div>
                     </div>

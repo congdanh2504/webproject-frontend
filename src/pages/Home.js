@@ -114,12 +114,11 @@ function Home() {
           <div class="row justify-content-center">
             <div class="col-md-9">
               <Slider {...settings_clinic_specialities}>
-                <CategoryCard />
-                <CategoryCard />
-                <CategoryCard />
-                <CategoryCard />
-                <CategoryCard />
-                <CategoryCard />
+                <CategoryCard title="Programmer"/>
+                <CategoryCard title="Editor"/>
+                <CategoryCard title="Receptionist"/>
+                <CategoryCard title="Web developer"/>
+                <CategoryCard title="Designer"/>
               </Slider>
             </div>
           </div>

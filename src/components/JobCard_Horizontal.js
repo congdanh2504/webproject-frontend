@@ -2,6 +2,13 @@ import React, { useState, useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
 
+const categories = new Map();
+categories.set("Programmer", "assets/img/categories/programmer.png");
+categories.set("Editor", "assets/img/categories/editor.png");
+categories.set("Receptionist", "assets/img/categories/receptionist.png");
+categories.set("Designer", "assets/img/categories/designer.png");
+categories.set("Web developer", "assets/img/categories/developer.png");
+
 function JobCard_Horizontal(props) {
   return (
     <div class="card">
@@ -24,7 +31,7 @@ function JobCard_Horizontal(props) {
               <p class="doc-speciality">{props.nameJob} - {props.title}</p>
               <h5 class="doc-department">
                 <img
-                  src="assets/img/categories/categories-01.png"
+                  src={categories.get(props.category)}
                   class="img-fluid"
                   alt=""
                 />
