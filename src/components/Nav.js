@@ -16,7 +16,7 @@ const admin = [
   { name: `Users`, path: `/admin/job-seekers` },
   { name: `Companies`, path: `/admin/companies` },
   { name: `Blog`, path: `/admin/blog` },
-  { name: `Reviews`, path: `/admin/reviews` },
+  { name: `PostItem`, path: `/admin/postItem` },
 ];
 function ShowNav(type) {
   let temp;

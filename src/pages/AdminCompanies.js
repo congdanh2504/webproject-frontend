@@ -14,7 +14,7 @@ function JobSeekers() {
 
   return (
     <>
-      <Breadcrumb title="Users" type="admin" />
+      <Breadcrumb title="Companies" type="admin" />
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-12">

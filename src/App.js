@@ -27,12 +27,12 @@ import EmployerProfile from "./components/EmployerProfile";
 import EmployerProfileSetting from "./pages/EmployerProfileSetting";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminBlog from "./pages/AdminBlog";
-import AdminReviews from "./pages/AdminReviews";
 import { RouteWithNav } from "./components/RouteWithNav";
 import { EmployerRoute } from "./components/EmployerRoute";
 import { EmployeeRoute } from "./components/EmployeeRoute";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { AdminRoute } from "./components/AdminRoute";
+import AdminPostItem from "./pages/AdminPostItem";
 
 function App() {
   const [authLoading, setAuthLoading] = useState(true);
@@ -153,9 +153,9 @@ function App() {
         />
         <AdminRoute
           type="admin"
-          path="/admin/reviews"
+          path="/admin/postItem"
           exact
-          component={AdminReviews}
+          component={AdminPostItem}
         />
         {/* End admin's routes */}
       </Router>

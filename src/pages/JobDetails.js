@@ -55,10 +55,6 @@ function JobDetails() {
                           <i className="fas fa-map-marker-alt"></i> {job.address.province}
                         </p>
                       </div>
-                      <div className="clinic-services">
-                        <span>Progamming</span>
-                        <span>Java</span>
-                      </div>
                     </div>
                   </div>
                   <div className="doc-info-right">
@@ -72,32 +68,8 @@ function JobDetails() {
                         </li>
                       </ul>
                     </div>
-                    <div className="doctor-action">
-                      <a href="javascript:void(0)" className="btn btn-white fav-btn">
-                        <i className="far fa-bookmark"></i>
-                      </a>
-                      <a href="chat.html" className="btn btn-white msg-btn">
-                        <i className="far fa-comment-alt"></i>
-                      </a>
-                      <a
-                        href="javascript:void(0)"
-                        className="btn btn-white call-btn"
-                        data-toggle="modal"
-                        data-target="#voice_call"
-                      >
-                        <i className="fas fa-phone"></i>
-                      </a>
-                      <a
-                        href="javascript:void(0)"
-                        className="btn btn-white call-btn"
-                        data-toggle="modal"
-                        data-target="#video_call"
-                      >
-                        <i className="fas fa-video"></i>
-                      </a>
-                    </div>
                     <div className="clinic-booking">
-                      <a className="apt-btn" href="booking.html">
+                      <a className="apt-btn" href="">
                         Apply
                       </a>
                     </div>
@@ -171,16 +143,14 @@ function JobDetails() {
                         {job.user.reviews ? job.user.reviews.map((review, index) => {
                           return  <li>
                           <div className="comment">
-                            <Link to="/userprofilesetting">
-                              <img
-                                className="avatar avatar-sm rounded-circle"
-                                alt="User Image"
-                                src={review.user.avatarAddress ? review.user.avatarAddress : image}
-                              />
-                            </Link>
+                            <img
+                              className="avatar avatar-sm rounded-circle"
+                              alt="User Image"
+                              src={review.user.avatarAddress ? review.user.avatarAddress : image}
+                            />                            
                             <div className="comment-body">
                               <div className="meta-data">
-                                <Link to="/userprofilesetting">
+                                <Link to={`/profile/${review.user.userID}`}>
                                   <span className="comment-author">
                                     {review.user.name}
                                   </span>
@@ -207,7 +177,7 @@ function JobDetails() {
                       </ul>
                     </div>
 
-                    {getUser() && <AddReview idJob={id.id} setJob={setJob} id={job.user._id}/>}
+                    {getUser().type == "Employee" && <AddReview idJob={id.id} setJob={setJob} id={job.user._id}/>}
                     
                   </div>
                 </div>
