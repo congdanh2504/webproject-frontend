@@ -6,12 +6,31 @@ import Pagination from 'react-js-pagination'
 import { getUser } from '../api/Common';
 import { getJobs, searchJob } from '../api/jobAPI';
 import { sortDescendingByRating,  sortLatest, sortBySalary } from '../models/Jobs'
+import { getProvinces } from "../api/locationAPI";
+import Select from "react-select";
+
 function Jobs() {
   const params = new URLSearchParams(window.location.search)
   const location = params.get("location")
   const keyword = params.get("keyword")
-
   const [jobs, setJobs] = useState(null);
+  const categoryOptions = [{value: "Programmer", label: "Programmer"}, 
+                            {value: "Editor", label: "Editor"},
+                            {value: "Web developer", label: "Web developer"},
+                            {value: "Designer", label: "Designer"},
+                            {value: "Receptionist", label: "Receptionist"},]
+
+  const [provinceOptions, changeProvinceOptions] = useState([]);
+  const [province, changeProvince] = useState("");
+  const [category, setCategory] = useState("");
+
+  const updateCategory = (param) => {
+    setCategory(param.label);
+  };
+
+  const updateProvince = (param) => {
+    changeProvince(param.label);
+  };
 
   useEffect(() => {
     if (location || keyword) {
@@ -19,6 +38,11 @@ function Jobs() {
     } else {
       getJobs(setJobs);
     }
+    async function fetchProvinces() {
+      let response = await getProvinces();
+      changeProvinceOptions(response);
+    }
+    fetchProvinces();
   }, [])
 
   const sortChange = (param) => {
@@ -88,9 +112,20 @@ function Jobs() {
                   <h4 class="card-title mb-0">Search Filter</h4>
                 </div>
                 <div class="card-body">
-                  <h5 className="text-center">Coming soon...</h5>
+                  <Select
+                    className="form-control"
+                    placeholder="Province"
+                    options={provinceOptions}
+                    onChange={updateProvince}
+                  />
+                  <Select
+                    className="form-control"
+                    placeholder="Category"
+                    options={categoryOptions}
+                    onChange={updateCategory}
+                  />
                   <div class="btn-search">
-                    <button type="button" class="btn btn-block">
+                    <button onClick={() => searchJob(setJobs, province, category)} type="button" class="btn btn-block">
                       Search
                     </button>
                   </div>
