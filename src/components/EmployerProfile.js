@@ -29,7 +29,7 @@ const EmployerProfile = (props) => {
                 <div class="doctor-widget">
                   <div class="doc-info-left">
                     <div class="doctor-img">
-                      <img src={user?.avatarAddress ? user.avatarAddress : image} class="img-fluid" alt="User Image" />
+                      <img src={user?.avatarAddress ? user.avatarAddress : image} class="img-fluid fix-image" alt="User Image" />
                     </div>
                     <div class="doc-info-cont">
                       <h4 class="doc-name">{user?.name ? user?.name : "Name of Employeer"}</h4>
