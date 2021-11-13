@@ -16,7 +16,12 @@ export function sortLatest(setJobs, jobs) {
 
 export function sortBySalary(setJobs, jobs) {
   var newJobs= jobs.data.sort((a, b)=>{
-    return parseInt(b.salary) - parseInt(a.salary);
+    if(parseInt(a.salary) > parseInt(b.salary))
+      return -1;
+    if(parseInt(a.salary) < parseInt(b.salary))
+      return 1;
+    // return -1*(parseInt(b.salary) - parseInt(a.salary));
+    return 0;
   });
   setJobs({...jobs, data:newJobs});
 }
