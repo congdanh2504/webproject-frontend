@@ -45,7 +45,7 @@ const EmployerProfile = (props) => {
                 </div>
               </div>
             </div>
-            <div class="col-md-12 col-lg-8 col-xl-9 m-auto">
+            <div class="col-12">
               {(jobs && jobs.data.length > 0) ?
                 <h3 className="bg-primary text-white text-center p-3 mb-4">All posts!</h3>:
                 <div className="alert alert-danger">Don't have any post.</div>

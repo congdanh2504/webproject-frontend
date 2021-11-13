@@ -27,8 +27,8 @@ function AdminBlog() {
                             <th>ID</th>
                             <th>Title</th>
                             <th>User name</th>
-                            <th>Create at</th>
                             <th>Link</th>
+                            <th>Create at</th>
                             <th class="text-right">Actions</th>
                         </tr>
                         </thead>
@@ -47,10 +47,10 @@ function AdminBlog() {
                                 {blog.user?.name ? blog.user.name : null}
                                 </td>
                                 <td>
-                                <Moment format="YYYY/MM/DD">{blog.created_at}</Moment>
+                                    <Link to={`/blog/detail/${blog._id}`} >Link</Link>
                                 </td>
                                 <td>
-                                    <Link to={`/blog/detail/${blog._id}`} >Link</Link>
+                                <Moment format="YYYY/MM/DD">{blog.created_at}</Moment>
                                 </td>
                                 <td class="text-right">
                                 <div class="actions" onClick={() => deleteBlog(setBlog, blog._id)}>

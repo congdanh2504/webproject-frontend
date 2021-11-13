@@ -27,8 +27,8 @@ function AdminPostItem() {
                       <th>ID</th>
                       <th>Title</th>
                       <th>User name</th>
-                      <th>Create at</th>
                       <th>Link</th>
+                      <th>Create at</th>
                       <th class="text-right">Actions</th>
                   </tr>
                   </thead>
@@ -47,10 +47,10 @@ function AdminPostItem() {
                           {job.user?.name ? job.user.name : null}
                           </td>
                           <td>
-                          <Moment format="YYYY/MM/DD">{job.created_at}</Moment>
+                              <Link to={`/jobs/job-details/${job._id}`}>Link</Link>
                           </td>
                           <td>
-                              <Link to={`/jobs/job-details/${job._id}`}>Link</Link>
+                          <Moment format="YYYY/MM/DD">{job.created_at}</Moment>
                           </td>
                           <td class="text-right">
                           <div class="actions" onClick={() => deleteJob(setPostItem, job._id)}>
