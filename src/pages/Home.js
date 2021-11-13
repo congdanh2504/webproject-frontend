@@ -3,14 +3,27 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import CategoryCard from "../components/CategoryCard";
 import JobCard_Vertical from "../components/JobCard_Vertical";
-import { getJobs } from '../api/jobAPI';
+import { getJobs } from "../api/jobAPI";
+import { getProvinces } from "../api/locationAPI";
+import Select from "react-select";
 
 function Home() {
   const [jobs, setJobs] = useState();
+  const [provinceOptions, changeProvinceOptions] = useState([]);
+  const [keyword, setKeyword] = useState("");
+  const [province, changeProvince] = useState("");
+  const updateProvince = (param) => {
+    changeProvince(param.label);
+  };
 
   useEffect(() => {
     getJobs(setJobs);
-  }, [])
+    async function fetchProvinces() {
+      let response = await getProvinces();
+      changeProvinceOptions(response);
+    }
+    fetchProvinces();
+  }, []);
 
   const settings_clinic_specialities = {
     dots: true,
@@ -76,24 +89,28 @@ function Home() {
             </div>
 
             <div className="search-box">
-              <form action="templateshub.net">
+              <form>
                 <div className="form-group search-location">
-                  <input
-                    type="text"
+                  <Select
                     className="form-control"
-                    placeholder="Search Location"
+                    placeholder="Province"
+                    options={provinceOptions}
+                    onChange={updateProvince}
                   />
                 </div>
                 <div className="form-group search-info">
                   <input
+                    onChange={(param) => setKeyword(param.target.value)}
                     type="text"
                     className="form-control"
                     placeholder="Find a job, a field, a company, ..."
                   />
                 </div>
-                <button type="submit" className="btn btn-primary search-btn">
-                  <i className="fas fa-search"></i> <span>Search</span>
-                </button>
+                <Link to={`/jobs?location=${province}&keyword=${keyword}`} >
+                  <button className="btn btn-primary search-btn">
+                  <i className="fas fa-search"></i><span>Search</span>
+                  </button>
+                </Link>
               </form>
             </div>
           </div>
@@ -114,11 +131,11 @@ function Home() {
           <div class="row justify-content-center">
             <div class="col-md-9">
               <Slider {...settings_clinic_specialities}>
-                <CategoryCard title="Programmer"/>
-                <CategoryCard title="Editor"/>
-                <CategoryCard title="Receptionist"/>
-                <CategoryCard title="Web developer"/>
-                <CategoryCard title="Designer"/>
+                <CategoryCard title="Programmer" />
+                <CategoryCard title="Editor" />
+                <CategoryCard title="Receptionist" />
+                <CategoryCard title="Web developer" />
+                <CategoryCard title="Designer" />
               </Slider>
             </div>
           </div>
@@ -156,19 +173,24 @@ function Home() {
             <div className="col-lg-8">
               <div className="doctor-slider slider">
                 <Slider {...settings_popular}>
-                  {jobs ? jobs.data.map((data) => {
-                    return <JobCard_Vertical
-                      key={data._id} user={data.user}
-                      id={data._id} title={data.title}
-                      imagesAddress={data.imagesAddress}
-                      nameJob={data.nameJob}
-                      duration={data.duration}
-                      salary={data.salary}
-                      address={data.address}
-                      rate={data.rate}
-                    />
-                  }) :null
-                  }
+                  {jobs
+                    ? jobs.data.map((data) => {
+                        return (
+                          <JobCard_Vertical
+                            key={data._id}
+                            user={data.user}
+                            id={data._id}
+                            title={data.title}
+                            imagesAddress={data.imagesAddress}
+                            nameJob={data.nameJob}
+                            duration={data.duration}
+                            salary={data.salary}
+                            address={data.address}
+                            rate={data.rate}
+                          />
+                        );
+                      })
+                    : null}
                 </Slider>
               </div>
             </div>

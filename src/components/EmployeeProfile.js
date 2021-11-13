@@ -1,5 +1,5 @@
-import React from 'react'
-import Breadcrumb from './Breadcrumb'
+import React from "react";
+import Breadcrumb from "./Breadcrumb";
 import image from "../assets/img/default_avatar.png";
 
 function EmployeeProfile(props) {
@@ -12,7 +12,7 @@ function EmployeeProfile(props) {
       age--;
     }
     return age;
-  }
+  };
 
   return (
     <div>
@@ -24,17 +24,36 @@ function EmployeeProfile(props) {
               <div class="card-body">
                 <div class="doctor-widget">
                   <div class="doc-info-left">
-                    <div class="profile-avatar">
-                      <img src={props.user.avatarAddress ? props.user.avatarAddress : image} class="img-fluid" alt="User Image" />
+                    <div class="doctor-img">
+                      <img
+                        src={
+                          props.user.avatarAddress
+                            ? props.user.avatarAddress
+                            : image
+                        }
+                        class="img-fluid fix-image"
+                        alt="User Image"
+                      />
                     </div>
                     <div class="doc-info-cont">
                       <h4 class="doc-name">{props.user.name}</h4>
                       <div class="clini-infos">
                         <ul>
-                          <li><i class="fas fa-map-marker-alt"></i>{props.user.address.detail} </li>
-                          <li><i class="far fa-envelope"></i>{props.user.email}</li>
-                          <li><i class="fas fa-child"></i>{getAge(props.user.dob)} years old</li>
-                          <li><i class="fas fa-mobile"></i> {props.user.mobile} </li>
+                          <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            {props.user.address.detail}{" "}
+                          </li>
+                          <li>
+                            <i class="far fa-envelope"></i>
+                            {props.user.email}
+                          </li>
+                          <li>
+                            <i class="fas fa-child"></i>
+                            {getAge(props.user.dob)} years old
+                          </li>
+                          <li>
+                            <i class="fas fa-mobile"></i> {props.user.mobile}{" "}
+                          </li>
                         </ul>
                       </div>
                     </div>
@@ -44,16 +63,19 @@ function EmployeeProfile(props) {
             </div>
           </div>
         </div>
-        <div className='container card'>
-          <h1><b>The CV</b></h1>
+        <div className="container card">
+          <h1>
+            <b>The CV</b>
+          </h1>
           <div
             dangerouslySetInnerHTML={{
-              __html: props.user.cv
-            }}></div>
+              __html: props.user.cv,
+            }}
+          ></div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default EmployeeProfile
+export default EmployeeProfile;

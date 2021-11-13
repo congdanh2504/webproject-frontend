@@ -1,18 +1,48 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import JobCard_Horizontal from "../components/JobCard_Horizontal";
-import JobCard_Vertical from "../components/JobCard_Vertical";
 import Loading from '../components/Loading';
 import Pagination from 'react-js-pagination'
-
 import { getUser } from '../api/Common';
-import { getJobs } from '../api/jobAPI';
+import { getJobs, searchJob } from '../api/jobAPI';
 import { sortDescendingByRating,  sortLatest, sortBySalary } from '../models/Jobs'
+import { getProvinces } from "../api/locationAPI";
+import Select from "react-select";
+
 function Jobs() {
-  const [jobs, setJobs] = useState();
+  const params = new URLSearchParams(window.location.search)
+  const location = params.get("location")
+  const keyword = params.get("keyword")
+  const [jobs, setJobs] = useState(null);
+  const categoryOptions = [{value: "Programmer", label: "Programmer"}, 
+                            {value: "Editor", label: "Editor"},
+                            {value: "Web developer", label: "Web developer"},
+                            {value: "Designer", label: "Designer"},
+                            {value: "Receptionist", label: "Receptionist"},]
+
+  const [provinceOptions, changeProvinceOptions] = useState([]);
+  const [province, changeProvince] = useState("");
+  const [category, setCategory] = useState("");
+
+  const updateCategory = (param) => {
+    setCategory(param.label);
+  };
+
+  const updateProvince = (param) => {
+    changeProvince(param.label);
+  };
 
   useEffect(() => {
-    getJobs(setJobs);
+    if (location || keyword) {
+      searchJob(setJobs, location, keyword)
+    } else {
+      getJobs(setJobs);
+    }
+    async function fetchProvinces() {
+      let response = await getProvinces();
+      changeProvinceOptions(response);
+    }
+    fetchProvinces();
   }, [])
 
   const sortChange = (param) => {
@@ -20,8 +50,6 @@ function Jobs() {
     switch (option) {
       case 'Rating':
         sortDescendingByRating(setJobs, jobs);
-        break;
-      case 'Popular':
         break;
       case 'Latest':
         sortLatest(setJobs, jobs);
@@ -52,7 +80,7 @@ function Jobs() {
                 </ol>
               </nav>
               <h2 class="breadcrumb-title">
-                2245 matches found for : VKU group
+                Search
               </h2>
             </div>
             <div class="col-md-4 col-12 d-md-block d-none">
@@ -62,9 +90,8 @@ function Jobs() {
                   <select class="select" onChange={sortChange}>
                     <option>Select</option>
                     <option class="sorting" value="Rating">Rating</option>
-                    <option class="sorting" value="Popular">Popular</option>
                     <option class="sorting" value="Latest">Latest</option>
-                    <option class="sorting" value="Free">Salary</option>
+                    <option class="sorting" value="Salary">Salary</option>
                   </select>
                 </span>
               </div>
@@ -85,9 +112,20 @@ function Jobs() {
                   <h4 class="card-title mb-0">Search Filter</h4>
                 </div>
                 <div class="card-body">
-                  <h5 className="text-center">Coming soon...</h5>
+                  <Select
+                    className="form-control"
+                    placeholder="Province"
+                    options={provinceOptions}
+                    onChange={updateProvince}
+                  />
+                  <Select
+                    className="form-control"
+                    placeholder="Category"
+                    options={categoryOptions}
+                    onChange={updateCategory}
+                  />
                   <div class="btn-search">
-                    <button type="button" class="btn btn-block">
+                    <button onClick={() => searchJob(setJobs, province, category)} type="button" class="btn btn-block">
                       Search
                     </button>
                   </div>
