@@ -3507,6 +3507,19 @@ html.menu-opened body {
   object-fit: cover;
 }
 
+.profile-avatar {
+  -ms-flex: 0 0 150px;
+  flex: 0 0 150px;
+  margin-right: 20px;
+  width: 150px;
+}
+
+.profile-avatar img {
+  border-radius: 5px;
+  object-fit: cover;
+  /* width:fit-content; */
+}
+
 .doc-department {
   color: #20c0f3;
   font-size: 14px;
@@ -7869,6 +7882,11 @@ html.menu-opened body {
   }
 
   .doctor-img {
+    margin: 0 auto 20px;
+    flex: none;
+  }
+
+  .profile-avatar {
     margin: 0 auto 20px;
     flex: none;
   }

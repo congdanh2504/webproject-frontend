@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Breadcrumb from "../components/Breadcrumb";
 import Bar from "../components/charts/ChartBar";
 import Doughnut from "../components/charts/ChartDoughnut";
 import Line from "../components/charts/ChartLine";
 import Radar from "../components/charts/ChartRadar";
+import { getCompany } from "../api/Admin";
+import { getUsers } from "../api/Admin";
+
+
 function AdminDashboard() {
+  const [company, setCompany] = useState(null);
+  const [users, setUsers] = useState(null);
+
+  useEffect(() => {
+    getCompany(setCompany);
+  }, [])
+  useEffect(() => {
+    getUsers(setUsers);
+  }, [])
+
+
+
   return (
     <div>
       <Breadcrumb title="Home" type="admin" />
@@ -19,7 +35,7 @@ function AdminDashboard() {
                       <i class="fa fa-users"></i>
                     </span>
                     <div class="dash-count">
-                      <h3>168</h3>
+                      <h3>{users?.total}</h3>
                     </div>
                   </div>
                   <div class="dash-widget-info">
@@ -39,7 +55,7 @@ function AdminDashboard() {
                       <i class="fa fa-credit-card"></i>
                     </span>
                     <div class="dash-count">
-                      <h3>487</h3>
+                      <h3>{company?.total}</h3>
                     </div>
                   </div>
                   <div class="dash-widget-info">
