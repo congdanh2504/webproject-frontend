@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import CategoryCard from "../components/CategoryCard";
 import JobCard_Vertical from "../components/JobCard_Vertical";
-import { getJobs } from '../api/jobAPI';
+import { getJobs } from "../api/jobAPI";
 import { getProvinces } from "../api/locationAPI";
-import Select from 'react-select'
+import Select from "react-select";
 
 function Home() {
   const [jobs, setJobs] = useState();
@@ -13,18 +13,17 @@ function Home() {
   const [keyword, setKeyword] = useState("");
   const [province, changeProvince] = useState("");
   const updateProvince = (param) => {
-    changeProvince(param.label)
-  }
+    changeProvince(param.label);
+  };
 
   useEffect(() => {
     getJobs(setJobs);
     async function fetchProvinces() {
-      let response = await getProvinces()
-      changeProvinceOptions(response)
+      let response = await getProvinces();
+      changeProvinceOptions(response);
     }
-    fetchProvinces()
-  }, [])
-
+    fetchProvinces();
+  }, []);
 
   const settings_clinic_specialities = {
     dots: true,
@@ -92,7 +91,12 @@ function Home() {
             <div className="search-box">
               <form>
                 <div className="form-group search-location">
-                  <Select className="form-control" placeholder="Province" options={provinceOptions} onChange={updateProvince} />
+                  <Select
+                    className="form-control"
+                    placeholder="Province"
+                    options={provinceOptions}
+                    onChange={updateProvince}
+                  />
                 </div>
                 <div className="form-group search-info">
                   <input
@@ -127,11 +131,11 @@ function Home() {
           <div class="row justify-content-center">
             <div class="col-md-9">
               <Slider {...settings_clinic_specialities}>
-                <CategoryCard title="Programmer"/>
-                <CategoryCard title="Editor"/>
-                <CategoryCard title="Receptionist"/>
-                <CategoryCard title="Web developer"/>
-                <CategoryCard title="Designer"/>
+                <CategoryCard title="Programmer" />
+                <CategoryCard title="Editor" />
+                <CategoryCard title="Receptionist" />
+                <CategoryCard title="Web developer" />
+                <CategoryCard title="Designer" />
               </Slider>
             </div>
           </div>
@@ -169,19 +173,24 @@ function Home() {
             <div className="col-lg-8">
               <div className="doctor-slider slider">
                 <Slider {...settings_popular}>
-                  {jobs ? jobs.data.map((data) => {
-                    return <JobCard_Vertical
-                      key={data._id} user={data.user}
-                      id={data._id} title={data.title}
-                      imagesAddress={data.imagesAddress}
-                      nameJob={data.nameJob}
-                      duration={data.duration}
-                      salary={data.salary}
-                      address={data.address}
-                      rate={data.rate}
-                    />
-                  }) :null
-                  }
+                  {jobs
+                    ? jobs.data.map((data) => {
+                        return (
+                          <JobCard_Vertical
+                            key={data._id}
+                            user={data.user}
+                            id={data._id}
+                            title={data.title}
+                            imagesAddress={data.imagesAddress}
+                            nameJob={data.nameJob}
+                            duration={data.duration}
+                            salary={data.salary}
+                            address={data.address}
+                            rate={data.rate}
+                          />
+                        );
+                      })
+                    : null}
                 </Slider>
               </div>
             </div>
