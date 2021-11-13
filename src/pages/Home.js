@@ -106,12 +106,10 @@ function Home() {
                     placeholder="Find a job, a field, a company, ..."
                   />
                 </div>
-                <Link
-                  to={`/jobs?location=${province}&keyword=${keyword}`}
-                  type="submit"
-                  className="btn btn-primary search-btn"
-                >
-                  <i className="fas fa-search"></i> <span>Search</span>
+                <Link to={`/jobs?location=${province}&keyword=${keyword}`} >
+                  <button className="btn btn-primary search-btn">
+                  <i className="fas fa-search"></i><span>Search</span>
+                  </button>
                 </Link>
               </form>
             </div>

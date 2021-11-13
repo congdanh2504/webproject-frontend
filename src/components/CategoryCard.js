@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const categories = new Map();
 categories.set("Programmer", "assets/img/categories/programmer.png");
@@ -20,7 +21,9 @@ function CategoryCard(props) {
           <i class="fa fa-circle" aria-hidden="true"></i>
         </span>
       </div>
-      <p>{props.title}</p>
+      <p>
+      <Link to={`/jobs?keyword=${props.title}`}>{props.title}</Link>
+      </p>
     </div>
   );
 }
