@@ -5,7 +5,7 @@ import { getCompany } from "../api/Admin";
 import image from "../assets/img/default_avatar.png";
 import Moment from 'react-moment';
 
-function JobSeekers() {
+function Companies() {
   const [company, setCompany] = useState(null);
 
   useEffect(() => {
@@ -83,4 +83,4 @@ function JobSeekers() {
   );
 }
 
-export default JobSeekers;
+export default Companies;

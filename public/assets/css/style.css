@@ -3497,9 +3497,9 @@ html.menu-opened body {
 
 .doctor-img {
   -ms-flex: 0 0 150px;
-  flex: 0 0 150px;
+  flex: 0 0 300px;
   margin-right: 20px;
-  width: 150px;
+  width: fit-content;
 }
 
 .doctor-img img {
@@ -7870,6 +7870,7 @@ html.menu-opened body {
 
   .doctor-img {
     margin: 0 auto 20px;
+    flex: none;
   }
 
   .doctor-action {
