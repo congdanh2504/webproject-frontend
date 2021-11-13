@@ -4,13 +4,27 @@ import Slider from "react-slick";
 import CategoryCard from "../components/CategoryCard";
 import JobCard_Vertical from "../components/JobCard_Vertical";
 import { getJobs } from '../api/jobAPI';
+import { getProvinces } from "../api/locationAPI";
+import Select from 'react-select'
 
 function Home() {
   const [jobs, setJobs] = useState();
+  const [provinceOptions, changeProvinceOptions] = useState([]);
+  const [keyword, setKeyword] = useState("");
+  const [province, changeProvince] = useState("");
+  const updateProvince = (param) => {
+    changeProvince(param.label)
+  }
 
   useEffect(() => {
     getJobs(setJobs);
+    async function fetchProvinces() {
+      let response = await getProvinces()
+      changeProvinceOptions(response)
+    }
+    fetchProvinces()
   }, [])
+
 
   const settings_clinic_specialities = {
     dots: true,
@@ -76,24 +90,21 @@ function Home() {
             </div>
 
             <div className="search-box">
-              <form action="templateshub.net">
+              <form>
                 <div className="form-group search-location">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Search Location"
-                  />
+                  <Select className="form-control" placeholder="Province" options={provinceOptions} onChange={updateProvince} />
                 </div>
                 <div className="form-group search-info">
                   <input
+                    onChange={(param) => setKeyword(param.target.value)}
                     type="text"
                     className="form-control"
                     placeholder="Find a job, a field, a company, ..."
                   />
                 </div>
-                <button type="submit" className="btn btn-primary search-btn">
+                <Link to={`/jobs?location=${province}&keyword=${keyword}`} type="submit" className="btn btn-primary search-btn">
                   <i className="fas fa-search"></i> <span>Search</span>
-                </button>
+                </Link>
               </form>
             </div>
           </div>

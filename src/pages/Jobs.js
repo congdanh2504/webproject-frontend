@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import JobCard_Horizontal from "../components/JobCard_Horizontal";
-import JobCard_Vertical from "../components/JobCard_Vertical";
 import Loading from '../components/Loading';
 import Pagination from 'react-js-pagination'
-
 import { getUser } from '../api/Common';
-import { getJobs } from '../api/jobAPI';
+import { getJobs, searchJob } from '../api/jobAPI';
 import { sortDescendingByRating,  sortLatest, sortBySalary } from '../models/Jobs'
 function Jobs() {
-  const [jobs, setJobs] = useState();
+  const params = new URLSearchParams(window.location.search)
+  const location = params.get("location")
+  const keyword = params.get("keyword")
+
+  const [jobs, setJobs] = useState(null);
 
   useEffect(() => {
-    getJobs(setJobs);
+    if (location && keyword) {
+      searchJob(setJobs, location, keyword)
+    } else {
+      getJobs(setJobs);
+    }
   }, [])
 
   const sortChange = (param) => {
@@ -20,8 +26,6 @@ function Jobs() {
     switch (option) {
       case 'Rating':
         sortDescendingByRating(setJobs, jobs);
-        break;
-      case 'Popular':
         break;
       case 'Latest':
         sortLatest(setJobs, jobs);
@@ -62,9 +66,8 @@ function Jobs() {
                   <select class="select" onChange={sortChange}>
                     <option>Select</option>
                     <option class="sorting" value="Rating">Rating</option>
-                    <option class="sorting" value="Popular">Popular</option>
                     <option class="sorting" value="Latest">Latest</option>
-                    <option class="sorting" value="Free">Salary</option>
+                    <option class="sorting" value="Salary">Salary</option>
                   </select>
                 </span>
               </div>
