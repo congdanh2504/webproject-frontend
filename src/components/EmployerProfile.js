@@ -63,6 +63,7 @@ const EmployerProfile = (props) => {
                   rate={data.rate}
                   like={data.like}
                   comments={data.comments}
+                  setJobs={setJobs}
                 />
               })}
               {jobs && jobs.data.length > 0 && <div className="row mt-3 justify-content-center">

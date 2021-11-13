@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
+import { getUser } from "../api/Common";
+import { deleteJob } from "../api/jobAPI";
 
 const categories = new Map();
 categories.set("Programmer", "assets/img/categories/programmer.png");
@@ -69,6 +71,10 @@ function JobCard_Horizontal(props) {
             <div class="clinic-booking">
               <Link to={`/jobs/job-details/${props.id}`} class="view-pro-btn">See details</Link>
             </div>
+            {getUser() && getUser()._id == props.user._id && <div class="clinic-booking-red">
+              <a class="view-pro-btn-red" onClick={() => deleteJob(props.setJobs, props.id)} >Delete</a>
+            </div>}
+            
           </div>
         </div>
       </div>
