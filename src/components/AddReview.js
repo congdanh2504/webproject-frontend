@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ReactStars from "react-rating-stars-component";
 import { addReview } from '../api/jobAPI';
+import { getUser } from "../api/Common";
 
 function AddReview(props) {
     const [rate, setRate] = useState(0);
@@ -22,6 +23,13 @@ function AddReview(props) {
     const submit = () => {
         if (rate && title && message)
         addReview(props.id, title, message, rate, props.setJob, props.idJob)
+    }
+
+    const isDisabled = ()=>{
+        if(getUser()== null){
+            return true;
+        } 
+        return (getUser().type == "Employee")?false:true;
     }
 
     return (
@@ -68,6 +76,7 @@ function AddReview(props) {
                 onClick={submit}
                 type="submit"
                 className="btn btn-primary submit-btn"
+                disabled={isDisabled()}
                 >
                 Add Review
                 </button>
