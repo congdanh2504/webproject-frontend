@@ -100,3 +100,16 @@ export const deleteJob = (setJobs, jobId) =>{
     })
 }
 
+export const searchJob = (setJobs, location, keyword) => {
+    axios({
+        method: 'POST',
+        url: `${BASE_URL}postItem/search`,
+        headers: {'Content-Type': 'application/json'},
+        data: {
+            location : location,
+            keyword : keyword
+        }
+    }).then(response => {
+        setJobs(response.data)
+    })
+}
