@@ -14,7 +14,7 @@ function Jobs() {
   const [jobs, setJobs] = useState(null);
 
   useEffect(() => {
-    if (location && keyword) {
+    if (location || keyword) {
       searchJob(setJobs, location, keyword)
     } else {
       getJobs(setJobs);
@@ -56,7 +56,7 @@ function Jobs() {
                 </ol>
               </nav>
               <h2 class="breadcrumb-title">
-                2245 matches found for : VKU group
+                Search
               </h2>
             </div>
             <div class="col-md-4 col-12 d-md-block d-none">
