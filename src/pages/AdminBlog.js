@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Pagination from 'react-js-pagination'
 import Moment from 'react-moment'
 import { Link } from 'react-router-dom'
+import { deleteBlog } from '../api/Admin'
 import { getBlogs } from '../api/UserPost'
 import Breadcrumb from '../components/Breadcrumb'
 function AdminBlog() {
@@ -27,6 +28,7 @@ function AdminBlog() {
                             <th>Title</th>
                             <th>User name</th>
                             <th>Create at</th>
+                            <th>Link</th>
                             <th class="text-right">Actions</th>
                         </tr>
                         </thead>
@@ -47,8 +49,11 @@ function AdminBlog() {
                                 <td>
                                 <Moment format="YYYY/MM/DD">{blog.created_at}</Moment>
                                 </td>
+                                <td>
+                                    <Link to={`/blog/detail/${blog._id}`} >Link</Link>
+                                </td>
                                 <td class="text-right">
-                                <div class="actions">
+                                <div class="actions" onClick={() => deleteBlog(setBlog, blog._id)}>
                                     <a
                                     data-toggle="modal"
                                     href="#delete_modal"

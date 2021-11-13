@@ -30,3 +30,23 @@ export const deleteUser = (setUsers, user_id) =>{
     setUsers(response.data)
   })
 }
+
+export const deleteBlog = (setBlogs, blogId) =>{
+  axios({
+    method: 'DELETE',
+    url: `${BASE_URL}admin/blog/${blogId}?token=${getToken()}`,
+    headers: {'Content-Type': 'application/json'}
+  }).then(response => {
+    setBlogs(response.data)
+  })
+}
+
+export const deleteJob = (setJobs, jobId) =>{
+  axios({
+    method: 'DELETE',
+    url: `${BASE_URL}admin/postItem/${jobId}?token=${getToken()}`,
+    headers: {'Content-Type': 'application/json'}
+  }).then(response => {
+    setJobs(response.data)
+  })
+}

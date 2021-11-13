@@ -3661,9 +3661,31 @@ html.menu-opened body {
   width: 100%;
 }
 
+.clinic-booking-red a {
+  background-color: #fff;
+  border: 2px solid #f32020;
+  border-radius: 4px;
+  color: #f32020;
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+  margin-top: 30px;
+}
+
 .clinic-booking a.view-pro-btn:hover,
 .clinic-booking a.view-pro-btn:focus {
   background: #20c0f3;
+  color: #fff;
+}
+
+.clinic-booking-red a.view-pro-btn-red:hover,
+.clinic-booking-red a.view-pro-btn-red:focus {
+  background: #f32020;
   color: #fff;
 }
 
@@ -8204,6 +8226,11 @@ html.menu-opened body {
   }
 
   .clinic-booking a.view-pro-btn {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .clinic-booking a.view-pro-btn-red {
     width: 100%;
     margin-bottom: 15px;
   }

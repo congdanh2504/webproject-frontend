@@ -177,7 +177,7 @@ function JobDetails() {
                       </ul>
                     </div>
 
-                    {(getUser()?.type == "Employee" || getUser()==null) && <AddReview idJob={id.id} setJob={setJob} id={job.user._id}/>}
+                    {getUser() && getUser().type == "Employee" && <AddReview idJob={id.id} setJob={setJob} id={job.user._id}/>}
                     
                   </div>
                 </div>

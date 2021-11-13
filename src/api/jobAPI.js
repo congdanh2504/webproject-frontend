@@ -24,12 +24,12 @@ export const postJob = (title, nameJob, description, category, salary, duration,
         headers: { 'Content-Type': 'multipart/form-data' },
         data: formData
     })
-        .then((response) => {
+    .then((response) => {
 
-        })
-        .catch((error) => {
-            alert(error.message)
-        })
+    })
+    .catch((error) => {
+        alert(error.message)
+    })
 }
 
 export const getJobs = (setJobs, pageNumber = 1) => {
@@ -38,12 +38,12 @@ export const getJobs = (setJobs, pageNumber = 1) => {
         url: `${BASE_URL}postItem?page=${pageNumber}`,
         headers: { 'Content-Type': 'application/json' },
     })
-        .then(response => {
-            setJobs(response.data)
-        })
-        .catch(err => {
-            console.log(`${BASE_URL}postItem?page=${pageNumber}`)
-        });
+    .then(response => {
+        setJobs(response.data)
+    })
+    .catch(err => {
+        console.log(`${BASE_URL}postItem?page=${pageNumber}`)
+    });
 }
 
 export const getJobItem = (setJob, id) => {
@@ -67,11 +67,10 @@ export const getMyJobs = (setJobs, id, pageNumber = 1) => {
     axios({
         method: 'GET',
         url: `${BASE_URL}postItem/myPost/${id}?page=${pageNumber}`,
-        headers: { 'Content-Type': 'application/json' },
-        data: {}
+        headers: { 'Content-Type': 'application/json' }
     }).then(response => {
-        setJobs(response.data)
-        console.log(response.data)
+        // console.log(response.data)
+        setJobs(response.data)      
     })
 }
 
@@ -88,6 +87,16 @@ export const addReview = (id, title, message, rate, setJob, idJob) => {
         }
     }).then((res) => {
         getJobItem(setJob, idJob)
+    })
+}
+
+export const deleteJob = (setJobs, jobId) =>{
+    axios({
+      method: 'DELETE',
+      url: `${BASE_URL}postItem/${jobId}?token=${getToken()}`,
+      headers: {'Content-Type': 'application/json'}
+    }).then(response => {
+      setJobs(response.data)
     })
 }
 

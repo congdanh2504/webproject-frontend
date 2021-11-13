@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Pagination from "react-js-pagination";
 import Moment from "react-moment";
+import { Link } from "react-router-dom";
+import { deleteJob } from "../api/Admin";
 import { getJobItem, getJobs } from "../api/jobAPI";
 import Breadcrumb from "../components/Breadcrumb";
 function AdminPostItem() {
@@ -26,6 +28,7 @@ function AdminPostItem() {
                       <th>Title</th>
                       <th>User name</th>
                       <th>Create at</th>
+                      <th>Link</th>
                       <th class="text-right">Actions</th>
                   </tr>
                   </thead>
@@ -46,8 +49,11 @@ function AdminPostItem() {
                           <td>
                           <Moment format="YYYY/MM/DD">{job.created_at}</Moment>
                           </td>
+                          <td>
+                              <Link to={`/jobs/job-details/${job._id}`}>Link</Link>
+                          </td>
                           <td class="text-right">
-                          <div class="actions">
+                          <div class="actions" onClick={() => deleteJob(setPostItem, job._id)}>
                               <a
                               data-toggle="modal"
                               href="#delete_modal"
