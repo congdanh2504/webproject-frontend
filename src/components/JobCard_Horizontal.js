@@ -70,11 +70,7 @@ function JobCard_Horizontal(props) {
             </div>
             <div class="clinic-booking">
               <Link to={`/jobs/job-details/${props.id}`} class="view-pro-btn">See details</Link>
-            </div>
-            {getUser() && getUser()._id == props.user._id && <div class="clinic-booking-red">
-              <a class="view-pro-btn-red" onClick={() => deleteJob(props.setJobs, props.id)} >Delete</a>
-            </div>}
-            
+            </div>     
           </div>
         </div>
       </div>

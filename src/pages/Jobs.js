@@ -147,9 +147,6 @@ function Jobs() {
                   category={data.category}
                   address={data.address}
                   rate={data.user.rate}
-                  like={data.like}
-                  comments={data.comments}
-                  setJobs={setJobs}
                 />
               }) : <Loading />}
               {jobs && <div className="row mt-3 justify-content-center">

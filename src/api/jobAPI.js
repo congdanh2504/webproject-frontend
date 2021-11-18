@@ -113,3 +113,24 @@ export const searchJob = (setJobs, location, keyword) => {
         setJobs(response.data)
     })
 }
+
+export const updateJob = async (id, title, nameJob, description, category, salary, duration, province, detail) => {
+    await axios({
+        method: 'PATCH',
+        url: `${BASE_URL}postItem?token=${getToken()}`,
+        headers: {'Content-Type': 'application/json'},
+        data: {
+            id: id,
+            title: title,
+            nameJob: nameJob,
+            description: description,
+            category: category,
+            salary: salary,
+            duration: duration,
+            address: {
+                province: province,
+                detail: detail
+            } 
+        }
+    })
+}
