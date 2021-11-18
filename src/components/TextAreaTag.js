@@ -10,6 +10,7 @@ function TextAreaTag(props) {
           rows={props.rows}
           placeholder={props.placeholder}
           onChange={props.onChange}
+          value={props.value}
         />
       </div>
     </div>

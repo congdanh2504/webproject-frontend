@@ -54,7 +54,7 @@ export const getJobItem = (setJob, id) => {
     })
         .then(response => {
             setJob(response.data)
-            // console.log(response.data)
+            console.log(response.data)
         })
         .catch(err => {
             console.log(err.message)
@@ -113,3 +113,30 @@ export const searchJob = (setJobs, location, keyword) => {
         setJobs(response.data)
     })
 }
+
+export const updateJob =(setError, id, title, nameJob, description, category, salary, duration, province,
+    district, ward, street)=>{
+        axios({
+            method: 'PUT',
+            url: `${BASE_URL}postItem/${id}`,
+            headers: {'Content-Type': 'application/json'},
+            data: {
+                title: title,
+                nameJob: nameJob,
+                description: description,
+                category: category,
+                salary: salary,
+                duration: duration,
+                address:{
+                    province: province,
+                    detailedAddress: `${street}, ${ward}, ${district}, ${province}`,
+                }
+            }
+        })
+        .then(response => {
+
+        })
+        .catch(error => {
+            setError(error.response.data.message)
+        })
+    }

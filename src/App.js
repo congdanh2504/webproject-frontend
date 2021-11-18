@@ -33,6 +33,7 @@ import { EmployeeRoute } from "./components/EmployeeRoute";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { AdminRoute } from "./components/AdminRoute";
 import AdminPostItem from "./pages/AdminPostItem";
+import UpdateJob from "./pages/UpdateJob";
 
 function App() {
   const [authLoading, setAuthLoading] = useState(true);
@@ -122,6 +123,12 @@ function App() {
           exact
           path="/profile/:id"
           component={UserProfile}
+        />
+        <Route
+          type="user"
+          exact
+          path="/update-job/:id"
+          component={UpdateJob}
         />
         {/* End user's routes */}
 

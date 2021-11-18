@@ -3637,7 +3637,7 @@ html.menu-opened body {
 }
 
 .clini-infos ul li {
-  display: block;
+  display: inline-block ;
   line-height: 30px;
   color: #4e4852;
 }

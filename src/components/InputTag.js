@@ -9,7 +9,9 @@ const InputTag = (props) => {
           type={props.type}
           class="form-control"
           placeholder= {props.placeholder}
-          onChange={props.onChange} />
+          onChange={props.onChange} 
+          value={props.value}
+          />
       </div>
     </div>
   )
