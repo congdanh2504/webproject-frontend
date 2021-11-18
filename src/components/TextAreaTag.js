@@ -6,6 +6,7 @@ function TextAreaTag(props) {
       <div class="form-group">
         <label>{props.title}</label>
         <textarea
+          defaultValue={props.defaultValue}
           class="form-control"
           rows={props.rows}
           placeholder={props.placeholder}

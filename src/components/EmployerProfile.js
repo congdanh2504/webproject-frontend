@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Breadcrumb from './Breadcrumb'
-import JobCard_Horizontal from "../components/JobCard_Horizontal";
+import JobCard from "../components/JobCard";
 import image from "../assets/img/default_avatar.png";
 import Pagination from 'react-js-pagination'
 import { getMyJobs } from '../api/jobAPI';
@@ -8,11 +8,12 @@ import { useParams } from 'react-router'
 import { getUserById } from '../api/loginAPI'
 
 
+
 const EmployerProfile = (props) => {
   const [jobs, setJobs] = useState();
   const [user, setUser] = useState(null)
   const id = useParams('id')
-
+ 
   useEffect(() => {
     getUserById(id.id, setUser)
     getMyJobs(setJobs, id.id);
@@ -51,18 +52,17 @@ const EmployerProfile = (props) => {
                 <div className="alert alert-danger">Don't have any post.</div>
               }
               {jobs && jobs.data.length > 0 && jobs.data.map((data, index) => {
-                return <JobCard_Horizontal
+                return <JobCard
                   key={data._id} user={data.user}
                   id={data._id} title={data.title}
                   imagesAddress={data.imagesAddress}
+                  description={data.description}
                   nameJob={data.nameJob}
                   duration={data.duration}
                   salary={data.salary}
                   category={data.category}
                   address={data.address}
                   rate={data.rate}
-                  like={data.like}
-                  comments={data.comments}
                   setJobs={setJobs}
                 />
               })}
@@ -81,8 +81,6 @@ const EmployerProfile = (props) => {
               </div>
               }
             </div>
-
-
           </div>
         </div>
       </div>
