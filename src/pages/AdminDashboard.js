@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from "react";
-=======
 import React, { useEffect, useState } from "react";
 import { getReport } from "../api/Admin";
->>>>>>> b43a49828b84bace92c16f8accd5866474c342bb
 import Breadcrumb from "../components/Breadcrumb";
 import Bar from "../components/charts/ChartBar";
 import Doughnut from "../components/charts/ChartDoughnut";
@@ -14,25 +10,11 @@ import { getUsers } from "../api/Admin";
 
 
 function AdminDashboard() {
-<<<<<<< HEAD
-  const [company, setCompany] = useState(null);
-  const [users, setUsers] = useState(null);
-
-  useEffect(() => {
-    getCompany(setCompany);
-  }, [])
-  useEffect(() => {
-    getUsers(setUsers);
-  }, [])
-
-
-=======
   const [report, setReport] = useState(null) 
 
   useEffect(() => {
     getReport(setReport)
   },[])
->>>>>>> b43a49828b84bace92c16f8accd5866474c342bb
 
   return (
     <div>
@@ -49,11 +31,7 @@ function AdminDashboard() {
                       <i class="fa fa-users"></i>
                     </span>
                     <div class="dash-count">
-<<<<<<< HEAD
-                      <h3>{users?.total}</h3>
-=======
                       <h3>{report.numOfEmployees}</h3>
->>>>>>> b43a49828b84bace92c16f8accd5866474c342bb
                     </div>
                   </div>
                   <div class="dash-widget-info">
@@ -73,11 +51,7 @@ function AdminDashboard() {
                       <i class="fa fa-credit-card"></i>
                     </span>
                     <div class="dash-count">
-<<<<<<< HEAD
-                      <h3>{company?.total}</h3>
-=======
                       <h3>{report.numOfEmployers}</h3>
->>>>>>> b43a49828b84bace92c16f8accd5866474c342bb
                     </div>
                   </div>
                   <div class="dash-widget-info">
