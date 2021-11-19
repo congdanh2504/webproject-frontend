@@ -50,3 +50,14 @@ export const deleteJob = (setJobs, jobId) =>{
     setJobs(response.data)
   })
 }
+
+export const getReport = (setReport) => {
+  axios({
+    method: 'GET',
+    url: `${BASE_URL}admin/report?token=${getToken()}`,
+    headers: {'Content-Type': 'application/json'}
+  }).then(response => {
+    setReport(response.data.report)
+    console.log(response.data.report)
+  })
+}

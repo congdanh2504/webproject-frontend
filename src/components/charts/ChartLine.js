@@ -1,13 +1,14 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 
-function ChartLine() {
+function ChartLine(props) {
+  console.log(props.data.m1)
   const data = {
-    labels: ["1", "2", "3", "4", "5", "6"],
+    labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
     datasets: [
       {
-        label: "# of Votes",
-        data: [12, 19, 3, 5, 2, 3],
+        label: "Job by month",
+        data: [props.data.m01, props.data.m02, props.data.m03, props.data.m04, props.data.m05, props.data.m06, props.data.m07,props.data.m08, props.data.m09, props.data.m10, props.data.m11, props.data.m12],
         fill: false,
         backgroundColor: "rgb(255, 99, 132)",
         borderColor: "rgba(255, 99, 132, 0.2)",
