@@ -131,7 +131,17 @@ function JobCard(props) {
                         value={props.user.rate.avg}
                         activeColor="#ffd700"
                     />
-                    <span className="d-inline-block average-rating">({props.user.rate.count})</span>
+                    {/* <span className="d-inline-block average-rating">({props.user.rate.count})</span> */}
+                </div>
+                <div class="clini-infos">
+                <ul className="d-flex flex-column">
+                    <li>
+                    <i class="far fa-clock"></i> Deadline {props.duration}
+                    </li>
+                    <li>
+                    <i class="far fa-money-bill-alt"></i> {props.salary} USD
+                    </li>
+                </ul>
                 </div>
                 <div class="clinic-details">
                     <p class="doc-location">
@@ -141,7 +151,7 @@ function JobCard(props) {
                 </div>
             </div>
             <div class="doc-info-right">
-                <div class="clini-infos">
+                {/* <div class="clini-infos">
                 <ul>
                     <li>
                     <i class="far fa-clock"></i> Deadline {props.duration}
@@ -150,7 +160,7 @@ function JobCard(props) {
                     <i class="far fa-money-bill-alt"></i> {props.salary} USD
                     </li>
                 </ul>
-                </div>
+                </div> */}
                 <div class="clinic-booking">
                 <Link to={`/jobs/job-details/${props.id}`} class="view-pro-btn">See details</Link>
                 </div>

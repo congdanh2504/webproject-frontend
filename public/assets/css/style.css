@@ -3638,6 +3638,7 @@ html.menu-opened body {
 
 .clini-infos ul li {
   display: block;
+  /* display: inline-block; */
   line-height: 30px;
   color: #4e4852;
 }
@@ -8518,4 +8519,88 @@ html.menu-opened body {
   .card__post__title
   h6 {
   color: #000;
+}
+
+/*****************************
+Pages - About Us
+*****************************/
+/* About Us Top Area */
+.about-us-top-content {
+  margin-bottom: -12px;
+}
+.about-us-top-content h4, .about-us-top-content .h4 {
+  font-weight: 700;
+  margin-top: 27px;
+  margin-bottom: 15px;
+}
+.about-us-top-content p {
+  padding: 0 0;
+  line-height: 26px;
+  margin-bottom: 0;
+}
+@media (min-width: 768px) {
+  .about-us-top-content p {
+    padding: 0 2%;
+  }
+}
+@media (min-width: 992px) {
+  .about-us-top-content p {
+    padding: 0 8%;
+  }
+}
+@media (min-width: 1200px) {
+  .about-us-top-content p {
+    padding: 0 12%;
+  }
+}
+
+/* About Us Center Area */
+.about-us-center-area,
+.about-us-bottom-area {
+  margin-bottom: -37px;
+}
+
+.about-us-center-content h4, .about-us-center-content .h4 {
+  font-weight: 700;
+  margin-bottom: 15px;
+  padding-top:  30px;
+}
+
+.about-promo-single-item {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+}
+.about-promo-single-item img {
+  width: 90px;
+  height: 90px;
+}
+.about-promo-single-item h6, .about-promo-single-item .h6 {
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.about-feature-single-item {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+}
+.about-feature-single-item h6, .about-feature-single-item .h6 {
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  
+}
+
+.about-feature-single-item img{
+  width:50%;
+}
+
+.about-us-top-img img{
+  padding-top: 30px;
+  width: 100%;
+  max-height: 100vh ;
 }

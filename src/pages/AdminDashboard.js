@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
+=======
+import React, { useEffect, useState } from "react";
+import { getReport } from "../api/Admin";
+>>>>>>> b43a49828b84bace92c16f8accd5866474c342bb
 import Breadcrumb from "../components/Breadcrumb";
 import Bar from "../components/charts/ChartBar";
 import Doughnut from "../components/charts/ChartDoughnut";
@@ -9,6 +14,7 @@ import { getUsers } from "../api/Admin";
 
 
 function AdminDashboard() {
+<<<<<<< HEAD
   const [company, setCompany] = useState(null);
   const [users, setUsers] = useState(null);
 
@@ -20,9 +26,17 @@ function AdminDashboard() {
   }, [])
 
 
+=======
+  const [report, setReport] = useState(null) 
+
+  useEffect(() => {
+    getReport(setReport)
+  },[])
+>>>>>>> b43a49828b84bace92c16f8accd5866474c342bb
 
   return (
     <div>
+      {report && <>
       <Breadcrumb title="Home" type="admin" />
       <div class="page-wrapper">
         <div class="content container-fluid">
@@ -35,7 +49,11 @@ function AdminDashboard() {
                       <i class="fa fa-users"></i>
                     </span>
                     <div class="dash-count">
+<<<<<<< HEAD
                       <h3>{users?.total}</h3>
+=======
+                      <h3>{report.numOfEmployees}</h3>
+>>>>>>> b43a49828b84bace92c16f8accd5866474c342bb
                     </div>
                   </div>
                   <div class="dash-widget-info">
@@ -55,7 +73,11 @@ function AdminDashboard() {
                       <i class="fa fa-credit-card"></i>
                     </span>
                     <div class="dash-count">
+<<<<<<< HEAD
                       <h3>{company?.total}</h3>
+=======
+                      <h3>{report.numOfEmployers}</h3>
+>>>>>>> b43a49828b84bace92c16f8accd5866474c342bb
                     </div>
                   </div>
                   <div class="dash-widget-info">
@@ -75,11 +97,11 @@ function AdminDashboard() {
                       <i class="fa fa-money-bill"></i>
                     </span>
                     <div class="dash-count">
-                      <h3>485</h3>
+                      <h3>{report.numOfJobs}</h3>
                     </div>
                   </div>
                   <div class="dash-widget-info">
-                    <h6 class="text-muted">Contract</h6>
+                    <h6 class="text-muted">Jobs</h6>
                     <div class="progress progress-sm">
                       <div class="progress-bar bg-danger w-50"></div>
                     </div>
@@ -95,11 +117,11 @@ function AdminDashboard() {
                       <i class="fa fa-folder"></i>
                     </span>
                     <div class="dash-count">
-                      <h3>$62523</h3>
+                      <h3>{report.numOfBlogs}</h3>
                     </div>
                   </div>
                   <div class="dash-widget-info">
-                    <h6 class="text-muted">Revenue</h6>
+                    <h6 class="text-muted">Blogs</h6>
                     <div class="progress progress-sm">
                       <div class="progress-bar bg-warning w-50"></div>
                     </div>
@@ -115,11 +137,11 @@ function AdminDashboard() {
                   <h4 class="card-title">Line Chart</h4>
                 </div>
                 <div class="card-body">
-                  <Line />
+                  <Line data={report.countByMonth} />
                 </div>
               </div>
             </div>
-            <div class="col-md-12 col-lg-6">
+            {/* <div class="col-md-12 col-lg-6">
               <div class="card card-chart">
                 <div class="card-header">
                   <h4 class="card-title">Bar Chart</h4>
@@ -128,18 +150,18 @@ function AdminDashboard() {
                   <Bar />
                 </div>
               </div>
-            </div>
+            </div> */}
             <div class="col-md-12 col-lg-6">
               <div class="card card-chart">
                 <div class="card-header">
                   <h4 class="card-title">Doughnut Chart</h4>
                 </div>
                 <div class="card-body">
-                  <Doughnut />
+                  <Doughnut data={report}/>
                 </div>
               </div>
             </div>
-            <div class="col-md-12 col-lg-6">
+            {/* <div class="col-md-12 col-lg-6">
               <div class="card card-chart">
                 <div class="card-header">
                   <h4 class="card-title">Radar Chart</h4>
@@ -148,11 +170,14 @@ function AdminDashboard() {
                   <Radar />
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
+      </>
+    }
     </div>
+      
   );
 }
 
