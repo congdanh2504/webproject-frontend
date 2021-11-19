@@ -30,7 +30,7 @@ function About() {
           <div class="row">
             <div class="col-12">
               <div class="about-us-center-content text-center">
-                <h4>Why Chose Us?</h4>
+                <h4>Why Should You Choose Us?</h4>
               </div>
             </div>
           </div>
