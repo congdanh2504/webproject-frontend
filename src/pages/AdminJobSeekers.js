@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb";
-import { getUsers, deleteUser } from "../api/Admin";
+import { getUsers, deleteUser, findUser } from "../api/Admin";
 import image from "../assets/img/default_avatar.png";
 import Moment from 'react-moment';
 import Pagination from 'react-js-pagination';
@@ -18,10 +18,22 @@ function JobSeekers() {
     return userLink;
   }
 
+  const UserKeyDown=(param)=>{
+    findUser(setUsers, param.target.value);
+  }
+
   return (
     <>
       <Breadcrumb title="Users" type="admin" />
-      <div class="container-fluid">
+      <div class="container-fluid"> 
+        <div className="row mt-3 mb-3">
+          <div className="col-sm-6">
+            <input className="form-control rounded-5" type="text"
+             name="keyword" id="keyword" placeholder="Find User"
+             onKeyDown={UserKeyDown}
+            />
+          </div>
+        </div>
         <div class="row">
           <div class="col-sm-12">
             <div class="card">

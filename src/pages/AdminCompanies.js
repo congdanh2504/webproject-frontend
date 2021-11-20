@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb";
-import { getCompany } from "../api/Admin";
+import { getCompany, findCompany } from "../api/Admin";
 import image from "../assets/img/default_avatar.png";
 import Moment from 'react-moment';
 
@@ -12,10 +12,22 @@ function Companies() {
     getCompany(setCompany);
   }, [])
 
+  const PostKeyDown = (param) => {
+    findCompany(setCompany, param.target.value);
+  }
+
   return (
     <>
       <Breadcrumb title="Companies" type="admin" />
       <div class="container-fluid">
+        <div className="row mt-3 mb-3">
+          <div className="col-sm-6">
+            <input className="form-control rounded-5" type="text"
+              name="keyword" id="keyword" placeholder="Find Company"
+              onKeyDown={PostKeyDown}
+            />
+          </div>
+        </div>
         <div class="row">
           <div class="col-sm-12">
             <div class="card">

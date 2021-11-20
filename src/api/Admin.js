@@ -11,12 +11,32 @@ export const getUsers = (setUsers, pageNumber = 1) => {
   })
 }
 
+export const findUser=(setUsers, keyword)=>{
+  axios({
+    method: 'GET',
+    url: `${BASE_URL}admin/find-user?token=${getToken()}&keyword=${keyword}`,
+    headers: { 'Content-Type': 'application/json' },
+  }).then(response =>{
+    setUsers(response.data)
+  })
+}
+
 export const getCompany= (setCompany, pageNumber = 1)=>{
   axios({
     method: 'GET',
     url: `${BASE_URL}admin/employers?token=${getToken()}&page=${pageNumber}`,
     headers: { 'Content-Type': 'application/json' },
   }).then(response => {
+    setCompany(response.data)
+  })
+}
+
+export const findCompany=(setCompany, keyword)=>{
+  axios({
+    method: 'GET',
+    url: `${BASE_URL}admin/find-company?token=${getToken()}&keyword=${keyword}`,
+    headers: { 'Content-Type': 'application/json' },
+  }).then(response =>{
     setCompany(response.data)
   })
 }
@@ -59,5 +79,26 @@ export const getReport = (setReport) => {
   }).then(response => {
     setReport(response.data.report)
     console.log(response.data.report)
+  })
+}
+
+
+export const findPost=(setPostItem, keyword)=>{
+  axios({
+    method: 'GET',
+    url: `${BASE_URL}admin/find-post?token=${getToken()}&keyword=${keyword}`,
+    headers: { 'Content-Type': 'application/json' },
+  }).then(response =>{
+    setPostItem(response.data)
+  })
+}
+
+export const findBlog=(setBlog, keyword)=>{
+  axios({
+    method: 'GET',
+    url: `${BASE_URL}admin/find-blog?token=${getToken()}&keyword=${keyword}`,
+    headers: { 'Content-Type': 'application/json' },
+  }).then(response =>{
+    setBlog(response.data)
   })
 }
