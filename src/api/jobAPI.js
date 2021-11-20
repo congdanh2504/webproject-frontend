@@ -134,3 +134,19 @@ export const updateJob = async (id, title, nameJob, description, category, salar
         }
     })
 }
+
+export const addApply = (postItemID, employeeID, toast) => {
+    axios({
+        method: 'POST',
+        url: `${BASE_URL}apply?token=${getToken()}`,
+        headers: { 'Content-Type': 'application/json' },
+        data: {
+            postItemID : postItemID,
+            employeeID : employeeID,
+        }
+    }).then((res) => {
+        toast.success("Successfully")
+    }).catch((err) => {
+        toast.error("Error")
+    })
+}

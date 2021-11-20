@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router'
 import { Link } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb";
-import { getJobItem } from '../api/jobAPI';
+import { addApply, getJobItem } from '../api/jobAPI';
 import Loading from '../components/Loading'
 import { getUser } from "../api/Common";
 import AddReview from "../components/AddReview";
 import ReactStars from "react-rating-stars-component";
 import image from "../assets/img/default_avatar.png";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function JobDetails() {
   const id = useParams('id')
@@ -17,9 +19,14 @@ function JobDetails() {
     getJobItem(setJob, id.id)
   }, [])
 
+  const apply = () => {
+    addApply(id.id, getUser()._id, toast)
+  }
+
   return (
     <>
       <Breadcrumb title="Job Details"></Breadcrumb>
+      <ToastContainer />
       {job ?
         <div className="content">
           <div className="container">
@@ -68,11 +75,9 @@ function JobDetails() {
                         </li>
                       </ul>
                     </div>
-                    <div className="clinic-booking">
-                      <a className="apt-btn" href="">
-                        Apply
-                      </a>
-                    </div>
+                    {getUser() && getUser().type == "Employee" && <div class="clinic-booking">
+                      <a class="view-pro-btn" onClick={apply} >Apply</a>
+                    </div>}
                   </div>
                 </div>
               </div>
@@ -99,6 +104,11 @@ function JobDetails() {
                     <li className="nav-item">
                       <a className="nav-link" href="#doc_reviews" data-toggle="tab">
                         Reviews
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="#doc_applies" data-toggle="tab">
+                        Applies
                       </a>
                     </li>
                   </ul>
@@ -178,6 +188,33 @@ function JobDetails() {
                     </div>
 
                     {getUser() && getUser().type == "Employee" && <AddReview idJob={id.id} setJob={setJob} id={job.user._id}/>}
+                    
+                  </div>
+                  <div role="tabpanel" id="doc_applies" className="tab-pane fade">
+                    <div className="widget review-listing">
+                      <ul className="comments-list">
+                        {job.applies.length > 0 ? job.applies.map((employee, index) => {
+                          return  <li>
+                          <div className="comment">
+                            <img
+                              className="avatar avatar-sm rounded-circle"
+                              alt="User Image"
+                              src={employee.avatarAddress ? employee.avatarAddress : image}
+                            />                            
+                            <div className="comment-body">
+                              <div className="meta-data">
+                                <Link to={`/profile/${employee._id}`}>
+                                  <span className="comment-author">
+                                    {employee.name}
+                                  </span>
+                                </Link>
+                              </div>                  
+                            </div>
+                          </div>
+                        </li>
+                        }): <h1>No applies</h1>}
+                      </ul>
+                    </div>
                     
                   </div>
                 </div>
