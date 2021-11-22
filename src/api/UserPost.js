@@ -1,7 +1,7 @@
 import axios from "axios";
 import { BASE_URL, getToken } from "./Common";
 
-export const addBlog = (title, description, content, image) => {
+export const addBlog = async (title, description, content, image, toast) => {
     var formData = new FormData();
     formData.append('image', image)
     formData.append('document', JSON.stringify({
@@ -10,24 +10,25 @@ export const addBlog = (title, description, content, image) => {
         content: content,
         image: image
     }))
-    axios({
+    await axios({
         method: 'post',
         url: `${BASE_URL}blog?token=${getToken()}`,
         headers: {'Content-Type': 'multipart/form-data'},
         data: formData
-    })  
+    }) .then(response => {
+        toast.success("Successfully")
+    }).catch(error => {
+        toast.error("Error")
+    });
 }
 export const getBlogs = (setBlogs, pageNumber = 1) => {
     axios({
         method: 'get',
         url: `${BASE_URL}blog?page=${pageNumber}`,
         headers: {'Content-Type': 'application/json'},
-      }).then(response => {
-        setBlogs(response.data)
-        console.log(response.data)
-      }).catch(error => {
-
-    });
+    }).then(response => {
+    setBlogs(response.data)
+    })
 }
 
 export const getNewBlogs = (setNewBlogs)=>{

@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 import { getUser } from "../api/Common";
 import { deleteJob, getMyJobs, updateJob } from "../api/jobAPI";
 import Modal from 'react-modal';
-import AddJob from "../pages/AddJob";
 import InputTag from "./InputTag";
 import TextAreaTag from "./TextAreaTag";
 import { getProvinces } from "../api/locationAPI";
 import Select from 'react-select'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import * as FaIcons from 'react-icons/fa'
 
 const categories = new Map();
 categories.set("Programmer", "assets/img/categories/programmer.png");
@@ -18,6 +20,7 @@ categories.set("Designer", "assets/img/categories/designer.png");
 categories.set("Web developer", "assets/img/categories/developer.png");
 
 function JobCard(props) {
+    const [loading, setLoading] = useState(false)
     const [modalIsOpenEdit, setIsOpenEdit] = useState(false)
     const customStylesEdit = {
       content: {
@@ -82,7 +85,9 @@ function JobCard(props) {
     }
 
     const submit = async () => {
-        await updateJob(props.id, title, nameJob, description, category, salary, duration, province, detail)
+        setLoading(true)
+        await updateJob(props.id, title, nameJob, description, category, salary, duration, province, detail, toast)
+        setLoading(false)
         getMyJobs(props.setJobs, props.user._id);
         setIsOpenEdit(false)
     }
@@ -98,6 +103,7 @@ function JobCard(props) {
     return (
         <div class="card">
         <div class="card-body">
+            <ToastContainer/>
             <div class="doctor-widget">
             <div class="doc-info-left">
                 <div class="doctor-img">
@@ -151,16 +157,6 @@ function JobCard(props) {
                 </div>
             </div>
             <div class="doc-info-right">
-                {/* <div class="clini-infos">
-                <ul>
-                    <li>
-                    <i class="far fa-clock"></i> Deadline {props.duration}
-                    </li>
-                    <li>
-                    <i class="far fa-money-bill-alt"></i> {props.salary} USD
-                    </li>
-                </ul>
-                </div> */}
                 <div class="clinic-booking">
                 <Link to={`/jobs/job-details/${props.id}`} class="view-pro-btn">See details</Link>
                 </div>
@@ -186,7 +182,10 @@ function JobCard(props) {
                 >
                     <h1>Are you sure ?</h1>
                     <div class="clinic-booking-red">
-                    <a class="view-pro-btn-red" onClick={() => deleteJob(props.setJobs, props.id)} >Delete</a>
+                    <a class="view-pro-btn-red" onClick={ async () => {
+                        await deleteJob(props.id, toast)
+                        getMyJobs(props.setJobs, props.user._id)
+                    } } >Delete</a>
                     </div>
                     <div class="clinic-booking-green">
                     <a class="view-pro-btn-green" onClick={() => setIsOpenDelete(false)} >Cancel</a>
@@ -238,7 +237,9 @@ function JobCard(props) {
                                     </div>
 
                                     <div class="submit-section">
-                                        <button class="btn btn-primary submit-btn" onClick={submit}> 
+                                        <button disabled={loading} class="btn btn-primary submit-btn" onClick={submit}> 
+                                        {loading && <span className="fa fa-refresh fa-spin"><FaIcons.FaSpinner/></span>}
+                                        {"  "}
                                         Update
                                         </button>
                                     </div>

@@ -506,7 +506,7 @@ button.bg-danger:hover {
   color: #00cc52 !important;
 }
 
-.text-danger,
+.text-danger, 
 .dropdown-menu > li > a.text-danger {
   color: #ff0100 !important;
 }
@@ -8607,3 +8607,7 @@ Pages - About Us
  .rounded-5{
    border-radius: 5rem;
  }
+
+button:disabled {
+  opacity: 0.5;
+}

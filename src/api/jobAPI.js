@@ -3,8 +3,8 @@ import { BASE_URL, getToken } from "./Common";
 
 
 
-export const postJob = (title, nameJob, description, category, salary, duration, province,
-    district, ward, street, image) => {
+export const postJob =  async (title, nameJob, description, category, salary, duration, province,
+    district, ward, street, image, toast) => {
     var formData = new FormData();
     formData.append('image', image);
     formData.append('document', JSON.stringify({
@@ -18,17 +18,17 @@ export const postJob = (title, nameJob, description, category, salary, duration,
         detailedAddress: `${street}, ${ward}, ${district}, ${province}`,
         image: image
     }))
-    axios({
+    await axios({
         method: 'post',
         url: `${BASE_URL}postItem?token=${getToken()}`,
         headers: { 'Content-Type': 'multipart/form-data' },
         data: formData
     })
     .then((response) => {
-
+        toast.success("Successfully")
     })
     .catch((error) => {
-        alert(error.message)
+        toast.error("Error")
     })
 }
 
@@ -90,13 +90,15 @@ export const addReview = (id, title, message, rate, setJob, idJob) => {
     })
 }
 
-export const deleteJob = (setJobs, jobId) =>{
-    axios({
+export const deleteJob = async (jobId, toast) =>{
+    await axios({
       method: 'DELETE',
       url: `${BASE_URL}postItem/${jobId}?token=${getToken()}`,
       headers: {'Content-Type': 'application/json'}
     }).then(response => {
-      setJobs(response.data)
+      toast.success("Successfully")
+    }).catch((err) => {
+        toast.error("Error")
     })
 }
 
@@ -114,7 +116,7 @@ export const searchJob = (setJobs, location, keyword) => {
     })
 }
 
-export const updateJob = async (id, title, nameJob, description, category, salary, duration, province, detail) => {
+export const updateJob = async (id, title, nameJob, description, category, salary, duration, province, detail, toast) => {
     await axios({
         method: 'PATCH',
         url: `${BASE_URL}postItem?token=${getToken()}`,
@@ -132,6 +134,10 @@ export const updateJob = async (id, title, nameJob, description, category, salar
                 detail: detail
             } 
         }
+    }).then((res) => {
+        toast.success("Successfully")
+    }).catch((err) => {
+        toast.error("Error")
     })
 }
 

@@ -1,18 +1,20 @@
 import { CKEditor } from 'ckeditor4-react';
 import React, { useState } from 'react'
-import { useHistory } from 'react-router';
 import { getUser } from '../api/Common';
 import { addBlog } from '../api/UserPost';
 import imageDefault from '../assets/img/default_avatar.png'
 import InputTag from '../components/InputTag'
 import TextAreaTag from '../components/TextAreaTag'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import * as FaIcons from 'react-icons/fa'
 
 const AddBlog = () => {
+  const [loading, setLoading] = useState(false)
   const [title, setTitle] = useState(null);
   const [description, setDescription] = useState(null)
   const [image, setImage] = useState(null)
   const [content, setContent] = useState(null)
-  const history = useHistory()
 
   const changeTitle = (param) => {
     setTitle(param.target.value)
@@ -30,15 +32,19 @@ const AddBlog = () => {
     setImage(param.target.files[0])
   }
 
-  const submit = () => {
+  const submit = async () => {
     if (title && description && content && image) {
-      addBlog(title, description, content, image)
-      history.push('/blog')
+      setLoading(true)
+      await addBlog(title, description, content, image, toast)
+      setLoading(false)
+    } else {
+      toast.error("Miss data")
     }
   }
 
   return (
     <div class="content">
+      <ToastContainer/>
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
@@ -89,7 +95,9 @@ const AddBlog = () => {
                   <CKEditor initData="<h1>Write the contents of your blog here!</h1>" onChange={changeContent} />
                 </div>
                 <div class="submit-section">
-                  <button type="submit" class="btn btn-primary submit-btn" onClick={submit}>
+                  <button disabled={loading} type="submit" class="btn btn-primary submit-btn" onClick={submit}>
+                  {loading && <span className="fa fa-refresh fa-spin"><FaIcons.FaSpinner/></span>}
+                   {"  "}
                     Save
                   </button>
                 </div>

@@ -2,8 +2,10 @@ import React, { useState,  } from "react";
 import GoogleLogin from "react-google-login";
 import { Link, useHistory } from "react-router-dom";
 import { login, loginWithGG } from "../api/loginAPI";
+import * as FaIcons from 'react-icons/fa'
 
 function LoginForm() {
+  const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -17,8 +19,10 @@ function LoginForm() {
     setPassword(param.target.value);
   };
 
-  const submit = () => {
-    login(email, password, setError, history)
+  const submit = async () => {
+    setLoading(true)
+    await login(email, password, setError, history)
+    setLoading(false)
   };
 
   const handleGG = (param) => {
@@ -58,10 +62,11 @@ function LoginForm() {
           Forgot Password ?
         </Link>
       </div>
-      <button
+      <button disable={loading}
         className="btn btn-primary btn-block btn-lg login-btn"
         onClick={submit}
-      >
+      > {loading && <span className="fa fa-refresh fa-spin"><FaIcons.FaSpinner/></span>}
+       {"  "}
         Login
       </button>
       <div className="login-or">

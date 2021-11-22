@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import GoogleLogin from "react-google-login";
 import { Link, useHistory } from "react-router-dom";
 import { employeeRegister, registerWithGG } from "../api/loginAPI";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import * as FaIcons from 'react-icons/fa'
 
 function RegisterForm() {
+  const [loading, setLoading] = useState(false)
   const [userName, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -30,8 +34,10 @@ function RegisterForm() {
     setRePassword(param.target.value)
   }
 
-  const submit = () => {
-    employeeRegister(email, userName, password, rePassword, setEmailError, setUserNameError, setPasswordError, setRePasswordError, history)
+  const submit = async () => {
+    setLoading(true)
+    await employeeRegister(email, userName, password, rePassword, setEmailError, setUserNameError, setPasswordError, setRePasswordError, history, toast)
+    setLoading(false)
   }
 
   const handleGG = (param) => {
@@ -40,6 +46,7 @@ function RegisterForm() {
 
   return (
     <div className="col-md-12 col-lg-6 login-right">
+      <ToastContainer/>
       <div className="login-header">
         <h3>
           Employee Register
@@ -75,9 +82,11 @@ function RegisterForm() {
         </div>
         {rePasswordError && <div class="alert alert-danger">{rePasswordError}</div>}
         <button
+          disabled={loading}
           className="btn btn-primary btn-block btn-lg login-btn"
           onClick={submit}
-        >
+        >{loading && <span className="fa fa-refresh fa-spin"><FaIcons.FaSpinner/></span>}
+        {"  "}
           Signup
         </button>
         <div className="login-or">

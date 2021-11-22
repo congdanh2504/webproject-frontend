@@ -1,8 +1,8 @@
 import axios from "axios";
 import { BASE_URL, getToken, removeUserSession, setTokenSession, setUserSession } from "./Common";
 
-export const login = (email, password, setError, history) => {
-    axios({
+export const login = async (email, password, setError, history) => {
+    await axios({
         method: 'post',
         url: `${BASE_URL}login`,
         headers: {'Content-Type': 'application/json'},
@@ -19,8 +19,8 @@ export const login = (email, password, setError, history) => {
     })
 }
 
-export const employeeRegister = (email, username, password, repassword, setEmailError, setUsernameError, setPasswordError, setRepasswordError, history) => {
-    axios({
+export const employeeRegister = async (email, username, password, repassword, setEmailError, setUsernameError, setPasswordError, setRepasswordError, history, toast) => {
+    await axios({
         method: 'post',
         url:  `${BASE_URL}register`,
         headers: {'Content-Type': 'application/json'},
@@ -33,8 +33,10 @@ export const employeeRegister = (email, username, password, repassword, setEmail
             type: "Employee"
         }
     }).then(response => {
+        toast.success("Successfully!")
         history.push("/login")
     }).catch(error => {
+        toast.error("Error")
         if (error.response.status === 409 || error.response.status === 400) {
             try {
                 setEmailError(error.response.data[0].email)
@@ -48,8 +50,8 @@ export const employeeRegister = (email, username, password, repassword, setEmail
     })
 }
 
-export const employerRegister = (email, username, password, repassword, setEmailError, setUsernameError, setPasswordError, setRepasswordError, history) => {
-    axios({
+export const employerRegister = async (email, username, password, repassword, setEmailError, setUsernameError, setPasswordError, setRepasswordError, history, toast) => {
+    await axios({
         method: 'post',
         url:  `${BASE_URL}register`,
         headers: {'Content-Type': 'application/json'},
@@ -62,8 +64,10 @@ export const employerRegister = (email, username, password, repassword, setEmail
             type: "Employer"
         }
     }).then(response => {
+        toast.success("Successfully!")
         history.push("/login")
     }).catch(error => {
+        toast.error("Error")
         if (error.response.status === 409 || error.response.status === 400) {
             try {
                 setEmailError(error.response.data[0].email)

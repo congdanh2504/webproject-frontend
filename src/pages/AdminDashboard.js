@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getReport } from "../api/Admin";
 import Breadcrumb from "../components/Breadcrumb";
-import Bar from "../components/charts/ChartBar";
 import Doughnut from "../components/charts/ChartDoughnut";
 import Line from "../components/charts/ChartLine";
-import Radar from "../components/charts/ChartRadar";
-import { getCompany } from "../api/Admin";
-import { getUsers } from "../api/Admin";
-
 
 function AdminDashboard() {
   const [report, setReport] = useState(null) 
