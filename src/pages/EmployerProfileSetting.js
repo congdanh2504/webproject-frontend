@@ -4,19 +4,37 @@ import { getUser } from "../api/Common";
 import Breadcrumb from "../components/Breadcrumb";
 import InputTag from "../components/InputTag";
 import image from '../assets/img/default_avatar.png'
-import { employerUpdateProfile } from "../api/updateProfile";
+import { changePassword, employerUpdateProfile } from "../api/updateProfile";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import * as FaIcons from 'react-icons/fa'
 import { getProvinces } from "../api/locationAPI";
 import Select from 'react-select'
+import Modal from 'react-modal';
 
 function UserProfileSetting() {
   const [loading, setLoading] = useState(false)
+  const [passwordChange, setPasswordChange] = useState({id: getUser()._id, email: getUser().email, oldPassword: "", newPassword: "", confirmNewPassword: ""})
   const [overviewAvatar, setOverviewAvatar] = useState(null)
   const [provinceOptions, changeProvinceOptions] = useState([]);
-  const [employer, setEmployer] = useState({avatar: null, name: getUser().name, mobile: getUser().mobile, address: getUser().address.detail, province: getUser().address.province})
+  const [employer, setEmployer] = useState({avatar: null, name: getUser().name, mobile: getUser().mobile, address: getUser().address?.detail, province: getUser().address?.province})
   const [description, setDescription] = useState(getUser().description)
+  const [modalIsOpen, setIsOpen] = useState(false)
+  const customStyles = {
+    content: {
+      width: "60%",
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
+
+  const changePasswordChange = (e) => {
+    setPasswordChange({...passwordChange, [e.target.name]: e.target.value})
+  }
 
   const changeInput = (e) => {
     setEmployer({...employer, [e.target.name]: e.target.value})
@@ -44,6 +62,16 @@ function UserProfileSetting() {
     reader.onloadend = function (e) {
       setOverviewAvatar(reader.result)
     }.bind(this);
+  }
+
+  const changePass = async () => {
+    if (passwordChange.newPassword != passwordChange.confirmNewPassword) {
+      toast.info("New password and confirm not the same")
+      return
+    }
+    setLoading(true)
+    await changePassword(passwordChange, toast)
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -130,7 +158,27 @@ function UserProfileSetting() {
                     {"  "}
                       Save Changes
                     </button>
+                    <button type="submit" class="btn btn-info submit-btn" onClick={() => setIsOpen(true)}>
+                      Change password
+                    </button>
                   </div>
+                  <Modal
+                    isOpen={modalIsOpen}
+                    style={customStyles}
+                    onRequestClose={() => setIsOpen(false)}
+                  >
+                    <h1>Change password</h1>
+                    <div className="container row">
+                    <InputTag title="Old password" name="oldPassword" type='password' placeholder="Old password" onChange={changePasswordChange}/>
+                    <InputTag title="New password" name="newPassword" type='password' placeholder="New password" onChange={changePasswordChange}/>
+                    <InputTag title="Confirm" name="confirmNewPassword" type='password' placeholder="Confirm" onChange={changePasswordChange}/>             
+                    </div>
+                    <button style={{ marginLeft: "20px" }} disabled={loading} class="btn btn-primary submit-btn" onClick={changePass}>
+                    {loading && <span className="fa fa-refresh fa-spin"><FaIcons.FaSpinner/></span>}
+                    {"  "}
+                      Save Change
+                    </button>          
+                  </Modal>
                 </div>
               </div>
             </div>
