@@ -9,6 +9,7 @@ function TextAreaTag(props) {
           defaultValue={props.defaultValue}
           class="form-control"
           rows={props.rows}
+          name={props.name}
           placeholder={props.placeholder}
           onChange={props.onChange}
         />

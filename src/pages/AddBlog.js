@@ -11,17 +11,11 @@ import * as FaIcons from 'react-icons/fa'
 
 const AddBlog = () => {
   const [loading, setLoading] = useState(false)
-  const [title, setTitle] = useState(null);
-  const [description, setDescription] = useState(null)
-  const [image, setImage] = useState(null)
+  const [blog, setBlog] = useState({title: "", description: "", image: null})
   const [content, setContent] = useState(null)
 
-  const changeTitle = (param) => {
-    setTitle(param.target.value)
-  }
-
-  const changeDescription = (param) => {
-    setDescription(param.target.value)
+  const changeInput = (e) => {
+    setBlog({...blog, [e.target.name] : e.target.value})
   }
 
   const changeContent = (param) => {
@@ -29,13 +23,13 @@ const AddBlog = () => {
   }
 
   const changeImage = (param) => {
-    setImage(param.target.files[0])
+    setBlog({...blog, "image" : param.target.files[0]})
   }
 
   const submit = async () => {
-    if (title && description && content && image) {
+    if (blog.title && blog.description && content && blog.image) {
       setLoading(true)
-      await addBlog(title, description, content, image, toast)
+      await addBlog(blog, content, toast)
       setLoading(false)
     } else {
       toast.error("Miss data")
@@ -74,7 +68,7 @@ const AddBlog = () => {
             <div class="card">
               <div class="card-body">
                 <div class="row form-row">
-                  <InputTag type='text' title="Title Name" placeholder="Write the title of the blog here!" onChange={changeTitle} />
+                  <InputTag type='text' title="Title Name" name="title" placeholder="Write the title of the blog here!" onChange={changeInput} />
                   <div class="form-group">
                     <label>Choose image</label>
                     <input
@@ -85,10 +79,11 @@ const AddBlog = () => {
                     />
                   </div>
                   <TextAreaTag
+                    name="description"
                     title="Short Description"
                     rows="5"
                     placeholder="Write short description of the blog here!"
-                    onChange={changeDescription}
+                    onChange={changeInput}
                   />
                 </div>
                 <div className="col-12 mb-5 p-0">

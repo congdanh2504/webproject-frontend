@@ -8,8 +8,6 @@ import InputTag from "./InputTag";
 import TextAreaTag from "./TextAreaTag";
 import { getProvinces } from "../api/locationAPI";
 import Select from 'react-select'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import * as FaIcons from 'react-icons/fa'
 
 const categories = new Map();
@@ -47,46 +45,19 @@ function JobCard(props) {
       },
     };
     const [provinceOptions, changeProvinceOptions] = useState([]);
-    const [title, setTitle] = useState(null)
-    const [nameJob, setNameJob] = useState(null)
-    const [description, setDescription] = useState(null)
-    const [category, setCategory] = useState(null)
-    const [salary, setSalary] = useState(null)
-    const [duration, setDuration] = useState(null)
-    const [detail, setDetail] = useState(null)
-    const [province, setProvince] = useState(null)
+    const [job, setJob] = useState({id: props.id, title: "", nameJob: "", description: "", category: "", salary: "", duration: "", image: null, province: "", detail: ""})
 
-    const changeTitle = (param) => {
-        setTitle(param.target.value)
+    const changeInput = (e) => {
+        setJob({...job, [e.target.name]: e.target.value})
     }
 
-    const changeDescription = (param) => {
-        setDescription(param.target.value)
-    }
-
-    const changeNameJob = (param) => {
-        setNameJob(param.target.value)
-    }
-
-    const changeCategory = (param) =>{
-        setCategory(param.target.value)
-    }
-
-    const changeSalary = (param) => {
-        setSalary(param.target.value)
-    }
-
-    const changeDuration = (param)=>{ 
-        setDuration(param.target.value)   
-    }
-
-    const changeDetail = (param)=>{ 
-        setDetail(param.target.value)   
+    const changeProvince = (e) => {
+        setJob({...job, "province": e.label})
     }
 
     const submit = async () => {
         setLoading(true)
-        await updateJob(props.id, title, nameJob, description, category, salary, duration, province, detail, toast)
+        await updateJob(job, props.toast)
         setLoading(false)
         getMyJobs(props.setJobs, props.user._id);
         setIsOpenEdit(false)
@@ -103,7 +74,6 @@ function JobCard(props) {
     return (
         <div class="card">
         <div class="card-body">
-            <ToastContainer/>
             <div class="doctor-widget">
             <div class="doc-info-left">
                 <div class="doctor-img">
@@ -117,7 +87,7 @@ function JobCard(props) {
                 </div>
                 <div class="doc-info-cont">
                 <h4 class="doc-name">
-                    <Link to={`/employerProfile/${props.user._id}`}>{props.user.name}</Link> {/*name employer, company */}
+                    <Link to={`/employerProfile/${props.user._id}`}>{props.user.name}</Link> 
                 </h4>
                 <p class="doc-speciality">{props.nameJob} - {props.title}</p>
                 <h5 class="doc-department">
@@ -137,7 +107,6 @@ function JobCard(props) {
                         value={props.user.rate.avg}
                         activeColor="#ffd700"
                     />
-                    {/* <span className="d-inline-block average-rating">({props.user.rate.count})</span> */}
                 </div>
                 <div class="clini-infos">
                 <ul className="d-flex flex-column">
@@ -161,17 +130,10 @@ function JobCard(props) {
                 <Link to={`/jobs/job-details/${props.id}`} class="view-pro-btn">See details</Link>
                 </div>
                 {getUser() && getUser()._id == props.user._id && <div ><div class="clinic-booking-red">
-                <a class="view-pro-btn-red" onClick={() => setIsOpenDelete(true)} >Delete</a>
+                <button class="view-pro-btn-red" onClick={() => setIsOpenDelete(true)} >Delete</button>
                 </div><div class="clinic-booking-green">
                 <a class="view-pro-btn-green" onClick={() => {
-                    setTitle(props.title)
-                    setCategory(props.category)
-                    setDetail(props.address.detail)
-                    setDescription(props.description)
-                    setProvince(props.address.province)
-                    setDuration(props.duration)
-                    setNameJob(props.nameJob)
-                    setSalary(props.salary)
+                    setJob({...job, "title": props.title, "title": props.title, "category": props.category,"detail": props.address.detail,"description": props.description,"province": props.address.province,"duration": props.duration,"nameJob": props.nameJob,"salary": props.salary})
                     setIsOpenEdit(true)
                 }} >Edit</a>
                 </div></div>}
@@ -182,10 +144,13 @@ function JobCard(props) {
                 >
                     <h1>Are you sure ?</h1>
                     <div class="clinic-booking-red">
-                    <a class="view-pro-btn-red" onClick={ async () => {
-                        await deleteJob(props.id, toast)
+                    <button disabled={loading} class="view-pro-btn-red" onClick={ async () => {
+                        setLoading(true)
+                        await deleteJob(props.id, props.toast)
+                        setLoading(false)
                         getMyJobs(props.setJobs, props.user._id)
-                    } } >Delete</a>
+                    } } >{loading && <span className="fa fa-refresh fa-spin"><FaIcons.FaSpinner/></span>}
+                    {"  "}Delete</button>
                     </div>
                     <div class="clinic-booking-green">
                     <a class="view-pro-btn-green" onClick={() => setIsOpenDelete(false)} >Cancel</a>
@@ -203,11 +168,11 @@ function JobCard(props) {
                                 <div class="card">
                                 <div class="card-body">
                                     <div class="row form-row">
-                                        <InputTag defaultValue={title} type='text' title="Title" placeholder="Title" onChange={changeTitle} />
+                                        <InputTag defaultValue={job.title} type='text' name="title" title="Title" placeholder="Title" onChange={changeInput} />
                                         <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label>Types of Career</label>
-                                            <select class="form-control select" onChange={changeCategory}>
+                                            <select class="form-control select" name="category" onChange={changeInput}>
                                             <option>Select</option>
                                             <option>Programmer</option>
                                             <option>Designer</option>
@@ -217,22 +182,23 @@ function JobCard(props) {
                                             </select>
                                         </div>
                                         </div>
-                                        <InputTag defaultValue={detail} type='text' title="Detail location" placeholder="Detail location" onChange={changeDetail}/>
+                                        <InputTag defaultValue={job.detail} type='text' title="Detail location" name="detail" placeholder="Detail location" onChange={changeInput}/>
                                         <div class="form-group">
                                             <label>Province</label>
-                                            <Select placeholder="Province" options={provinceOptions} />
+                                            <Select placeholder="Province" onChange={changeProvince} options={provinceOptions} />
                                         </div>
-                                        <InputTag defaultValue={nameJob} type='text' title="Carrier" placeholder="Input the name of career!" onChange={changeNameJob}/>
-                                        <InputTag defaultValue={duration} type='date' title="Duration"  onChange={changeDuration}/>
-                                        <InputTag defaultValue={salary} type='number' title="Salary (USD)" onChange={changeSalary}/>
+                                        <InputTag defaultValue={job.nameJob} type='text' title="Carrier" name="nameJob" placeholder="Input the name of career!" onChange={changeInput}/>
+                                        <InputTag defaultValue={job.duration} type='date' title="Duration" name="duration" onChange={changeInput}/>
+                                        <InputTag defaultValue={job.salary} type='number' title="Salary (USD)" name="salary" onChange={changeInput}/>
                                     </div>
                                     <div class="row form-row">
                                         <TextAreaTag
-                                            defaultValue={description}
+                                            defaultValue={job.description}
                                             title="Short Description"
                                             rows="5"
+                                            name="description"
                                             placeholder="Write short description of the blog here!"
-                                            onChange={changeDescription}
+                                            onChange={changeInput}
                                         />
                                     </div>
 

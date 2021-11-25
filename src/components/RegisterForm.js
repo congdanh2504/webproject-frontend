@@ -8,40 +8,22 @@ import * as FaIcons from 'react-icons/fa'
 
 function RegisterForm() {
   const [loading, setLoading] = useState(false)
-  const [userName, setUsername] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [rePassword, setRePassword] = useState("")
-  const [userNameError, setUserNameError] = useState(null)
-  const [emailError, setEmailError] = useState(null)
-  const [passwordError, setPasswordError] = useState(null)
-  const [rePasswordError, setRePasswordError] = useState(null)
+  const [user, setUser] = useState({username: "", email: "", password: "", rePassword: ""})
+  const [error, setError] = useState({username: null, email: null, password: null, rePassword: null})
   const history = useHistory()
 
-  const updateUsername = (param) => {
-    setUsername(param.target.value)
-  }
-
-  const updateEmail = (param) => {
-    setEmail(param.target.value)
-  }
-
-  const updatePassword = (param) => {
-    setPassword(param.target.value)
-  }
-
-  const updateRePassword = (param) => {
-    setRePassword(param.target.value)
+  const changeInput = (e) => {
+    setUser({...user, [e.target.name]: e.target.value})
   }
 
   const submit = async () => {
     setLoading(true)
-    await employeeRegister(email, userName, password, rePassword, setEmailError, setUserNameError, setPasswordError, setRePasswordError, history, toast)
+    await employeeRegister(user, error, setError, toast)
     setLoading(false)
   }
 
   const handleGG = (param) => {
-    registerWithGG(param.tokenId, setPasswordError, history, "Employee")
+    registerWithGG(param.tokenId, setError, history, "Employee")
   }
 
   return (
@@ -56,31 +38,33 @@ function RegisterForm() {
         </h3>
       </div>
         <div className="form-group">
-          <input type="text" className="form-control" placeholder="Username" onChange={updateUsername}/>
+          <input type="text" className="form-control" placeholder="Username" name="username" onChange={changeInput}/>
         </div>
-        {userNameError && <div class="alert alert-danger">{userNameError}</div>}
+        {error.username && <div class="alert alert-danger">{error.username}</div>}
         <div className="form-group">
-          <input type="email" className="form-control" placeholder="Email" onChange={updateEmail}/>
+          <input type="email" className="form-control" placeholder="Email" name="email" onChange={changeInput}/>
         </div>
-        {emailError && <div class="alert alert-danger">{emailError}</div>}
+        {error.email && <div class="alert alert-danger">{error.email}</div>}
         <div className="form-group">
           <input
             type="password"
             className="form-control"
             placeholder="Create a Password"
-            onChange={updatePassword}
+            name="password"
+            onChange={changeInput}
           />
         </div>
-        {passwordError && <div class="alert alert-danger">{passwordError}</div>}
+        {error.password && <div class="alert alert-danger">{error.password}</div>}
         <div className="form-group">
           <input
             type="password"
             className="form-control"
             placeholder="Confirm your Password"
-            onChange={updateRePassword}
+            name="rePassword"
+            onChange={changeInput}
           />
         </div>
-        {rePasswordError && <div class="alert alert-danger">{rePasswordError}</div>}
+        {error.rePassword && <div class="alert alert-danger">{error.rePassword}</div>}
         <button
           disabled={loading}
           className="btn btn-primary btn-block btn-lg login-btn"

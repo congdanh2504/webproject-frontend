@@ -1,14 +1,14 @@
 import axios from "axios";
 import { BASE_URL, getToken, removeUserSession, setTokenSession, setUserSession } from "./Common";
 
-export const login = async (email, password, setError, history) => {
+export const login = async (user, setError, history) => {
     await axios({
         method: 'post',
         url: `${BASE_URL}login`,
         headers: {'Content-Type': 'application/json'},
         data: {
-            email: email,
-            password: password
+            email: user.email,
+            password: user.password
         }
     }).then(response => {
         setTokenSession(response.data.token)
@@ -19,70 +19,58 @@ export const login = async (email, password, setError, history) => {
     })
 }
 
-export const employeeRegister = async (email, username, password, repassword, setEmailError, setUsernameError, setPasswordError, setRepasswordError, history, toast) => {
+export const employeeRegister = async (user, error, setError, toast) => {
     await axios({
         method: 'post',
         url:  `${BASE_URL}register`,
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
         data: {
-            email: email,
-            name: username,
-            password: password,
-            repassword: repassword,
+            email: user.email,
+            name: user.username,
+            password: user.password,
+            repassword: user.rePassword,
             type: "Employee"
         }
     }).then(response => {
         toast.success("Successfully!")
-        history.push("/login")
-    }).catch(error => {
+    }).catch(err=> {
         toast.error("Error")
-        if (error.response.status === 409 || error.response.status === 400) {
-            try {
-                setEmailError(error.response.data[0].email)
-                setUsernameError(error.response.data[0].name)
-                setPasswordError(error.response.data[0].password)
-                setRepasswordError(error.response.data[0].repassword)
-            } catch ($e) {
-                setEmailError("Email is already use")
-            }
+        if (err.response.status === 400) {
+            setError({...error, email: err.response.data[0].email, username: err.response.data[0].name, password: err.response.data[0].password, rePassword: err.response.data[0].repassword})
+        } else {
+            setError({email: err.response.message})
         }
     })
 }
 
-export const employerRegister = async (email, username, password, repassword, setEmailError, setUsernameError, setPasswordError, setRepasswordError, history, toast) => {
+export const employerRegister = async (user, error, setError, toast) => {
     await axios({
         method: 'post',
         url:  `${BASE_URL}register`,
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
         data: {
-            email: email,
-            name: username,
-            password: password,
-            repassword: repassword,
+            email: user.email,
+            name: user.username,
+            password: user.password,
+            repassword: user.rePassword,
             type: "Employer"
         }
     }).then(response => {
         toast.success("Successfully!")
-        history.push("/login")
-    }).catch(error => {
+    }).catch(err=> {
         toast.error("Error")
-        if (error.response.status === 409 || error.response.status === 400) {
-            try {
-                setEmailError(error.response.data[0].email)
-                setUsernameError(error.response.data[0].name)
-                setPasswordError(error.response.data[0].password)
-                setRepasswordError(error.response.data[0].repassword)
-            } catch ($e) {
-                setEmailError("Email is already use")
-            }
+        if (err.response.status === 400) {
+            setError({...error, email: err.response.data[0].email, username: err.response.data[0].name, password: err.response.data[0].password, rePassword: err.response.data[0].repassword})
+        } else {
+            setError({email: err.response.message})
         }
     })
 }
 
-export const loginWithGG = (idToken, setError, history) => {
-    axios({
+export const loginWithGG = async (idToken, error, setError, history) => {
+    await axios({
         method: 'post',
         url: `${BASE_URL}login/google`,
         headers: {'Content-Type': 'application/json'},
@@ -94,15 +82,14 @@ export const loginWithGG = (idToken, setError, history) => {
         setUserSession(response.data['user'])
         setTokenSession(response.data['token'])
         history.push('/')
-        // window.location.reload()
     }).catch(error => {
         if (error.response.status === 401 || error.response.status === 400) {
-            setError(error.response.data.message)
+            setError({...error, password: error.response.data.message})
         }
     })
 }
 
-export const registerWithGG = (idToken, setError, history, type) => {
+export const registerWithGG = (idToken, error, setError, history, type) => {
     axios({
         method: 'post',
         url: `${BASE_URL}register/google/${type}`,
@@ -115,10 +102,9 @@ export const registerWithGG = (idToken, setError, history, type) => {
         setUserSession(response.data['user'])
         setTokenSession(response.data['token'])
         history.push('/')
-        // window.location.reload()
-    }).catch(error => {
-        if (error.response.status === 401 || error.response.status === 400) {
-            setError(error.response.data.message)
+    }).catch(err => {
+        if (err.response.status === 401 || err.response.status === 400) {
+            setError({...error, password: err.response.data.message})
         }
     })
 }

@@ -6,10 +6,10 @@ import Pagination from 'react-js-pagination'
 import { getMyJobs } from '../api/jobAPI';
 import { useParams } from 'react-router'
 import { getUserById } from '../api/loginAPI'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-
-
-const EmployerProfile = (props) => {
+const EmployerProfile = () => {
   const [jobs, setJobs] = useState();
   const [user, setUser] = useState(null)
   const id = useParams('id')
@@ -23,6 +23,7 @@ const EmployerProfile = (props) => {
     <div>
       <div>
         <Breadcrumb title="Employee Profile" />
+        <ToastContainer/>
         <div class="content">
           <div class="container">
             <div class="card">
@@ -64,6 +65,7 @@ const EmployerProfile = (props) => {
                   address={data.address}
                   rate={data.rate}
                   setJobs={setJobs}
+                  toast={toast}
                 />
               })}
               {jobs && jobs.data.length > 0 && <div className="row mt-3 justify-content-center">

@@ -6,6 +6,7 @@ const InputTag = (props) => {
       <div class="form-group">
         <label >{props.title}</label>
         <input
+          name={props.name}
           defaultValue={props.defaultValue}
           type={props.type}
           class="form-control"

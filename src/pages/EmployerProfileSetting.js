@@ -1,58 +1,44 @@
 import { CKEditor } from "ckeditor4-react";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { getUser } from "../api/Common";
 import Breadcrumb from "../components/Breadcrumb";
 import InputTag from "../components/InputTag";
 import image from '../assets/img/default_avatar.png'
 import { employerUpdateProfile } from "../api/updateProfile";
-import { Employer } from "../models/Employer";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import * as FaIcons from 'react-icons/fa'
+import { getProvinces } from "../api/locationAPI";
+import Select from 'react-select'
 
 function UserProfileSetting() {
+  const [loading, setLoading] = useState(false)
   const [overviewAvatar, setOverviewAvatar] = useState(null)
-  const [avatar, setAvatar] = useState(null)
-  const [name, setName] = useState("")
-  const [dob, setDob] = useState("")
-  const [mobile, setMobile] = useState("")
-  const [address, setAddress] = useState("")
-  const [province, setProvince] = useState("")
-  const [description, setDescription] = useState("")
-  const [error, setError] = useState(null)
-  const [success, setSuccess] = useState(null)
+  const [provinceOptions, changeProvinceOptions] = useState([]);
+  const [employer, setEmployer] = useState({avatar: null, name: getUser().name, mobile: getUser().mobile, address: getUser().address.detail, province: getUser().address.province})
+  const [description, setDescription] = useState(getUser().description)
 
-  const changeCompanyName = (param) => {
-    setName(param.target.value)
-  }
-
-  const changeDob = (param) => {
-    setDob(param.target.value)
-  }
-
-  const changeMobile = (param) => {
-    setMobile(param.target.value)
-  }
-
-  const changeAddress = (param) => {
-    setAddress(param.target.value)
+  const changeInput = (e) => {
+    setEmployer({...employer, [e.target.name]: e.target.value})
   }
 
   const changeProvince = (param) => {
-    setProvince(param.target.value)
+    setEmployer({...employer, "province": param.label})
   }
 
   const changeDescription = (param) => {
     setDescription(param.editor.getData())
   }
 
-  const submit = () => {
-    const employer = new Employer(avatar, name, address, province, mobile, description)
-    employerUpdateProfile(employer, setError, setSuccess)
-
+  const submit = async () => {
+    setLoading(true)
+    await employerUpdateProfile(employer, description, toast)
+    setLoading(false)
   }
 
   const changeAvatar = (param) => {
     var file = param.target.files[0];
-    setAvatar(file);
+    setEmployer({...employer, "avatar": file})
     var reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = function (e) {
@@ -60,12 +46,18 @@ function UserProfileSetting() {
     }.bind(this);
   }
 
+  useEffect(() => {
+    async function fetchProvinces() {
+      let response = await getProvinces()
+      changeProvinceOptions(response)
+    }
+    fetchProvinces()
+  }, [])
+
   return (
     <>
-      {/* <!-- Breadcrumb --> */}
       <Breadcrumb title="Update Profile" />
-      {/* <!-- /Breadcrumb --> */}
-
+      <ToastContainer/>
       <div class="content">
         <div class="container-fluid">
           <div class="row">
@@ -119,22 +111,23 @@ function UserProfileSetting() {
                         </div>
                       </div>
                     </div>
-                    <InputTag title="Company Name" type='text' placeholder="Name of your company" onChange={changeCompanyName}/>
-                    <InputTag title="Moblie" type='text' placeholder="Your phone number" onChange={changeMobile}/>
-                    <InputTag title="Address" type='text' placeholder="806 Twin Willow Lane" onChange={changeAddress}/>
-                    <InputTag title="Province" type='text' placeholder="Old Forge" onChange={changeProvince}/>
+                    <InputTag title="Company Name" name="name" defaultValue={employer.name} type='text' placeholder="Name of your company" onChange={changeInput}/>
+                    <InputTag title="Mobile" name="mobile" defaultValue={employer.mobile} type='text' placeholder="Your phone number" onChange={changeInput}/>
+                    <InputTag title="Address" name="address" defaultValue={employer.address} type='text' placeholder="806 Twin Willow Lane" onChange={changeInput}/>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label>Province</label>
+                        <Select placeholder="Province" options={provinceOptions} onChange={changeProvince} />
+                      </div>
+                    </div>
                     <div className="col-12 mb-5 p-0">
-                      <CKEditor initData="<h1>Write a description about your company</h1>" onChange={changeDescription}/>
+                      <CKEditor initData={description} onChange={changeDescription}/>
                     </div>
                   </div>
-                  {error && <div class="alert alert-danger">
-                    {error}
-                  </div>}
-                  {success && <div class="alert alert-success">
-                    {success}
-                  </div>}
                   <div class="submit-section">
-                    <button type="submit" class="btn btn-primary submit-btn" onClick={submit}>
+                    <button disabled={loading} type="submit" class="btn btn-primary submit-btn" onClick={submit}>
+                    {loading && <span className="fa fa-refresh fa-spin"><FaIcons.FaSpinner/></span>}
+                    {"  "}
                       Save Changes
                     </button>
                   </div>

@@ -13,9 +13,9 @@ const AddJob = () => {
   const [provinceOptions, changeProvinceOptions] = useState([]);
   const [districtOptions, changeDistrictOptions] = useState([]);
   const [wardOptions, changeWardOptions] = useState([]);
-  const [province, changeProvince] = useState("");
+  const [job, setJob] = useState({title: "", nameJob: "", description: "", category: "", salary: "", duration: "", image: null, province: "", district: "", ward: "", street: ""})
   const updateProvince = (param) => {
-    changeProvince(param.label)
+    setJob({...job, "province": param.label})
     async function fetchDistricts() {
       let response = await getDistricts(param.value)
       changeDistrictOptions(response)
@@ -23,9 +23,8 @@ const AddJob = () => {
     fetchDistricts()
   }
 
-  const [district, changeDistrict] = useState("");
   const updateDistrict = (param) => {
-    changeDistrict(param.label)
+    setJob({...job, "district": param.label})
     async function fetchWards() {
       let response = await getWards(param.value)
       changeWardOptions(response)
@@ -33,11 +32,8 @@ const AddJob = () => {
     fetchWards()
   }
 
-  const [ward, changeWard] = useState("");
-  const updateWard = (param) => changeWard(param.label)
-  const [street, changeStreet] = useState("");
-  const updateStreet = (param) => changeStreet(param.target.value)
-  var defaultLocation = `${street},${ward},${district},${province},viet_nam`;
+  const updateWard = (param) => setJob({...job, "ward": param.label})
+  let defaultLocation = `${job.street},${job.ward},${job.district},${job.province},viet_nam`;
   useEffect(() => {
     async function fetchProvinces() {
       let response = await getProvinces()
@@ -46,48 +42,20 @@ const AddJob = () => {
     fetchProvinces()
   }, [])
 
-  const [title, setTitle] = useState(null)
-  const [nameJob, setNameJob] = useState(null)
-  const [description, setDescription] = useState(null)
-  const [category, setCategory] = useState(null)
-  const [salary, setSalary] = useState(null)
-  const [duration, setDuration] = useState(null)
-  const [image, setImage] = useState(null)
-
-  const changeTitle = (param) => {
-    setTitle(param.target.value)
-  }
-
-  const changeDescription = (param) => {
-    setDescription(param.target.value)
-  }
-
-  const changeNameJob = (param) => {
-    setNameJob(param.target.value)
+  const changeInput = (e) => {
+    setJob({...job, [e.target.name]: e.target.value})
   }
 
   const changeImage = (param) => {
-    setImage(param.target.files[0])
-  }
-
-  const changeCategory = (param) =>{
-    setCategory(param.target.value)
-  }
-
-  const changeSalary = (param) => {
-    setSalary(param.target.value)
-  }
-
-  const changeDuration = (param)=>{ 
-    setDuration(param.target.value)   
+    setJob({...job, "image": param.target.files[0]})
   }
 
   const submit = async () => {
-    if(title && nameJob && description  && image &&category && duration &&salary
-      &&province && ward && district && street) {
+    console.log(job)
+    if(job.title && job.nameJob && job.description  && job.image && job.category && job.duration && job.salary
+      && job.province && job.ward && job.district && job.street) {
         setLoading(true)
-        await postJob(title, nameJob, description,category, salary, duration, province, 
-          district,ward ,street, image, toast)
+        await postJob(job, toast)
         setLoading(false)
         
     }else{
@@ -116,11 +84,11 @@ const AddJob = () => {
                       />
                     </div>
                   </div>
-                  <InputTag type='text' title="Title" placeholder="Title" onChange={changeTitle} />
+                  <InputTag type='text' name="title" title="Title" placeholder="Title" onChange={changeInput} />
                   <div class="col-12 col-md-6">
                     <div class="form-group">
                       <label>Types of Career</label>
-                      <select class="form-control select" onChange={changeCategory}>
+                      <select class="form-control select" name="category" onChange={changeInput}>
                         <option>Select</option>
                         <option>Programmer</option>
                         <option>Designer</option>
@@ -131,9 +99,9 @@ const AddJob = () => {
                     </div>
                   </div>
 
-                  <InputTag type='text' title="Carrier" placeholder="Input the name of career!" onChange={changeNameJob}/>
-                  <InputTag type='date' title="Duration"  onChange={changeDuration}/>
-                  <InputTag type='number' title="Salary (USD)" onChange={changeSalary}/>
+                  <InputTag type='text' name="nameJob" title="Carrier" placeholder="Input the name of career!" onChange={changeInput}/>
+                  <InputTag type='date' name="duration" title="Duration"  onChange={changeInput}/>
+                  <InputTag type='number' name="salary" title="Salary (USD)" onChange={changeInput}/>
                 </div>
                 <div className="form-group row">
                   <div className="col-12 col-md-6">
@@ -158,7 +126,7 @@ const AddJob = () => {
                     <div class="col-12">
                       <div class="form-group">
                         <label>Street</label>
-                        <input class="form-control select" onChange={updateStreet} placeholder="Street">
+                        <input class="form-control select" name="street" onChange={changeInput} placeholder="Street">
                         </input>
                       </div>
                     </div>
@@ -179,8 +147,9 @@ const AddJob = () => {
                   <TextAreaTag
                     title="Short Description"
                     rows="5"
+                    name="description"
                     placeholder="Write short description of the blog here!"
-                    onChange={changeDescription}
+                    onChange={changeInput}
                   />
                 </div>
 

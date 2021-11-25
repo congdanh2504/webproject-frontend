@@ -1,30 +1,30 @@
 import axios from "axios";
 import { BASE_URL, getToken } from "./Common";
 
-export const employeeUpdateProfile = (employee, setError, setSuccess) => {
+export const employeeUpdateProfile = async (employee, cv, toast) => {
     var formData = new FormData();
     formData.append('image', employee.avatar);
     formData.append('document', JSON.stringify({ 
-        name: employee.firstName+" "+employee.lastName,
+        name: employee.name,
         dob: employee.dob,
-        address: employee.address,
+        address: employee.detail,
         city: employee.province,
         mobile: employee.mobile,
-        cv: employee.CV
+        cv: cv
     }))
-    axios({
+    await axios({
         method: 'post',
         url: `${BASE_URL}employeeUpdateProfile?token=${getToken()}`,
         headers: {'Content-Type': 'multipart/form-data'},
         data: formData
     }).then(response => {
-        setSuccess("Successfully")
+        toast.success("Successfully")
     }).catch(error => {
-        setError(error.response.data.message)
+        toast.error(error.response.data.message)
     })
 }
 
-export const employerUpdateProfile = (employer, setError, setSuccess) => {
+export const employerUpdateProfile = async (employer, description, toast) => {
     var formData = new FormData();
     formData.append('image', employer.avatar);
     formData.append('document', JSON.stringify({ 
@@ -32,16 +32,17 @@ export const employerUpdateProfile = (employer, setError, setSuccess) => {
         address: employer.address,
         city: employer.province,
         mobile: employer.mobile,
-        description: employer.description,
+        description: description,
     }))
-    axios({
+    await axios({
         method: 'post',
         url: `${BASE_URL}employerUpdateProfile?token=${getToken()}`,
         headers: {'Content-Type': 'multipart/form-data'},
         data: formData
     }).then(response => {
-        setSuccess("Successfully")
+        toast.success("Successfully")
     }).catch(error => {
-        setError(error.response.data.message)
+        toast.error(error.response.data.message)
     })
 }
+

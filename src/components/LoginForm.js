@@ -6,27 +6,24 @@ import * as FaIcons from 'react-icons/fa'
 
 function LoginForm() {
   const [loading, setLoading] = useState(false)
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUser] = useState({email: "", password: ""})
   const [error, setError] = useState(null);
   const history = useHistory();
 
-  const updateEmail = (param) => {
-    setEmail(param.target.value);
-  };
-
-  const updatePassword = (param) => {
-    setPassword(param.target.value);
-  };
+  const changeInput = (e) => {
+    setUser({...user, [e.target.name] : e.target.value})
+  }
 
   const submit = async () => {
     setLoading(true)
-    await login(email, password, setError, history)
+    await login(user, setError, history)
     setLoading(false)
   };
 
-  const handleGG = (param) => {
-    loginWithGG(param.tokenId, setError, history)
+  const handleGG = async (param) => {
+    setLoading(true)
+    await loginWithGG(param.tokenId, error, setError, history)
+    setLoading(false)
   }
 
   return (
@@ -39,21 +36,22 @@ function LoginForm() {
       <div className="form-group">
         <input
           type="email"
+          name="email"
           className="form-control"
-          id="email"
           placeholder="Email"
-          onChange={updateEmail}
+          onChange={changeInput}
         />
       </div>
       <div className="form-group">
         <input
           type="password"
+          name="password"
           className="form-control"
           placeholder="Password"
-          onChange={updatePassword}
+          onChange={changeInput}
         />
       </div>
-      { error && <div class="alert alert-danger">
+      {error && <div class="alert alert-danger">
         {error}
       </div>}
       
@@ -62,7 +60,8 @@ function LoginForm() {
           Forgot Password ?
         </Link>
       </div>
-      <button disable={loading}
+      <button 
+        disabled={loading}
         className="btn btn-primary btn-block btn-lg login-btn"
         onClick={submit}
       > {loading && <span className="fa fa-refresh fa-spin"><FaIcons.FaSpinner/></span>}

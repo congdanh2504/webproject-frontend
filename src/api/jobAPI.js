@@ -3,20 +3,18 @@ import { BASE_URL, getToken } from "./Common";
 
 
 
-export const postJob =  async (title, nameJob, description, category, salary, duration, province,
-    district, ward, street, image, toast) => {
+export const postJob =  async (job, toast) => {
     var formData = new FormData();
-    formData.append('image', image);
+    formData.append('image', job.image);
     formData.append('document', JSON.stringify({
-        title: title,
-        nameJob: nameJob,
-        description: description,
-        category: category,
-        salary: salary,
-        duration: duration,
-        province: province,
-        detailedAddress: `${street}, ${ward}, ${district}, ${province}`,
-        image: image
+        title: job.title,
+        nameJob: job.nameJob,
+        description: job.description,
+        category: job.category,
+        salary: job.salary,
+        duration: job.duration,
+        province: job.province,
+        detailedAddress: `${job.street}, ${job.ward}, ${job.district}, ${job.province}`,
     }))
     await axios({
         method: 'post',
@@ -116,22 +114,22 @@ export const searchJob = (setJobs, location, keyword) => {
     })
 }
 
-export const updateJob = async (id, title, nameJob, description, category, salary, duration, province, detail, toast) => {
+export const updateJob = async (job, toast) => {
     await axios({
         method: 'PATCH',
         url: `${BASE_URL}postItem?token=${getToken()}`,
         headers: {'Content-Type': 'application/json'},
         data: {
-            id: id,
-            title: title,
-            nameJob: nameJob,
-            description: description,
-            category: category,
-            salary: salary,
-            duration: duration,
+            id: job.id,
+            title: job.title,
+            nameJob: job.nameJob,
+            description: job.description,
+            category: job.category,
+            salary: job.salary,
+            duration: job.duration,
             address: {
-                province: province,
-                detail: detail
+                province: job.province,
+                detail: job.detail
             } 
         }
     }).then((res) => {

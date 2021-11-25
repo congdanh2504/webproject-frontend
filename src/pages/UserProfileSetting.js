@@ -1,67 +1,58 @@
 import { CKEditor } from "ckeditor4-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getUser } from "../api/Common";
 import InputTag from "../components/InputTag";
 import image from '../assets/img/default_avatar.png'
 import { employeeUpdateProfile } from "../api/updateProfile";
-import { Employee } from "../models/Employee";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import * as FaIcons from 'react-icons/fa'
+import { getProvinces } from "../api/locationAPI";
+import Select from 'react-select'
 
 function UserProfileSetting() {
+  const [loading, setLoading] = useState(false)
   const [overviewAvatar, setOverviewAvatar] = useState(null)
-  const [avatar, setAvatar] = useState(null)
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [dob, setDob] = useState("")
-  const [mobile, setMobile] = useState("")
-  const [address, setAddress] = useState("")
-  const [province, setProvince] = useState("")
-  const [cv, setCV] = useState("")
-  const [error, setError] = useState(null)
-  const [success, setSuccess] = useState(null)
+  const [employee, setEmployee] = useState({avatar: null, name: getUser().name, dob: getUser().dob, mobile: getUser().mobile, detail: getUser().address.detail, province: getUser().address.province})
+  const [cv, setCV] = useState(getUser().cv)
+  const [provinceOptions, changeProvinceOptions] = useState([]);
 
-  const changeFirstName = (param) => {
-    setFirstName(param.target.value)
-  }
-
-  const changeLastName = (param) => {
-    setLastName(param.target.value)
-  }
-
-  const changeDob = (param) => {
-    setDob(param.target.value)
-  }
-
-  const changeMobile = (param) => {
-    setMobile(param.target.value)
-  }
-
-  const changeAddress = (param) => {
-    setAddress(param.target.value)
+  const changeInput = (e) => {
+    setEmployee({...employee, [e.target.name]: e.target.value})
   }
 
   const changeProvince = (param) => {
-    setProvince(param.target.value)
+    setEmployee({...employee, "province": param.label})
   }
 
   const changeCV = (param) => {
     setCV(param.editor.getData())
   }
 
-  const submit = () => {
-    const employee = new Employee(avatar, firstName, lastName, dob, address, province, mobile, cv)
-    employeeUpdateProfile(employee, setError, setSuccess)
+  const submit = async () => {
+    setLoading(true)
+    await employeeUpdateProfile(employee, cv, toast)
+    setLoading(false)
   }
 
   const changeAvatar = (param) => {
     var file = param.target.files[0];
-    setAvatar(file);
+    setEmployee({...employee, "avatar": file})
     var reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = function (e) {
       setOverviewAvatar(reader.result)
     }.bind(this);
   }
+
+  useEffect(() => {
+    async function fetchProvinces() {
+      let response = await getProvinces()
+      changeProvinceOptions(response)
+    }
+    fetchProvinces()
+  }, [])
 
   return (
     <>
@@ -86,7 +77,7 @@ function UserProfileSetting() {
         </div>
       </div>
       {/* <!-- /Breadcrumb --> */}
-
+      <ToastContainer/>
       <div class="content">
         <div class="container-fluid">
           <div class="row">
@@ -140,24 +131,24 @@ function UserProfileSetting() {
                         </div>
                       </div>
                     </div>
-                    <InputTag title="First Name" type='text' placeholder="First Name" onChange={changeFirstName}/>
-                    <InputTag title="Last Name" type='text' placeholder="Last Name" onChange={changeLastName}/>
-                    <InputTag title="Date of Birth" type='date' onChange={changeDob}/>  
-                    <InputTag title="Moblie" type='text' placeholder="Your phone number" onChange={changeMobile}/>
-                    <InputTag title="Address" type='text' placeholder="806 Twin Willow Lane" onChange={changeAddress}/>
-                    <InputTag title="Province" type='text' placeholder="Old Forge" onChange={changeProvince}/>
+                    <InputTag title="Name" defaultValue={employee.name} name="name" type='text' placeholder="Last Name" onChange={changeInput}/>
+                    <InputTag title="Date of Birth" defaultValue={employee.dob} type='date' name="dob" onChange={changeInput}/>  
+                    <InputTag title="Mobile" defaultValue={employee.mobile} name="mobile" type='text' placeholder="Your phone number" onChange={changeInput}/>
+                    <InputTag title="Address" defaultValue={employee.detail} name="detail" type='text' placeholder="806 Twin Willow Lane" onChange={changeInput}/>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label>Province</label>
+                        <Select placeholder="Province" options={provinceOptions} onChange={changeProvince} />
+                      </div>
+                    </div>
                     <div className="col-12 mb-5 p-0">
-                      <CKEditor initData="<h1>Your CV</h1>" onChange={changeCV}/>
+                      <CKEditor initData={cv} onChange={changeCV}/>
                     </div>
                   </div>
-                  {error && <div class="alert alert-danger">
-                    {error}
-                  </div>}
-                  {success && <div class="alert alert-success">
-                    {success}
-                  </div>}
                   <div class="submit-section">
-                    <button type="submit" class="btn btn-primary submit-btn" onClick={submit}>
+                    <button disabled={loading} type="submit" class="btn btn-primary submit-btn" onClick={submit}>
+                    {loading && <span className="fa fa-refresh fa-spin"><FaIcons.FaSpinner/></span>}
+                    {"  "}
                       Save Changes
                     </button>
                   </div>

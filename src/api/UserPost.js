@@ -1,14 +1,13 @@
 import axios from "axios";
 import { BASE_URL, getToken } from "./Common";
 
-export const addBlog = async (title, description, content, image, toast) => {
+export const addBlog = async (blog, content, toast) => {
     var formData = new FormData();
-    formData.append('image', image)
+    formData.append('image', blog.image)
     formData.append('document', JSON.stringify({
-        title: title,
-        description: description,
+        title: blog.title,
+        description: blog.description,
         content: content,
-        image: image
     }))
     await axios({
         method: 'post',
