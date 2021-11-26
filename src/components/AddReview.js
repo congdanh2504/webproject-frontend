@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import ReactStars from "react-rating-stars-component";
 import { addReview } from '../api/jobAPI';
 import { getUser } from "../api/Common";
+import * as FaIcons from 'react-icons/fa'
 
 function AddReview(props) {
+    const [loading, setLoading] = useState(false)
     const [rate, setRate] = useState(0);
     const [title, setTitle] = useState("")
     const [message,setMessage] = useState("")
@@ -20,16 +22,13 @@ function AddReview(props) {
         setMessage(param.target.value)
     }
 
-    const submit = () => {
-        if (rate && title && message)
-        addReview(props.id, title, message, rate, props.setJob, props.idJob)
-    }
-
-    const isDisabled = ()=>{
-        if(getUser()== null){
-            return true;
-        } 
-        return (getUser().type == "Employee")?false:true;
+    const submit = async () => {
+        if (rate && title && message) {
+            setLoading(true)
+            await addReview(props.id, title, message, rate, props.setJob, props.idJob)
+            setLoading(false)
+        }
+        
     }
 
     return (
@@ -73,11 +72,13 @@ function AddReview(props) {
             <hr />
             <div className="submit-section">
                 <button
+                disabled={loading}
                 onClick={submit}
                 type="submit"
                 className="btn btn-primary submit-btn"
-                disabled={isDisabled()}
                 >
+                {loading && <span className="fa fa-refresh fa-spin"><FaIcons.FaSpinner/></span>}
+                {"  "}
                 Add Review
                 </button>
             </div>

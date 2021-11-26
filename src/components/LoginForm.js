@@ -22,7 +22,7 @@ function LoginForm() {
 
   const handleGG = async (param) => {
     setLoading(true)
-    await loginWithGG(param.tokenId, error, setError, history)
+    await loginWithGG(param.tokenId, setError, history)
     setLoading(false)
   }
 

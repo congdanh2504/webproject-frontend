@@ -69,7 +69,7 @@ export const employerRegister = async (user, error, setError, toast) => {
     })
 }
 
-export const loginWithGG = async (idToken, error, setError, history) => {
+export const loginWithGG = async (idToken, setError, history) => {
     await axios({
         method: 'post',
         url: `${BASE_URL}login/google`,
@@ -78,13 +78,13 @@ export const loginWithGG = async (idToken, error, setError, history) => {
         data: {
             id_token: idToken,
         }
-    }).then(response => {
+    }).then(response => {  
         setUserSession(response.data['user'])
         setTokenSession(response.data['token'])
         history.push('/')
-    }).catch(error => {
-        if (error.response.status === 401 || error.response.status === 400) {
-            setError({...error, password: error.response.data.message})
+    }).catch(err => {
+        if (err.response.status === 401 || err.response.status === 400) {
+            setError(err.response.data.message)
         }
     })
 }

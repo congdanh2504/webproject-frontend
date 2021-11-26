@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router'
 import { Link } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb";
-import { addApply, getJobItem } from '../api/jobAPI';
+import { addApply, getJobItem, response } from '../api/jobAPI';
 import Loading from '../components/Loading'
 import { getUser } from "../api/Common";
 import AddReview from "../components/AddReview";
@@ -10,10 +10,12 @@ import ReactStars from "react-rating-stars-component";
 import image from "../assets/img/default_avatar.png";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import * as FaIcons from 'react-icons/fa'
 
 function JobDetails() {
   const id = useParams('id')
   const [job, setJob] = useState(null);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     getJobItem(setJob, id.id)
@@ -192,23 +194,45 @@ function JobDetails() {
                   </div>
                   <div role="tabpanel" id="doc_applies" className="tab-pane fade">
                     <div className="widget review-listing">
+                    {loading && <span className="fa fa-refresh fa-spin"><FaIcons.FaSpinner/></span>}
                       <ul className="comments-list">
-                        {job.applies.length > 0 ? job.applies.map((employee, index) => {
+                        {job.applies.length > 0 ? job.applies.map((apply, index) => {
                           return  <li>
                           <div className="comment">
                             <img
                               className="avatar avatar-sm rounded-circle"
                               alt="User Image"
-                              src={employee.avatarAddress ? employee.avatarAddress : image}
+                              src={apply.avatarAddress ? apply.avatarAddress : image}
                             />                            
                             <div className="comment-body">
                               <div className="meta-data">
-                                <Link to={`/profile/${employee._id}`}>
+                                <Link to={`/profile/${apply._id}`}>
                                   <span className="comment-author">
-                                    {employee.name}
+                                    {apply.name + ' '}
                                   </span>
+                                  {apply.isApprove == "true" && <i class="fa fa-check" aria-hidden="true"></i>}
+                                  {apply.isApprove == "false" && <i class="fa fa-times" aria-hidden="true"></i>}
                                 </Link>
-                              </div>                  
+                              </div> 
+                              <p>
+                              {getUser() && getUser()._id == job.user._id && apply.isApprove == "null"  && <><div class="clinic-booking">
+                              <a onClick={async() => {
+                                setLoading(true)
+                                await response(index, id.id, "true", toast)
+                                setLoading(false)
+                                getJobItem(setJob, id.id)
+                              }} class="view-pro-btn"><i class="fa fa-check" aria-hidden="true"></i>Approve</a>
+                              </div>
+                              <div class="clinic-booking-red">
+                              <button onClick={async() => {
+                                setLoading(true)
+                                await response(index, id.id, "false", toast)
+                                setLoading(false)
+                                getJobItem(setJob, id.id)
+                              }} class="view-pro-btn-red"><i class="fa fa-times" aria-hidden="true"></i>Disapprove</button>
+                              </div></>}
+                              
+                              </p>                 
                             </div>
                           </div>
                         </li>

@@ -77,6 +77,14 @@ function Home() {
       },
     ],
   };
+  const style = {
+    control: base => ({
+      ...base,
+      border: 0,
+      // This line disable the blue border
+      boxShadow: 'none'
+    })
+  };
 
   return (
     <>
@@ -92,6 +100,7 @@ function Home() {
               <form>
                 <div className="form-group search-location">
                   <Select
+                    styles={style}
                     className="form-control"
                     placeholder="Province"
                     options={provinceOptions}

@@ -24,7 +24,7 @@ function EmployerRegisterForm() {
   }
 
   const handleGG = (param) => {
-    registerWithGG(param.tokenId, setError, history, "Employer")
+    registerWithGG(param.tokenId, error, setError, history, "Employer")
   }
 
   return (

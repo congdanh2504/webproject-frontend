@@ -23,6 +23,14 @@ function Jobs() {
   const [provinceOptions, changeProvinceOptions] = useState([]);
   const [province, changeProvince] = useState("");
   const [category, setCategory] = useState("");
+  const style = {
+    control: base => ({
+      ...base,
+      border: 0,
+      // This line disable the blue border
+      boxShadow: 'none'
+    })
+  };
 
   const updateCategory = (param) => {
     setCategory(param.label);
@@ -113,12 +121,14 @@ function Jobs() {
                 </div>
                 <div class="card-body">
                   <Select
+                    styles= {style}
                     className="form-control"
                     placeholder="Province"
                     options={provinceOptions}
                     onChange={updateProvince}
                   />
                   <Select
+                    styles= {style}
                     className="form-control"
                     placeholder="Category"
                     options={categoryOptions}

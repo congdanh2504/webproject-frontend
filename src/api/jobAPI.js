@@ -72,8 +72,8 @@ export const getMyJobs = (setJobs, id, pageNumber = 1) => {
     })
 }
 
-export const addReview = (id, title, message, rate, setJob, idJob) => {
-    axios({
+export const addReview = async (id, title, message, rate, setJob, idJob) => {
+    await axios({
         method: 'POST',
         url: `${BASE_URL}review?token=${getToken()}`,
         headers: { 'Content-Type': 'application/json' },
@@ -147,6 +147,23 @@ export const addApply = (postItemID, employeeID, toast) => {
         data: {
             postItemID : postItemID,
             employeeID : employeeID,
+        }
+    }).then((res) => {
+        toast.success("Successfully")
+    }).catch((err) => {
+        toast.error("Error")
+    })
+}
+
+export const response = async (index, id, isApprove, toast) => {
+    await axios({
+        method: 'POST',
+        url: `${BASE_URL}apply/response?token=${getToken()}`,
+        headers: { 'Content-Type': 'application/json' },
+        data: {
+            index: index,
+            id : id,
+            isApprove : isApprove,
         }
     }).then((res) => {
         toast.success("Successfully")

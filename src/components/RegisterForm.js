@@ -23,7 +23,7 @@ function RegisterForm() {
   }
 
   const handleGG = (param) => {
-    registerWithGG(param.tokenId, setError, history, "Employee")
+    registerWithGG(param.tokenId, error, setError, history, "Employee")
   }
 
   return (
