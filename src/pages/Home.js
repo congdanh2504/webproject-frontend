@@ -158,23 +158,16 @@ function Home() {
           <div className="row">
             <div className="col-lg-4">
               <div className="section-header ">
-                <h2>Latest recruitment</h2>
-                <p>Lorem Ipsum is simply dummy text </p>
+                <h2>Latest jobs</h2>
+                <p>View all latest jobs that you interest</p>
               </div>
               <div className="about-content">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
+                See the earliest registered jobs, do not miss the opportunity to participate in business activities, start-up management.
                 </p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  In arcu cursus euismod quis viverra nibh cras pulvinar mattis.
-                  Odio euismod lacinia at quis risus. Mi in nulla posuere
-                  sollicitudin aliquam ultrices sagittis. Consectetur adipiscing
-                  elit ut aliquam purus.
+                <p>      
+                Visit the website regularly to be updated with the latest and relevant jobs for your industry.
+                Jobhub was created to help employers, businesses, and employees connect. With Jobhub, finding jobs and hiring workers will be a lot easier
                 </p>
                 <Link to="/jobs">View More</Link>
               </div>
@@ -222,11 +215,6 @@ function Home() {
             <div class="col-md-7">
               <div class="section-header">
                 <h2 class="mt-2">Our Partners</h2>
-                <p>
-                  Tincidunt augue interdum velit euismod. Dictumst quisque
-                  sagittis purus sit amet volutpat. Adipiscing commodo elit at
-                  imperdiet.
-                </p>
               </div>
               <Slider {...settings_clinic_specialities}>
                 <div class="feature-item text-center">

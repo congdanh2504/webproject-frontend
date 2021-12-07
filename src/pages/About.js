@@ -74,7 +74,7 @@ function About() {
               <div class="about-feature-single-item">
                 <img class="img-fluid" src="assets/img/hacker.png" alt="" />
                 <h6>Le Viet Thang</h6>
-                <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima.</p>
+                <p>Web design, front end</p>
               </div>
             </div>
             <div class="col-lg-4 col-md-6">
@@ -82,14 +82,14 @@ function About() {
               <div class="about-feature-single-item">
               <img class="img-fluid" src="assets/img/hacker.png" alt="" />
                 <h6>Truong Cong Danh</h6>
-                <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima.</p>
+                <p>Back end, system design</p>
               </div>
             </div>
             <div class="col-lg-4 col-md-6">
               <div class="about-feature-single-item">
               <img class="img-fluid" src="assets/img/hacker.png" alt="" />
                 <h6>Pham Toan Phuc</h6>
-                <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima.</p>
+                <p>Back end, system design</p>
               </div>
             </div>
           </div>
