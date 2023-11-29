@@ -3,84 +3,97 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getUser } from "../api/Common";
 import InputTag from "../components/InputTag";
-import image from '../assets/img/default_avatar.png'
+import image from "../assets/img/default_avatar.png";
 import { changePassword, employeeUpdateProfile } from "../api/updateProfile";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import * as FaIcons from 'react-icons/fa'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import * as FaIcons from "react-icons/fa";
 import { getProvinces } from "../api/locationAPI";
-import Select from 'react-select'
-import Modal from 'react-modal';
+import Select from "react-select";
+import Modal from "react-modal";
 
 function UserProfileSetting() {
-  const [loading, setLoading] = useState(false)
-  const [passwordChange, setPasswordChange] = useState({id: getUser()._id, email: getUser().email, oldPassword: "", newPassword: "", confirmNewPassword: ""})
-  const [overviewAvatar, setOverviewAvatar] = useState(null)
-  const [employee, setEmployee] = useState({avatar: null, name: getUser().name, dob: getUser().dob, mobile: getUser().mobile, detail: getUser().address?.detail, province: getUser().address?.province})
-  const [cv, setCV] = useState(getUser().cv)
+  const [loading, setLoading] = useState(false);
+  const [passwordChange, setPasswordChange] = useState({
+    id: getUser()._id,
+    email: getUser().email,
+    oldPassword: "",
+    newPassword: "",
+    confirmNewPassword: "",
+  });
+  const [overviewAvatar, setOverviewAvatar] = useState(null);
+  const [employee, setEmployee] = useState({
+    avatar: null,
+    name: getUser().name,
+    dob: getUser().dob,
+    mobile: getUser().mobile,
+    detail: getUser().address?.detail,
+    province: getUser().address?.province,
+  });
+  const [cv, setCV] = useState(getUser().cv);
   const [provinceOptions, changeProvinceOptions] = useState([]);
-  const [modalIsOpen, setIsOpen] = useState(false)
-    const customStyles = {
-      content: {
-        width: "60%",
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-      },
-    };
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const customStyles = {
+    content: {
+      width: "60%",
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+    },
+  };
 
   const changePasswordChange = (e) => {
-    setPasswordChange({...passwordChange, [e.target.name]: e.target.value})
-  }
+    setPasswordChange({ ...passwordChange, [e.target.name]: e.target.value });
+  };
 
   const changeInput = (e) => {
-    setEmployee({...employee, [e.target.name]: e.target.value})
-  }
+    setEmployee({ ...employee, [e.target.name]: e.target.value });
+  };
 
   const changeProvince = (param) => {
-    setEmployee({...employee, "province": param.label})
-  }
+    setEmployee({ ...employee, province: param.label });
+  };
 
   const changeCV = (param) => {
-    setCV(param.editor.getData())
-  }
+    setCV(param.editor.getData());
+  };
 
   const submit = async () => {
-    setLoading(true)
-    await employeeUpdateProfile(employee, cv, toast)
-    setLoading(false)
-  }
+    setLoading(true);
+    await employeeUpdateProfile(employee, cv, toast);
+    setLoading(false);
+  };
 
   const changePass = async () => {
     if (passwordChange.newPassword != passwordChange.confirmNewPassword) {
-      toast.info("New password and confirm not the same")
-      return
+      toast.info("New password and confirm not the same");
+      return;
     }
-    setLoading(true)
-    await changePassword(passwordChange, toast)
-    setLoading(false)
-  }
+    setLoading(true);
+    await changePassword(passwordChange, toast);
+    setLoading(false);
+  };
 
   const changeAvatar = (param) => {
     var file = param.target.files[0];
-    setEmployee({...employee, "avatar": file})
+    setEmployee({ ...employee, avatar: file });
     var reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = function (e) {
-      setOverviewAvatar(reader.result)
+      setOverviewAvatar(reader.result);
     }.bind(this);
-  }
+  };
 
   useEffect(() => {
     async function fetchProvinces() {
-      let response = await getProvinces()
-      changeProvinceOptions(response)
+      let response = await getProvinces();
+      changeProvinceOptions(response);
     }
-    fetchProvinces()
-  }, [])
+    fetchProvinces();
+  }, []);
 
   return (
     <>
@@ -105,7 +118,7 @@ function UserProfileSetting() {
         </div>
       </div>
       {/* <!-- /Breadcrumb --> */}
-      <ToastContainer/>
+      <ToastContainer />
       <div class="content">
         <div class="container-fluid">
           <div class="row">
@@ -115,7 +128,11 @@ function UserProfileSetting() {
                   <div class="profile-info-widget">
                     <a href="#" class="booking-doc-img">
                       <img
-                        src={getUser().avatarAddress ? getUser().avatarAddress : image}
+                        src={
+                          getUser().avatarAddress
+                            ? getUser().avatarAddress
+                            : image
+                        }
                         alt="User Image"
                       />
                     </a>
@@ -141,7 +158,13 @@ function UserProfileSetting() {
                         <div class="change-avatar">
                           <div class="profile-img">
                             <img
-                              src={overviewAvatar ? overviewAvatar : getUser().avatarAddress ? getUser().avatarAddress : image}
+                              src={
+                                overviewAvatar
+                                  ? overviewAvatar
+                                  : getUser().avatarAddress
+                                    ? getUser().avatarAddress
+                                    : image
+                              }
                               alt="User Image"
                             />
                           </div>
@@ -150,7 +173,11 @@ function UserProfileSetting() {
                               <span>
                                 <i class="fa fa-upload"></i> Upload Photo
                               </span>
-                              <input type="file" class="upload" onChange={changeAvatar} />
+                              <input
+                                type="file"
+                                class="upload"
+                                onChange={changeAvatar}
+                              />
                             </div>
                             <small class="form-text text-muted">
                               Allowed JPG, GIF or PNG. Max size of 2MB
@@ -159,27 +186,71 @@ function UserProfileSetting() {
                         </div>
                       </div>
                     </div>
-                    <InputTag title="Name" defaultValue={employee.name} name="name" type='text' placeholder="Name" onChange={changeInput}/>
-                    <InputTag title="Date of Birth" defaultValue={employee.dob} type='date' name="dob" onChange={changeInput}/>  
-                    <InputTag title="Mobile" defaultValue={employee.mobile} name="mobile" type='text' placeholder="Your phone number" onChange={changeInput}/>
-                    <InputTag title="Address" defaultValue={employee.detail} name="detail" type='text' placeholder="806 Twin Willow Lane" onChange={changeInput}/>
+                    <InputTag
+                      title="Name"
+                      defaultValue={employee.name}
+                      name="name"
+                      type="text"
+                      placeholder="Name"
+                      onChange={changeInput}
+                    />
+                    <InputTag
+                      title="Date of Birth"
+                      defaultValue={employee.dob}
+                      type="date"
+                      name="dob"
+                      onChange={changeInput}
+                    />
+                    <InputTag
+                      title="Mobile"
+                      defaultValue={employee.mobile}
+                      name="mobile"
+                      type="text"
+                      placeholder="Your phone number"
+                      onChange={changeInput}
+                    />
+                    <InputTag
+                      title="Address"
+                      defaultValue={employee.detail}
+                      name="detail"
+                      type="text"
+                      placeholder="806 Twin Willow Lane"
+                      onChange={changeInput}
+                    />
                     <div class="col-6">
                       <div class="form-group">
                         <label>Province</label>
-                        <Select placeholder="Province" options={provinceOptions} onChange={changeProvince} />
+                        <Select
+                          placeholder="Province"
+                          options={provinceOptions}
+                          onChange={changeProvince}
+                        />
                       </div>
                     </div>
                     <div className="col-12 mb-5 p-0">
-                      <CKEditor initData={cv} onChange={changeCV}/>
+                      <CKEditor initData={cv} onChange={changeCV} />
                     </div>
                   </div>
                   <div class="submit-section">
-                    <button disabled={loading} type="submit" class="btn btn-primary submit-btn" onClick={submit}>
-                    {loading && <span className="fa fa-refresh fa-spin"><FaIcons.FaSpinner/></span>}
-                    {"  "}
+                    <button
+                      disabled={loading}
+                      type="submit"
+                      class="btn btn-primary submit-btn"
+                      onClick={submit}
+                    >
+                      {loading && (
+                        <span className="fa fa-refresh fa-spin">
+                          <FaIcons.FaSpinner />
+                        </span>
+                      )}
+                      {"  "}
                       Save Changes
                     </button>
-                    <button type="submit" class="btn btn-info submit-btn" onClick={() => setIsOpen(true)}>
+                    <button
+                      type="submit"
+                      class="btn btn-info submit-btn"
+                      onClick={() => setIsOpen(true)}
+                    >
                       Change password
                     </button>
                   </div>
@@ -190,16 +261,42 @@ function UserProfileSetting() {
                   >
                     <h1>Change password</h1>
                     <div className="container row">
-                    <InputTag title="Old password" name="oldPassword" type='password' placeholder="Old password" onChange={changePasswordChange}/>
-                    <InputTag title="New password" name="newPassword" type='password' placeholder="New password" onChange={changePasswordChange}/>
-                    <InputTag title="Confirm" name="confirmNewPassword" type='password' placeholder="Confirm" onChange={changePasswordChange}/>             
+                      <InputTag
+                        title="Old password"
+                        name="oldPassword"
+                        type="password"
+                        placeholder="Old password"
+                        onChange={changePasswordChange}
+                      />
+                      <InputTag
+                        title="New password"
+                        name="newPassword"
+                        type="password"
+                        placeholder="New password"
+                        onChange={changePasswordChange}
+                      />
+                      <InputTag
+                        title="Confirm"
+                        name="confirmNewPassword"
+                        type="password"
+                        placeholder="Confirm"
+                        onChange={changePasswordChange}
+                      />
                     </div>
-                    <button style={{ marginLeft: "20px" }} disabled={loading} class="btn btn-primary submit-btn" onClick={changePass}>
-                    {loading && <span className="fa fa-refresh fa-spin"><FaIcons.FaSpinner/></span>}
-                    {"  "}
+                    <button
+                      style={{ marginLeft: "20px" }}
+                      disabled={loading}
+                      class="btn btn-primary submit-btn"
+                      onClick={changePass}
+                    >
+                      {loading && (
+                        <span className="fa fa-refresh fa-spin">
+                          <FaIcons.FaSpinner />
+                        </span>
+                      )}
+                      {"  "}
                       Save Change
                     </button>
-                    
                   </Modal>
                 </div>
               </div>

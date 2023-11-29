@@ -2,11 +2,23 @@ import React from "react";
 import { Doughnut } from "react-chartjs-2";
 function ChartDoughnut(props) {
   const data = {
-    labels: ["Programmer", "Editor", "Receptionist", "Designer", "Web developer"],
+    labels: [
+      "Programmer",
+      "Editor",
+      "Receptionist",
+      "Designer",
+      "Web developer",
+    ],
     datasets: [
       {
         label: "# of Votes",
-        data: [props.data.numOfProgrammer, props.data.numOfEditor, props.data.numOfReceptionist, props.data.numOfDesigner, props.data.numOfWebDeveloper],
+        data: [
+          props.data.numOfProgrammer,
+          props.data.numOfEditor,
+          props.data.numOfReceptionist,
+          props.data.numOfDesigner,
+          props.data.numOfWebDeveloper,
+        ],
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(255, 206, 86, 0.2)",

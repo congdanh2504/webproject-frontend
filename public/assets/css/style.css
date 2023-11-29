@@ -58,7 +58,9 @@ Version      : 1.0
 }
 
 .blog-card:hover {
-  box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+  box-shadow:
+    12px 12px 24px #b2b8c9,
+    -12px -12px 24px #f0f8ff;
 }
 
 .fix-image {
@@ -76,7 +78,9 @@ Version      : 1.0
   font-weight: 400;
   src: url(../fonts/MaterialIcons-Regular.eot);
   /* For IE6-8 */
-  src: local("Material Icons"), local("MaterialIcons-Regular"),
+  src:
+    local("Material Icons"),
+    local("MaterialIcons-Regular"),
     url(../fonts/MaterialIcons-Regular.html) format("woff2"),
     url(../fonts/MaterialIcons-Regular.woff) format("woff"),
     url(../fonts/MaterialIcons-Regular.ttf) format("truetype");
@@ -506,7 +510,7 @@ button.bg-danger:hover {
   color: #00cc52 !important;
 }
 
-.text-danger, 
+.text-danger,
 .dropdown-menu > li > a.text-danger {
   color: #ff0100 !important;
 }
@@ -7408,7 +7412,9 @@ html.menu-opened body {
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;
-    transition: left 0.3s ease-in-out 0s, right 0.3s ease-in-out 0s;
+    transition:
+      left 0.3s ease-in-out 0s,
+      right 0.3s ease-in-out 0s;
     width: 100%;
   }
 
@@ -8528,7 +8534,8 @@ Pages - About Us
 .about-us-top-content {
   margin-bottom: -12px;
 }
-.about-us-top-content h4, .about-us-top-content .h4 {
+.about-us-top-content h4,
+.about-us-top-content .h4 {
   font-weight: 700;
   margin-top: 27px;
   margin-bottom: 15px;
@@ -8560,10 +8567,11 @@ Pages - About Us
   margin-bottom: -37px;
 }
 
-.about-us-center-content h4, .about-us-center-content .h4 {
+.about-us-center-content h4,
+.about-us-center-content .h4 {
   font-weight: 700;
   margin-bottom: 15px;
-  padding-top:  30px;
+  padding-top: 30px;
 }
 
 .about-promo-single-item {
@@ -8575,7 +8583,8 @@ Pages - About Us
   width: 90px;
   height: 90px;
 }
-.about-promo-single-item h6, .about-promo-single-item .h6 {
+.about-promo-single-item h6,
+.about-promo-single-item .h6 {
   font-weight: 700;
   font-size: 18px;
   margin-top: 20px;
@@ -8587,26 +8596,26 @@ Pages - About Us
   margin-bottom: 30px;
   padding-bottom: 20px;
 }
-.about-feature-single-item h6, .about-feature-single-item .h6 {
+.about-feature-single-item h6,
+.about-feature-single-item .h6 {
   font-weight: 700;
   font-size: 18px;
   margin-top: 20px;
   margin-bottom: 15px;
-  
 }
 
-.about-feature-single-item img{
-  width:50%;
+.about-feature-single-item img {
+  width: 50%;
 }
 
-.about-us-top-img img{
+.about-us-top-img img {
   padding-top: 30px;
   width: 100%;
-  max-height: 100vh ;
+  max-height: 100vh;
 }
- .rounded-5{
-   border-radius: 5rem;
- }
+.rounded-5 {
+  border-radius: 5rem;
+}
 
 button:disabled {
   opacity: 0.5;

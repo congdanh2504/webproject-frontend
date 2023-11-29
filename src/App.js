@@ -126,7 +126,7 @@ function App() {
         {/* End user's routes */}
 
         {/* Admin's routes */}
-        
+
         <AdminRoute
           type="admin"
           path="/admin"

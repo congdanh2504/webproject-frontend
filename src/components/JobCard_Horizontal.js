@@ -28,9 +28,14 @@ function JobCard_Horizontal(props) {
             </div>
             <div class="doc-info-cont">
               <h4 class="doc-name">
-                <Link to={`/employerProfile/${props.user._id}`}>{props.user.name}</Link> {/*name employer, company */}
+                <Link to={`/employerProfile/${props.user._id}`}>
+                  {props.user.name}
+                </Link>{" "}
+                {/*name employer, company */}
               </h4>
-              <p class="doc-speciality">{props.nameJob} - {props.title}</p>
+              <p class="doc-speciality">
+                {props.nameJob} - {props.title}
+              </p>
               <h5 class="doc-department">
                 <img
                   src={categories.get(props.category)}
@@ -40,15 +45,17 @@ function JobCard_Horizontal(props) {
                 {props.category}
               </h5>
               <div className="rating">
-                  <ReactStars
-                    count={5}
-                    size={24}
-                    edit={false}
-                    half={true}
-                    value={props.user.rate.avg}
-                    activeColor="#ffd700"
-                  />
-                <span className="d-inline-block average-rating">({props.user.rate.count})</span>
+                <ReactStars
+                  count={5}
+                  size={24}
+                  edit={false}
+                  half={true}
+                  value={props.user.rate.avg}
+                  activeColor="#ffd700"
+                />
+                <span className="d-inline-block average-rating">
+                  ({props.user.rate.count})
+                </span>
               </div>
               <div class="clinic-details">
                 <p class="doc-location">
@@ -69,8 +76,10 @@ function JobCard_Horizontal(props) {
               </ul>
             </div>
             <div class="clinic-booking">
-              <Link to={`/jobs/job-details/${props.id}`} class="view-pro-btn">See details</Link>
-            </div>     
+              <Link to={`/jobs/job-details/${props.id}`} class="view-pro-btn">
+                See details
+              </Link>
+            </div>
           </div>
         </div>
       </div>

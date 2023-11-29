@@ -12,7 +12,7 @@ function CompanyCard(props) {
             <img
               class="img-fluid"
               alt="User Image"
-              src={props.avatar? props.avatar : image}
+              src={props.avatar ? props.avatar : image}
             />
           </a>
           <a href="javascript:void(0)" class="fav-btn">
@@ -21,7 +21,9 @@ function CompanyCard(props) {
         </div>
         <div class="pro-content">
           <h3 class="title">
-            <Link to={`/employerprofile/${props.id}`} className="">{props.name}</Link>
+            <Link to={`/employerprofile/${props.id}`} className="">
+              {props.name}
+            </Link>
             <i class="fas fa-check-circle verified"></i>
           </h3>
           <p class="speciality">We have the right job for you</p>
@@ -34,7 +36,9 @@ function CompanyCard(props) {
               value={props.rate.avg}
               activeColor="#ffd700"
             />
-            <span class="d-inline-block average-rating">({props.rate.count})</span>
+            <span class="d-inline-block average-rating">
+              ({props.rate.count})
+            </span>
           </div>
           <ul class="available-info">
             <li>
@@ -43,7 +47,12 @@ function CompanyCard(props) {
           </ul>
           <div class="row row-sm">
             <div class="col-12">
-              <Link to={`/employerprofile/${props.id}`} className="btn view-btn">See details</Link>
+              <Link
+                to={`/employerprofile/${props.id}`}
+                className="btn view-btn"
+              >
+                See details
+              </Link>
             </div>
           </div>
         </div>

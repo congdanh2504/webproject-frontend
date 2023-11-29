@@ -1,5 +1,5 @@
-import React from 'react'
-import LoginForm from '../components/LoginForm'
+import React from "react";
+import LoginForm from "../components/LoginForm";
 
 function Login() {
   return (
@@ -10,7 +10,11 @@ function Login() {
             <div className="account-content">
               <div className="row align-items-center justify-content-center">
                 <div className="col-md-7 col-lg-6 login-left">
-                  <img src="assets/images/illustration/login-banner.svg" className="img-fluid" alt="Doccure Login" />
+                  <img
+                    src="assets/images/illustration/login-banner.svg"
+                    className="img-fluid"
+                    alt="Doccure Login"
+                  />
                 </div>
                 <LoginForm />
               </div>
@@ -19,7 +23,7 @@ function Login() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

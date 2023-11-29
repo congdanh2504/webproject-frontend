@@ -22,7 +22,7 @@ function CategoryCard(props) {
         </span>
       </div>
       <p>
-      <Link to={`/jobs?keyword=${props.title}`}>{props.title}</Link>
+        <Link to={`/jobs?keyword=${props.title}`}>{props.title}</Link>
       </p>
     </div>
   );

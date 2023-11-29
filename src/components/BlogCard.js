@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Moment from 'react-moment';
-import image from '../assets/img/default_avatar.png'
+import Moment from "react-moment";
+import image from "../assets/img/default_avatar.png";
 
 function BlogCard(props) {
   return (
@@ -14,32 +14,49 @@ function BlogCard(props) {
           {" "}
           {props.views}
         </i>
-        <img alt="Card Image" style={{ height : 250, objectFit: "cover" }} src={props.imageAddress} class="card-img-top" />
+        <img
+          alt="Card Image"
+          style={{ height: 250, objectFit: "cover" }}
+          src={props.imageAddress}
+          class="card-img-top"
+        />
         <div class="card-header">
           <div class="table-avatar pt-2 pb-3">
             <div className="d-flex justify-content-between align-items-center">
               <div className="d-flex align-items-center">
-                <div  class="avatar avatar-xs mr-2 float-left">
+                <div class="avatar avatar-xs mr-2 float-left">
                   <img
                     class="avatar-img rounded-circle"
-                    src={props.user?.avatarAddress ? props.user?.avatarAddress : image}
+                    src={
+                      props.user?.avatarAddress
+                        ? props.user?.avatarAddress
+                        : image
+                    }
                     alt="User Image"
                   />
                 </div>
-                {props.user.type == "Employee" ? <Link to={`/profile/${props.user?._id}`} class="float-left">
-                  <span> {props.user.name}</span>
-                </Link> : <Link to={`/employerProfile/${props.user._id}`} class="float-left">
-                  <span> {props.user.name}</span>
-                </Link>}
-                
-                
+                {props.user.type == "Employee" ? (
+                  <Link to={`/profile/${props.user?._id}`} class="float-left">
+                    <span> {props.user.name}</span>
+                  </Link>
+                ) : (
+                  <Link
+                    to={`/employerProfile/${props.user._id}`}
+                    class="float-left"
+                  >
+                    <span> {props.user.name}</span>
+                  </Link>
+                )}
               </div>
-              <i class="far fa-clock text-muted"><Moment format="YYYY/MM/DD">
-                {props.time}
-            </Moment></i>
+              <i class="far fa-clock text-muted">
+                <Moment format="YYYY/MM/DD">{props.time}</Moment>
+              </i>
             </div>
           </div>
-          <Link to={`/blog/detail/${props.id}`} className="card-title h4 font-weight-bold">
+          <Link
+            to={`/blog/detail/${props.id}`}
+            className="card-title h4 font-weight-bold"
+          >
             {props.title}
           </Link>
         </div>

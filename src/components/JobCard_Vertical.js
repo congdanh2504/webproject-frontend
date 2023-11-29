@@ -20,19 +20,23 @@ function JobCard(props) {
       </div>
       <div class="pro-content">
         <h3 class="title">
-          <Link to={`/employerProfile/${props.user._id}`}>{props.user.name}</Link>
+          <Link to={`/employerProfile/${props.user._id}`}>
+            {props.user.name}
+          </Link>
           <i class="fas fa-check-circle verified"></i>
         </h3>
         <p class="speciality">{props.title}</p>
         <div className="rating">
-            <ReactStars
-              count={5}
-              size={24}
-              edit={false}
-              value={props.user.rate.avg}
-              activeColor="#ffd700"
-            />
-          <span className="d-inline-block average-rating">({props.user.rate.count})</span>
+          <ReactStars
+            count={5}
+            size={24}
+            edit={false}
+            value={props.user.rate.avg}
+            activeColor="#ffd700"
+          />
+          <span className="d-inline-block average-rating">
+            ({props.user.rate.count})
+          </span>
         </div>
         <ul class="available-info">
           <li>

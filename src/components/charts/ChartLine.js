@@ -7,7 +7,20 @@ function ChartLine(props) {
     datasets: [
       {
         label: "Job by month",
-        data: [props.data.m01, props.data.m02, props.data.m03, props.data.m04, props.data.m05, props.data.m06, props.data.m07,props.data.m08, props.data.m09, props.data.m10, props.data.m11, props.data.m12],
+        data: [
+          props.data.m01,
+          props.data.m02,
+          props.data.m03,
+          props.data.m04,
+          props.data.m05,
+          props.data.m06,
+          props.data.m07,
+          props.data.m08,
+          props.data.m09,
+          props.data.m10,
+          props.data.m11,
+          props.data.m12,
+        ],
         fill: false,
         backgroundColor: "rgb(255, 99, 132)",
         borderColor: "rgba(255, 99, 132, 0.2)",

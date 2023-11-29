@@ -1,13 +1,13 @@
-import { CKEditor } from 'ckeditor4-react';
-import React, { useState } from 'react';
-import { getUser } from '../api/Common';
-import { addBlog } from '../api/UserPost';
-import imageDefault from '../assets/img/default_avatar.png';
-import InputTag from '../components/InputTag';
-import TextAreaTag from '../components/TextAreaTag';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import * as FaIcons from 'react-icons/fa';
+import { CKEditor } from "ckeditor4-react";
+import React, { useState } from "react";
+import { getUser } from "../api/Common";
+import { addBlog } from "../api/UserPost";
+import imageDefault from "../assets/img/default_avatar.png";
+import InputTag from "../components/InputTag";
+import TextAreaTag from "../components/TextAreaTag";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import * as FaIcons from "react-icons/fa";
 
 const AddBlog = () => {
   const [loading, setLoading] = useState(false);
@@ -23,7 +23,7 @@ const AddBlog = () => {
   };
 
   const changeImage = (param) => {
-    setBlog({ ...blog, "image": param.target.files[0] });
+    setBlog({ ...blog, image: param.target.files[0] });
   };
 
   const submit = async () => {
@@ -47,7 +47,11 @@ const AddBlog = () => {
                 <div class="profile-info-widget">
                   <a href="#" class="booking-doc-img">
                     <img
-                      src={getUser().avatarAddress ? getUser().avatarAddress : imageDefault}
+                      src={
+                        getUser().avatarAddress
+                          ? getUser().avatarAddress
+                          : imageDefault
+                      }
                       alt="User Image"
                     />
                   </a>
@@ -68,9 +72,18 @@ const AddBlog = () => {
             <div class="card">
               <div class="card-body">
                 <div class="row form-row">
-                  <InputTag type='text' title="Title Name" name="title" placeholder="Write the title of the blog here!" onChange={changeInput} required='true' />
+                  <InputTag
+                    type="text"
+                    title="Title Name"
+                    name="title"
+                    placeholder="Write the title of the blog here!"
+                    onChange={changeInput}
+                    required="true"
+                  />
                   <div class="form-group">
-                    <label>Choose image <span class="text-danger">*</span></label>
+                    <label>
+                      Choose image <span class="text-danger">*</span>
+                    </label>
                     <input
                       type="file"
                       class="form-control"
@@ -84,15 +97,27 @@ const AddBlog = () => {
                     rows="5"
                     placeholder="Write short description of the blog here!"
                     onChange={changeInput}
-                    required='true'
+                    required="true"
                   />
                 </div>
                 <div className="col-12 mb-5 p-0">
-                  <CKEditor initData="<h1>Write the contents of your blog here!</h1>" onChange={changeContent} />
+                  <CKEditor
+                    initData="<h1>Write the contents of your blog here!</h1>"
+                    onChange={changeContent}
+                  />
                 </div>
                 <div class="submit-section">
-                  <button disabled={loading} type="submit" class="btn btn-primary submit-btn" onClick={submit}>
-                    {loading && <span className="fa fa-refresh fa-spin"><FaIcons.FaSpinner /></span>}
+                  <button
+                    disabled={loading}
+                    type="submit"
+                    class="btn btn-primary submit-btn"
+                    onClick={submit}
+                  >
+                    {loading && (
+                      <span className="fa fa-refresh fa-spin">
+                        <FaIcons.FaSpinner />
+                      </span>
+                    )}
                     {"  "}
                     Save
                   </button>
@@ -106,4 +131,4 @@ const AddBlog = () => {
   );
 };
 
-export default AddBlog;;
+export default AddBlog;

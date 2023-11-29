@@ -6,15 +6,15 @@ import { deleteJob, findPost } from "../api/Admin";
 import { getJobItem, getJobs } from "../api/jobAPI";
 import Breadcrumb from "../components/Breadcrumb";
 function AdminPostItem() {
-  const [postItem, setPostItem] = useState(null)
+  const [postItem, setPostItem] = useState(null);
 
   useEffect(() => {
-    getJobs(setPostItem)
-  }, [])
+    getJobs(setPostItem);
+  }, []);
 
   const UserKeyDown = (param) => {
     findPost(setPostItem, param.target.value);
-  }
+  };
 
   return (
     <div>
@@ -22,8 +22,12 @@ function AdminPostItem() {
       <div class="container-fluid">
         <div className="row mt-3 mb-3">
           <div className="col-sm-6">
-            <input className="form-control rounded-5" type="text"
-              name="keyword" id="keyword" placeholder="Find Post"
+            <input
+              className="form-control rounded-5"
+              type="text"
+              name="keyword"
+              id="keyword"
+              placeholder="Find Post"
               onKeyDown={UserKeyDown}
             />
           </div>
@@ -46,54 +50,64 @@ function AdminPostItem() {
                       </tr>
                     </thead>
                     <tbody>
-                      {postItem ? postItem.data.map((job, index) => {
-                        return (
-                          <tr key={job._id}>
-                            <td>{job._id}</td>
-                            <td>{job.nameJob}</td>
-                            <td>
-                              <h2>
-                                {job.title}
-                              </h2>
-                            </td>
-                            <td>
-                              {job.user?.name ? job.user.name : null}
-                            </td>
-                            <td>
-                              <Link to={`/jobs/job-details/${job._id}`}>Link</Link>
-                            </td>
-                            <td>
-                              <Moment format="YYYY/MM/DD">{job.created_at}</Moment>
-                            </td>
-                            <td class="text-right">
-                              <div class="actions" onClick={() => deleteJob(setPostItem, job._id)}>
-                                <a
-                                  data-toggle="modal"
-                                  href="#delete_modal"
-                                  class="btn btn-sm bg-danger-light"
-                                >
-                                  <i class="fa fa-trash"></i> Delete
-                                </a>
-                              </div>
-                            </td>
-                          </tr>
-                        )
-                      }) : null}
+                      {postItem
+                        ? postItem.data.map((job, index) => {
+                            return (
+                              <tr key={job._id}>
+                                <td>{job._id}</td>
+                                <td>{job.nameJob}</td>
+                                <td>
+                                  <h2>{job.title}</h2>
+                                </td>
+                                <td>{job.user?.name ? job.user.name : null}</td>
+                                <td>
+                                  <Link to={`/jobs/job-details/${job._id}`}>
+                                    Link
+                                  </Link>
+                                </td>
+                                <td>
+                                  <Moment format="YYYY/MM/DD">
+                                    {job.created_at}
+                                  </Moment>
+                                </td>
+                                <td class="text-right">
+                                  <div
+                                    class="actions"
+                                    onClick={() =>
+                                      deleteJob(setPostItem, job._id)
+                                    }
+                                  >
+                                    <a
+                                      data-toggle="modal"
+                                      href="#delete_modal"
+                                      class="btn btn-sm bg-danger-light"
+                                    >
+                                      <i class="fa fa-trash"></i> Delete
+                                    </a>
+                                  </div>
+                                </td>
+                              </tr>
+                            );
+                          })
+                        : null}
                     </tbody>
                   </table>
 
-                  {postItem && <div className="row mt-3 justify-content-center">
-                    <Pagination
-                      activePage={postItem.current_page}
-                      itemsCountPerPage={postItem.per_page}
-                      totalItemsCount={postItem.total}
-                      pageRangeDisplayed={5}
-                      onChange={(num) => getJobs(setPostItem, num)}
-                      itemClass="page-item"
-                      linkClass="page-link"
-                      firstPageText="First"
-                      lastPageText="Last"
-                    /></div>}
+                  {postItem && (
+                    <div className="row mt-3 justify-content-center">
+                      <Pagination
+                        activePage={postItem.current_page}
+                        itemsCountPerPage={postItem.per_page}
+                        totalItemsCount={postItem.total}
+                        pageRangeDisplayed={5}
+                        onChange={(num) => getJobs(setPostItem, num)}
+                        itemClass="page-item"
+                        linkClass="page-link"
+                        firstPageText="First"
+                        lastPageText="Last"
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

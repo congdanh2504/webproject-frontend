@@ -78,12 +78,12 @@ function Home() {
     ],
   };
   const style = {
-    control: base => ({
+    control: (base) => ({
       ...base,
       border: 0,
       // This line disable the blue border
-      boxShadow: 'none'
-    })
+      boxShadow: "none",
+    }),
   };
 
   return (
@@ -115,9 +115,10 @@ function Home() {
                     placeholder="Find a job, a field, a company, ..."
                   />
                 </div>
-                <Link to={`/jobs?location=${province}&keyword=${keyword}`} >
+                <Link to={`/jobs?location=${province}&keyword=${keyword}`}>
                   <button className="btn btn-primary search-btn">
-                  <i className="fas fa-search"></i><span>Search</span>
+                    <i className="fas fa-search"></i>
+                    <span>Search</span>
                   </button>
                 </Link>
               </form>
@@ -163,11 +164,14 @@ function Home() {
               </div>
               <div className="about-content">
                 <p>
-                See the earliest registered jobs, do not miss the opportunity to participate in business activities, start-up management.
+                  See the earliest registered jobs, do not miss the opportunity
+                  to participate in business activities, start-up management.
                 </p>
-                <p>      
-                Visit the website regularly to be updated with the latest and relevant jobs for your industry.
-                Jobhub was created to help employers, businesses, and employees connect. With Jobhub, finding jobs and hiring workers will be a lot easier
+                <p>
+                  Visit the website regularly to be updated with the latest and
+                  relevant jobs for your industry. Jobhub was created to help
+                  employers, businesses, and employees connect. With Jobhub,
+                  finding jobs and hiring workers will be a lot easier
                 </p>
                 <Link to="/jobs">View More</Link>
               </div>
