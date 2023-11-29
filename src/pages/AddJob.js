@@ -1,71 +1,71 @@
-import React, { useEffect, useState } from 'react'
-import InputTag from '../components/InputTag'
-import TextAreaTag from '../components/TextAreaTag'
-import Select from 'react-select'
-import { getDistricts, getProvinces, getWards } from '../api/locationAPI'
+import React, { useEffect, useState } from 'react';
+import InputTag from '../components/InputTag';
+import TextAreaTag from '../components/TextAreaTag';
+import Select from 'react-select';
+import { getDistricts, getProvinces, getWards } from '../api/locationAPI';
 import { postJob } from '../api/jobAPI';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import * as FaIcons from 'react-icons/fa'
+import * as FaIcons from 'react-icons/fa';
 
 const AddJob = () => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [provinceOptions, changeProvinceOptions] = useState([]);
   const [districtOptions, changeDistrictOptions] = useState([]);
   const [wardOptions, changeWardOptions] = useState([]);
-  const [job, setJob] = useState({title: "", nameJob: "", description: "", category: "", salary: "", duration: "", image: null, province: "", district: "", ward: "", street: ""})
+  const [job, setJob] = useState({ title: "", nameJob: "", description: "", category: "", salary: "", duration: "", image: null, province: "", district: "", ward: "", street: "" });
   const updateProvince = (param) => {
-    setJob({...job, "province": param.label})
+    setJob({ ...job, "province": param.label });
     async function fetchDistricts() {
-      let response = await getDistricts(param.value)
-      changeDistrictOptions(response)
+      let response = await getDistricts(param.value);
+      changeDistrictOptions(response);
     }
-    fetchDistricts()
-  }
+    fetchDistricts();
+  };
 
   const updateDistrict = (param) => {
-    setJob({...job, "district": param.label})
+    setJob({ ...job, "district": param.label });
     async function fetchWards() {
-      let response = await getWards(param.value)
-      changeWardOptions(response)
+      let response = await getWards(param.value);
+      changeWardOptions(response);
     }
-    fetchWards()
-  }
+    fetchWards();
+  };
 
-  const updateWard = (param) => setJob({...job, "ward": param.label})
+  const updateWard = (param) => setJob({ ...job, "ward": param.label });
   let defaultLocation = `${job.street},${job.ward},${job.district},${job.province},viet_nam`;
   useEffect(() => {
     async function fetchProvinces() {
-      let response = await getProvinces()
-      changeProvinceOptions(response)
+      let response = await getProvinces();
+      changeProvinceOptions(response);
     }
-    fetchProvinces()
-  }, [])
+    fetchProvinces();
+  }, []);
 
   const changeInput = (e) => {
-    setJob({...job, [e.target.name]: e.target.value})
-  }
+    setJob({ ...job, [e.target.name]: e.target.value });
+  };
 
   const changeImage = (param) => {
-    setJob({...job, "image": param.target.files[0]})
-  }
+    setJob({ ...job, "image": param.target.files[0] });
+  };
 
   const submit = async () => {
-    console.log(job)
-    if(job.title && job.nameJob && job.description  && job.image && job.category && job.duration && job.salary
+    console.log(job);
+    if (job.title && job.nameJob && job.description && job.image && job.category && job.duration && job.salary
       && job.province && job.ward && job.district && job.street) {
-        setLoading(true)
-        await postJob(job, toast)
-        setLoading(false)
-        
-    }else{
-      toast.error("Miss data")
+      setLoading(true);
+      await postJob(job, toast);
+      setLoading(false);
+
+    } else {
+      toast.error("Miss data");
     }
-  }
+  };
 
   return (
     <div class="content">
-      <ToastContainer/>
+      <ToastContainer />
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12 col-lg-10 col-xl-11 m-auto">
@@ -74,7 +74,7 @@ const AddJob = () => {
                 <div class="row form-row">
                   <div class="col-12 col-md-6">
                     <div class="form-group">
-                      <label>Choose images</label>
+                      <label>Choose images <span class="text-danger">*</span></label>
                       <input
                         type="file"
                         class="form-control"
@@ -84,10 +84,10 @@ const AddJob = () => {
                       />
                     </div>
                   </div>
-                  <InputTag type='text' name="title" title="Title" placeholder="Title" onChange={changeInput} />
+                  <InputTag type='text' name="title" title="Title" placeholder="Title" onChange={changeInput} required='true' />
                   <div class="col-12 col-md-6">
                     <div class="form-group">
-                      <label>Types of Career</label>
+                      <label>Types of Career <span class="text-danger">*</span></label>
                       <select class="form-control select" name="category" onChange={changeInput}>
                         <option>Select</option>
                         <option>Programmer</option>
@@ -99,33 +99,33 @@ const AddJob = () => {
                     </div>
                   </div>
 
-                  <InputTag type='text' name="nameJob" title="Carrier" placeholder="Input the name of career!" onChange={changeInput}/>
-                  <InputTag type='date' name="duration" title="Duration"  onChange={changeInput}/>
-                  <InputTag type='number' name="salary" title="Salary (USD)" onChange={changeInput}/>
+                  <InputTag type='text' name="nameJob" title="Carrier" placeholder="Input the name of career!" onChange={changeInput} required='true' />
+                  <InputTag type='date' name="duration" title="Duration" onChange={changeInput} required='true' />
+                  <InputTag type='number' name="salary" title="Salary (USD)" onChange={changeInput} required='true' />
                 </div>
                 <div className="form-group row">
                   <div className="col-12 col-md-6">
                     <div class="col-12">
                       <div class="form-group">
-                        <label>Province</label>
+                        <label>Province <span class="text-danger">*</span></label>
                         <Select placeholder="Province" options={provinceOptions} onChange={updateProvince} />
                       </div>
                     </div>
                     <div class="col-12 ">
                       <div class="form-group">
-                        <label>District</label>
+                        <label>District <span class="text-danger">*</span></label>
                         <Select placeholder="District" options={districtOptions} onChange={updateDistrict} />
                       </div>
                     </div>
                     <div class="col-12">
                       <div class="form-group">
-                        <label>Ward</label>
+                        <label>Ward <span class="text-danger">*</span></label>
                         <Select placeholder="Ward" options={wardOptions} onChange={updateWard} />
                       </div>
                     </div>
                     <div class="col-12">
                       <div class="form-group">
-                        <label>Street</label>
+                        <label>Street <span class="text-danger">*</span></label>
                         <input class="form-control select" name="street" onChange={changeInput} placeholder="Street">
                         </input>
                       </div>
@@ -150,13 +150,14 @@ const AddJob = () => {
                     name="description"
                     placeholder="Write short description of the blog here!"
                     onChange={changeInput}
+                    required='true'
                   />
                 </div>
 
                 <div class="submit-section">
-                  <button disabled={loading} type="submit" class="btn btn-primary submit-btn" onClick={submit}> 
-                  {loading && <span className="fa fa-refresh fa-spin"><FaIcons.FaSpinner/></span>}
-                  {"  "}
+                  <button disabled={loading} type="submit" class="btn btn-primary submit-btn" onClick={submit}>
+                    {loading && <span className="fa fa-refresh fa-spin"><FaIcons.FaSpinner /></span>}
+                    {"  "}
                     Post
                   </button>
                 </div>
@@ -166,7 +167,7 @@ const AddJob = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AddJob
+export default AddJob;
