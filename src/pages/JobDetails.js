@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
-import { Link } from "react-router-dom";
-import Breadcrumb from "../components/Breadcrumb";
-import { addApply, getJobItem, response } from "../api/jobAPI";
-import Loading from "../components/Loading";
-import { getUser } from "../api/Common";
-import AddReview from "../components/AddReview";
-import ReactStars from "react-rating-stars-component";
-import image from "../assets/img/default_avatar.png";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import * as FaIcons from "react-icons/fa";
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
+import Breadcrumb from '../components/Breadcrumb';
+import { addApply, getJobItem, response } from '../api/jobAPI';
+import Loading from '../components/Loading';
+import { getUser } from '../api/Common';
+import AddReview from '../components/AddReview';
+import ReactStars from 'react-rating-stars-component';
+import avatar from '../assets/img/default_avatar.png';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import * as FaIcons from 'react-icons/fa';
 
 function JobDetails() {
-  const id = useParams("id");
+  const id = useParams('id');
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [applyStatus, setApplyStatus] = useState(false);
 
   useEffect(() => {
     getJobItem(setJob, id.id);
@@ -24,6 +25,14 @@ function JobDetails() {
   const apply = () => {
     addApply(id.id, getUser()._id, toast);
   };
+
+  useEffect(() => {
+    setApplyStatus(job?.applies.find((item) => item._id === getUser()?._id));
+    console.log(
+      job?.applies.find((item) => item._id === getUser()?._id),
+      'status'
+    );
+  }, [job]);
 
   return (
     <>
@@ -40,7 +49,7 @@ function JobDetails() {
                       <img
                         src={job.imagesAddress}
                         className="img-fluid"
-                        alt="User Image"
+                        alt="User"
                       />
                     </div>
                     <div className="doc-info-cont">
@@ -63,7 +72,7 @@ function JobDetails() {
                       </div>
                       <div className="clinic-details">
                         <p className="doc-location">
-                          <i className="fas fa-map-marker-alt"></i>{" "}
+                          <i className="fas fa-map-marker-alt"></i>{' '}
                           {job.address.province}
                         </p>
                       </div>
@@ -73,7 +82,7 @@ function JobDetails() {
                     <div className="clini-infos">
                       <ul>
                         <li>
-                          <i className="far fa-clock"></i> Deadline{" "}
+                          <i className="far fa-clock"></i> Deadline{' '}
                           {job.duration}
                         </li>
                         <li>
@@ -82,16 +91,22 @@ function JobDetails() {
                         </li>
                       </ul>
                     </div>
-                    {getUser() && getUser().type == "Employee" && (
+                    {getUser().type === 'Employee' && !applyStatus && (
                       <div class="clinic-booking">
-                        <input
-                          type="file"
-                          class="form-control"
-                          id="updloadCV"
-                        />
-                        <a class="view-pro-btn" onClick={apply}>
+                        <button class="btn btn-primary" onClick={apply}>
                           Apply CV
-                        </a>
+                        </button>
+                      </div>
+                    )}
+                    {applyStatus && applyStatus.isApprove && (
+                      <div class="btn btn-primary">
+                        Applied <i class="fa fa-check" aria-hidden="true"></i>
+                      </div>
+                    )}
+                    {applyStatus && applyStatus.isApprove == 'false' && (
+                      <div class="btn btn-danger">
+                        Is rejected{' '}
+                        <i class="fa fa-time" aria-hidden="true"></i>
                       </div>
                     )}
                   </div>
@@ -170,10 +185,11 @@ function JobDetails() {
                     className="tab-pane fade"
                   >
                     <iframe
+                      title="location"
                       src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBT-FcupKSzJG1IuC4ZtNyQ-Qg0rdoY47k&q=${job.address.detail}`}
                       width="100%"
                       height="450"
-                      style={{ border: "none" }}
+                      style={{ border: 'none' }}
                       allowfullscreen=""
                       loading="lazy"
                     ></iframe>
@@ -193,11 +209,11 @@ function JobDetails() {
                                 <div className="comment">
                                   <img
                                     className="avatar avatar-sm rounded-circle"
-                                    alt="User Image"
+                                    alt="User"
                                     src={
                                       review.user.avatarAddress
                                         ? review.user.avatarAddress
-                                        : image
+                                        : avatar
                                     }
                                   />
                                   <div className="comment-body">
@@ -234,7 +250,7 @@ function JobDetails() {
                       </ul>
                     </div>
 
-                    {getUser() && getUser().type == "Employee" && (
+                    {getUser() && getUser().type == 'Employee' && (
                       <AddReview
                         idJob={id.id}
                         setJob={setJob}
@@ -261,37 +277,43 @@ function JobDetails() {
                                 <div className="comment">
                                   <img
                                     className="avatar avatar-sm rounded-circle"
-                                    alt="User Image"
+                                    alt="User"
                                     src={
                                       apply.avatarAddress
                                         ? apply.avatarAddress
-                                        : image
+                                        : avatar
                                     }
                                   />
                                   <div className="comment-body">
                                     <div className="meta-data">
                                       <Link to={`/profile/${apply._id}`}>
                                         <span className="comment-author">
-                                          {apply.name + " "}
+                                          {apply.name + ' '}
+                                          {apply.isApprove == 'true' ? (
+                                            <i
+                                              class="fa fa-check"
+                                              aria-hidden="true"
+                                            ></i>
+                                          ) : (
+                                            <i
+                                              class="fa fa-clock"
+                                              aria-hidden="true"
+                                            ></i>
+                                          )}
                                         </span>
-                                        {apply.isApprove == "true" && (
-                                          <i
-                                            class="fa fa-check"
-                                            aria-hidden="true"
-                                          ></i>
-                                        )}
-                                        {apply.isApprove == "false" && (
-                                          <i
-                                            class="fa fa-times"
-                                            aria-hidden="true"
-                                          ></i>
+                                        {apply.isApprove == 'true' ? (
+                                          <p>
+                                            The application has been approved!
+                                          </p>
+                                        ) : (
+                                          <p>The application is processing!</p>
                                         )}
                                       </Link>
                                     </div>
                                     <p>
                                       {getUser() &&
                                         getUser()._id == job.user._id &&
-                                        apply.isApprove == "null" && (
+                                        apply.isApprove == 'null' && (
                                           <>
                                             <div class="clinic-booking">
                                               <a
@@ -300,8 +322,8 @@ function JobDetails() {
                                                   await response(
                                                     index,
                                                     id.id,
-                                                    "true",
-                                                    toast,
+                                                    'true',
+                                                    toast
                                                   );
                                                   setLoading(false);
                                                   getJobItem(setJob, id.id);
@@ -322,8 +344,8 @@ function JobDetails() {
                                                   await response(
                                                     index,
                                                     id.id,
-                                                    "false",
-                                                    toast,
+                                                    'false',
+                                                    toast
                                                   );
                                                   setLoading(false);
                                                   getJobItem(setJob, id.id);
@@ -346,7 +368,7 @@ function JobDetails() {
                             );
                           })
                         ) : (
-                          <h1>No applies</h1>
+                          <h3>No application</h3>
                         )}
                       </ul>
                     </div>
