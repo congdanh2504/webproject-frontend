@@ -28,6 +28,10 @@ function JobDetails() {
 
   useEffect(() => {
     setApplyStatus(job?.applies.find((item) => item._id === getUser()?._id));
+    console.log(
+      job?.applies.find((item) => item._id === getUser()?._id),
+      'status'
+    );
   }, [job]);
 
   return (
@@ -87,16 +91,22 @@ function JobDetails() {
                         </li>
                       </ul>
                     </div>
-                    {!applyStatus && (
+                    {getUser().type === 'Employee' && !applyStatus && (
                       <div class="clinic-booking">
                         <button class="btn btn-primary" onClick={apply}>
                           Apply CV
                         </button>
                       </div>
                     )}
-                    {applyStatus && (
+                    {applyStatus && applyStatus.isApprove && (
                       <div class="btn btn-primary">
                         Applied <i class="fa fa-check" aria-hidden="true"></i>
+                      </div>
+                    )}
+                    {applyStatus && applyStatus.isApprove == 'false' && (
+                      <div class="btn btn-danger">
+                        Is rejected{' '}
+                        <i class="fa fa-time" aria-hidden="true"></i>
                       </div>
                     )}
                   </div>
@@ -281,7 +291,7 @@ function JobDetails() {
                                           {apply.name + ' '}
                                           {apply.isApprove == 'true' ? (
                                             <i
-                                              class="fa fa-checked"
+                                              class="fa fa-check"
                                               aria-hidden="true"
                                             ></i>
                                           ) : (
