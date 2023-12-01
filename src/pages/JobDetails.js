@@ -91,7 +91,7 @@ function JobDetails() {
                         </li>
                       </ul>
                     </div>
-                    {getUser().type === 'Employee' && !applyStatus && (
+                    {getUser() != null && getUser().type === 'Employee' && !applyStatus && (
                       <div class="clinic-booking">
                         <button class="btn btn-primary" onClick={apply}>
                           Apply CV
@@ -295,17 +295,28 @@ function JobDetails() {
                                               aria-hidden="true"
                                             ></i>
                                           ) : (
-                                            <i
-                                              class="fa fa-clock"
-                                              aria-hidden="true"
-                                            ></i>
-                                          )}
+                                            apply.isApprove == 'false' ?
+                                            (
+                                              <i
+                                                class="fa fa-times"
+                                                aria-hidden="true"
+                                              ></i>
+                                            ) : (
+                                              <i
+                                                class="fa fa-clock"
+                                                aria-hidden="true"
+                                              ></i>
+                                            ) 
+                                          ) }
                                         </span>
                                         {apply.isApprove == 'true' ? (
                                           <p>
                                             The application has been approved!
                                           </p>
                                         ) : (
+                                          apply.isApprove == 'false' ?
+                                          <p>The application has been disapproved!</p>
+                                          :
                                           <p>The application is processing!</p>
                                         )}
                                       </Link>

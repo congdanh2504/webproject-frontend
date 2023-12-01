@@ -38,9 +38,11 @@ export const getJobs = (setJobs, pageNumber = 1) => {
     headers: { "Content-Type": "application/json" },
   })
     .then((response) => {
+      console.log(response.data)
       setJobs(response.data);
     })
     .catch((err) => {
+
       console.log(`${BASE_URL}postItem?page=${pageNumber}`);
     });
 };
@@ -102,16 +104,22 @@ export const deleteJob = async (jobId, toast) => {
     });
 };
 
-export const searchJob = (setJobs, location, keyword) => {
+export const searchJob = (setJobs, location, keyword, pageNumber = 1) => {
+  console.log(location)
+  console.log(keyword)
+  console.log(`${BASE_URL}postItem/search?page=${pageNumber}`)
   axios({
     method: "POST",
-    url: `${BASE_URL}postItem/search`,
+    url: `${BASE_URL}postItem/search?page=${pageNumber}`,
     headers: { "Content-Type": "application/json" },
     data: {
       location: location,
       keyword: keyword,
     },
   }).then((response) => {
+    console.log('====================================');
+    console.log(response.data);
+    console.log('====================================');
     setJobs(response.data);
   });
 };

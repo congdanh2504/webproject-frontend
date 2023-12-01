@@ -18,6 +18,7 @@ function Jobs() {
   const location = params.get("location");
   const keyword = params.get("keyword");
   const [jobs, setJobs] = useState(null);
+  const [isSearched, setIsSearched] = useState(false)
   const categoryOptions = [
     { value: "Programmer", label: "Programmer" },
     { value: "Editor", label: "Editor" },
@@ -27,8 +28,8 @@ function Jobs() {
   ];
 
   const [provinceOptions, changeProvinceOptions] = useState([]);
-  const [province, changeProvince] = useState("");
-  const [category, setCategory] = useState("");
+  const [province, changeProvince] = useState(location);
+  const [category, setCategory] = useState(keyword);
   const style = {
     control: (base) => ({
       ...base,
@@ -47,8 +48,9 @@ function Jobs() {
   };
 
   useEffect(() => {
-    if (location || keyword) {
-      searchJob(setJobs, location, keyword);
+    if (province || category) {
+      searchJob(setJobs, province, category);
+      setIsSearched(true)
     } else {
       getJobs(setJobs);
     }
@@ -150,7 +152,15 @@ function Jobs() {
                   />
                   <div class="btn-search">
                     <button
-                      onClick={() => searchJob(setJobs, province, category)}
+                      onClick={() => {
+                        if (province || category) {
+                          setIsSearched(true)
+                          searchJob(setJobs, province, category);
+                        } else {
+                          setIsSearched(false)
+                          getJobs(setJobs);
+                        }
+                      }}
                       type="button"
                       class="btn btn-block"
                     >
@@ -191,7 +201,13 @@ function Jobs() {
                     itemsCountPerPage={jobs.per_page}
                     totalItemsCount={jobs.total}
                     pageRangeDisplayed={5}
-                    onChange={(num) => getJobs(setJobs, num)}
+                    onChange={(num) => {
+                      if (isSearched) {
+                        searchJob(setJobs, province, category, num)
+                      } else {
+                        getJobs(setJobs, num)
+                      }
+                    }}
                     itemClass="page-item"
                     linkClass="page-link"
                     firstPageText="First"
